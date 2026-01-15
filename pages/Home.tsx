@@ -43,7 +43,7 @@ const Home: React.FC = () => {
 
             {/* Subhead */}
             <p className="text-xl text-gray-300 leading-relaxed max-w-2xl border-l-2 border-gray-700 pl-6">
-              Forensic building intelligence that reveals hidden damage, protects asset value, and — when warranted — supports maximum recovery. Our team of engineers, meteorologists, and building consultants has assessed over $500M in commercial property damage.
+              Our team has assessed over $10 billion in commercial property damage. We built StormChecks to bring that expertise to owners like us.
             </p>
 
             <div className="space-y-6 pt-4">
@@ -67,6 +67,33 @@ const Home: React.FC = () => {
           
           {/* Right side - Empty but maintaining grid structure for spacing */}
           <div className="hidden lg:block h-full"></div>
+        </div>
+      </section>
+
+      {/* Stats Bar Section */}
+      <section className="bg-primary border-t border-white/10 py-16">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
+            
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center">
+              <div className="text-4xl md:text-6xl font-bold text-white mb-3">$10B+</div>
+              <div className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-widest">Assessed by Our Team</div>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center">
+              <div className="text-4xl md:text-6xl font-bold text-white mb-3">Thousands</div>
+              <div className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-widest">Properties Documented</div>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center">
+              <div className="text-4xl md:text-6xl font-bold text-white mb-3">$0 Upfront</div>
+              <div className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-widest">Ever</div>
+            </div>
+
+          </div>
         </div>
       </section>
 
