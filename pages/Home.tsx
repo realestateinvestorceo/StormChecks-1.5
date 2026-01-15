@@ -162,55 +162,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Why Documentation Quality Matters Section */}
-      <section className="bg-gray-50 py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
-              Why Documentation Quality Matters
-            </h2>
-            <p className="text-xl text-gray-600">
-              Whether for insurance recovery, litigation support, or transaction due diligence — the quality of your documentation determines the outcome.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow duration-300">
-              <div className="bg-primary/5 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
-                <FileText className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Technical Precision</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Generic contractor assessments lack the technical rigor required for formal proceedings. Our documentation maps damage to engineering standards and industry-recognized methodologies.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow duration-300">
-              <div className="bg-primary/5 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
-                <Cloud className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Weather Event Verification</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Linking damage to specific weather events requires meteorological analysis — NOAA data, storm coordinates, impact patterns. We build the evidentiary chain.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow duration-300">
-              <div className="bg-primary/5 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
-                <ClipboardCheck className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Carrier-Grade Standards</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Our reports are built to the same standards used by insurance carriers, litigation experts, and transaction advisors. Documentation that holds up to scrutiny.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Our Expertise Section (formerly Why We Win) */}
       <section className="bg-primary py-24 text-white">
         <div className="container mx-auto px-6">
@@ -229,7 +180,7 @@ const Home: React.FC = () => {
             {/* Body */}
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed max-w-3xl mb-12">
               <p>
-                StormChecks combines four disciplines under one roof: meteorological analysis, forensic engineering, building consulting, and claims strategy. Our team includes licensed Professional Engineers, certified adjusters, and weather data specialists.
+                StormChecks combines four disciplines under one roof: meteorological analysis, forensic engineering, building consulting, and claims strategy. Our team includes licensed Professional Engineers, forensic analysts, and weather data specialists.
               </p>
               <p>
                 We don't just inspect buildings. We produce forensic intelligence — documentation that stands up to carrier review, litigation scrutiny, and transaction due diligence.
@@ -559,7 +510,7 @@ const Home: React.FC = () => {
             Free Monitoring. Assessment on Recovery.
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Zero out-of-pocket cost. Zero upfront fees. StormChecks takes 10% only when your recovery pays out. The public adjuster takes 20%. If the claim doesn't pay, you owe nothing to anyone.
+            Zero out-of-pocket cost. Zero upfront fees. StormChecks takes 20% only when your recovery pays out. The public adjuster takes 10%. You keep 70%. If the claim doesn't pay, you owe nothing to anyone.
           </p>
 
           <div className="bg-white/5 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto border border-white/10 mb-12">
