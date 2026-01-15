@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock, ShieldCheck, Banknote } from 'lucide-react';
 
 const HowItWorks: React.FC = () => {
   return (
@@ -76,9 +76,67 @@ const HowItWorks: React.FC = () => {
               <div className="w-12 h-12 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-xl mb-6 shadow-md border-4 border-white">3</div>
               <h3 className="text-xl font-bold text-primary mb-4">Documentation Delivery</h3>
               <p className="text-gray-600 leading-relaxed">
-                We deliver a comprehensive forensic file to you. We can then connect you with vetted professionals if you choose to pursue recovery.
+                We deliver your forensic file. If you choose to pursue recovery, we handle everything — you cash the check.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Happens After Section */}
+      <section className="bg-gray-50 py-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">What Happens After Your Assessment</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Column 1 */}
+            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm text-center hover:shadow-md transition-shadow">
+               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                 <Clock className="w-8 h-8 text-primary" />
+               </div>
+               <h3 className="text-xl font-bold text-primary mb-4">You Decide on Your Timeline</h3>
+               <p className="text-gray-600 leading-relaxed">
+                 No pressure. Review your assessment, ask questions, take your time. You only move forward when you're ready.
+               </p>
+            </div>
+
+            {/* Column 2 */}
+            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm text-center hover:shadow-md transition-shadow">
+               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                 <ShieldCheck className="w-8 h-8 text-primary" />
+               </div>
+               <h3 className="text-xl font-bold text-primary mb-4">We Handle Everything</h3>
+               <p className="text-gray-600 leading-relaxed">
+                 If you proceed, we coordinate with the public adjuster, manage documentation, and deal with the carrier. Your involvement: minimal.
+               </p>
+            </div>
+
+            {/* Column 3 */}
+            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm text-center hover:shadow-md transition-shadow">
+               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                 <Banknote className="w-8 h-8 text-primary" />
+               </div>
+               <h3 className="text-xl font-bold text-primary mb-4">You Receive Your Recovery</h3>
+               <p className="text-gray-600 leading-relaxed">
+                 The process takes 2–12 months depending on the carrier. When it settles, you keep 70%. We only get paid when you do.
+               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Denial / Lowball / Pushback Section */}
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+              What If the Carrier Pushes Back?
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              They usually do — at first. Our documentation is built for pushback. When carriers deny or undervalue claims, we support the appeals process with additional evidence, technical narratives, and expert documentation. You're not involved in the back-and-forth. We handle it.
+            </p>
           </div>
         </div>
       </section>

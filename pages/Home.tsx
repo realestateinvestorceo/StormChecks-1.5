@@ -440,6 +440,46 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Will Filing Affect My Premiums? Section */}
+      <section className="bg-gray-50 py-24">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Will Filing Affect My Premiums?</h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Most claims we file are tied to catalogued storm events — storms your carrier already knows about and has already priced into the market. You're already paying for them. We help you collect what's yours. In cases where premiums could be impacted, we'll walk you through the math before you decide anything.
+          </p>
+        </div>
+      </section>
+
+      {/* Why Owners Choose StormChecks Section */}
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">Why Owners Choose StormChecks</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-primary mb-4">We Find What Others Miss</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Forensic engineering plus meteorological analysis. We identify damage that standard inspections overlook.
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-primary mb-4">Documentation That Holds Up</h3>
+              <p className="text-gray-600 leading-relaxed">
+                120+ page files built to carrier standards. Bulletproof under scrutiny.
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-primary mb-4">PAs Want to Work With Us</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our files help adjusters close faster and recover more. That's why many bring us their own clients.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Free Monitoring Section */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-6">
