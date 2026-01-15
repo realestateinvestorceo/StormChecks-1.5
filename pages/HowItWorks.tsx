@@ -60,7 +60,7 @@ const HowItWorks: React.FC = () => {
               <div className="w-12 h-12 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-xl mb-6 shadow-md border-4 border-white">2</div>
               <h3 className="text-xl font-bold text-primary mb-4">Forensic Assessment</h3>
               <p className="text-gray-600 leading-relaxed">
-                If damage exists, we deploy our field team to document every inch. We build the carrier-grade evidence file that proves your loss irrefutably.
+                If damage exists, we deploy our field team to document every inch. We build the carrier-grade evidence file that documents the damage comprehensively.
               </p>
             </div>
 
@@ -76,7 +76,7 @@ const HowItWorks: React.FC = () => {
               <div className="w-12 h-12 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-xl mb-6 shadow-md border-4 border-white">3</div>
               <h3 className="text-xl font-bold text-primary mb-4">Documentation Delivery</h3>
               <p className="text-gray-600 leading-relaxed">
-                We deliver a comprehensive forensic file to you. We can then connect you with vetted recovery experts to execute the claim strategy.
+                We deliver a comprehensive forensic file to you. We can then connect you with vetted professionals if you choose to pursue recovery.
               </p>
             </div>
           </div>

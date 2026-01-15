@@ -1,8 +1,47 @@
 import React from 'react';
-import { Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Building2 } from 'lucide-react';
 
 const Leadership: React.FC = () => {
+  const team = [
+    {
+      name: "Mark Sullivan",
+      title: "Chief Executive Officer",
+      bio: "Mark leads StormChecks' operations and client experience. A commercial property owner himself, he ensures every assessment meets the standards he'd demand for his own portfolio.",
+      image: "https://ui-avatars.com/api/?name=Mark+Sullivan&background=0B1F33&color=fff&size=512"
+    },
+    {
+      name: "Javier Hinojo",
+      title: "Chief Revenue & Strategic Partnerships",
+      bio: "Javier has built and managed a commercial portfolio exceeding $170 million. He works directly with portfolio owners, fund managers, and national partners who need building intelligence at scale.",
+      image: "https://ui-avatars.com/api/?name=Javier+Hinojo&background=0B1F33&color=fff&size=512"
+    },
+    {
+      name: "Josh Zieglowsky",
+      title: "Chief Business Development",
+      bio: "With nearly 20 years in commercial real estate — acquisitions, dispositions, asset management, and financing — Josh understands what owners need to protect and grow their investments.",
+      image: "https://ui-avatars.com/api/?name=Josh+Zieglowsky&background=0B1F33&color=fff&size=512"
+    },
+    {
+      name: "Michael Paul, Esq.",
+      title: "Chief Strategy Officer",
+      bio: "Michael brings decades of experience evaluating building documentation at the highest levels. A licensed attorney, he sets StormChecks' technical and evidentiary standards.",
+      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696711e441565269703ea4cc.png"
+    },
+    {
+      name: "Josh Miller, PE",
+      title: "Head of Engineering",
+      bio: "Josh leads forensic inspections, structural analysis, and technical documentation. As a licensed Professional Engineer, he ensures every assessment meets rigorous defensibility standards.",
+      image: "https://ui-avatars.com/api/?name=Josh+Miller&background=0B1F33&color=fff&size=512"
+    },
+    {
+      name: "Nate Worcester",
+      title: "Head of Operations",
+      bio: "Nate oversees internal infrastructure — inspections, documentation workflows, technology systems, and partner communications. He builds the processes that let StormChecks scale nationally.",
+      image: "https://ui-avatars.com/api/?name=Nate+Worcester&background=0B1F33&color=fff&size=512"
+    }
+  ];
+
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
@@ -14,7 +53,7 @@ const Leadership: React.FC = () => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696614a902f1be4be50a711a.png')" }}
           ></div>
-          <div className="absolute inset-0 bg-[#0B1F33]/85"></div>
+          <div className="absolute inset-0 bg-[#0B1F33]/90"></div>
         </div>
 
         {/* Decorative background elements */}
@@ -25,134 +64,89 @@ const Leadership: React.FC = () => {
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-5xl mx-auto">
+             <div className="flex items-center justify-center space-x-3 mb-6">
+              <div className="h-0.5 w-8 bg-accent"></div>
+              <span className="text-accent font-bold tracking-[0.2em] uppercase text-sm">
+                BUILT BY OWNERS. FOR OWNERS.
+              </span>
+              <div className="h-0.5 w-8 bg-accent"></div>
+            </div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-              Forensic Expertise Built on Industry Experience
+              We Built the Firm We Wished Existed.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-              StormChecks was founded by commercial property owners and industry veterans who understand buildings, weather, and documentation from every angle.
+              StormChecks was founded by commercial property owners who got tired of not knowing the true condition of their buildings. Our leadership team collectively owns and manages over $200M in commercial real estate. We built StormChecks for ourselves first — then opened it to every owner who deserves the same intelligence.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Founder Profile Section */}
-      <section className="bg-white py-24">
+      {/* Team Intro Section */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container mx-auto px-6 text-center max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Owners, Engineers, and Industry Veterans</h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            Our team combines hands-on real estate experience with forensic engineering and documentation expertise. We're not outside consultants guessing at what owners need — we're owners who built exactly what we needed.
+          </p>
+        </div>
+      </section>
+
+      {/* Team Grid Section */}
+      <section className="bg-gray-50 py-24">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-            
-            {/* Left Column - Founder Image */}
-            <div className="relative group mx-auto md:mx-0 w-full max-w-md md:max-w-none">
-                <div className="aspect-[4/5] bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200 relative z-10">
-                    <img 
-                      src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696711e441565269703ea4cc.png" 
-                      alt="Michael Paul - Founder of StormChecks" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col h-full">
+                <div className="aspect-[4/3] bg-gray-200 relative">
+                   <img 
+                     src={member.image} 
+                     alt={member.name} 
+                     className="w-full h-full object-cover"
+                   />
                 </div>
-                {/* Decorative border offset */}
-                <div className="absolute -z-0 top-6 -left-6 w-full h-full border-2 border-accent/30 rounded-xl hidden md:block"></div>
-            </div>
-
-            {/* Right Column - Content */}
-            <div className="space-y-8">
-              <div className="border-l-4 border-accent pl-6">
-                <h2 className="text-4xl font-bold text-primary mb-2">Michael Paul</h2>
-                <p className="text-xl font-bold text-accent tracking-wide uppercase">Chief Claims Strategist & Founder</p>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
+                  <p className="text-accent font-bold text-xs uppercase tracking-wide mb-4">{member.title}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+                </div>
               </div>
-
-              <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  Michael spent over 20 years as a senior executive inside major insurance carriers. His job was to evaluate claims and determine whether documentation met the rigorous standards required for approval.
-                </p>
-                <p>
-                  He reviewed thousands of files. He learned exactly what documentation meets the internal approval thresholds, what language carriers accept, and what gaps adjusters exploit to deny valid claims.
-                </p>
-                <p>
-                  Most claims don't fail because the damage isn't real. They fail because the paperwork speaks 'contractor' while the carrier speaks 'policy.' If your documentation doesn't map damage directly to the internal checklists adjusters use, the claim gets rejected — even when the damage is legitimate.
-                </p>
-                <p>
-                  Michael founded StormChecks to fix that. We build forensic files designed to pass the same tests he used to administer. Not contractor estimates. Not photos without context. Carrier-grade evidence that meets the exact standards insurers use to make decisions.
-                </p>
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Founder Letter Section */}
-      <section className="bg-gray-50 py-24">
+      {/* Why We Built This Section */}
+      <section className="bg-white py-24">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-10">
-            <span className="text-gray-400 font-bold tracking-widest uppercase text-sm">
-              A Note From Our Founder
-            </span>
-          </div>
-
-          <div className="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-gray-200 relative">
-            {/* Quote Icon watermark */}
-            <div className="absolute top-8 right-8 text-gray-100">
-               <Quote className="w-20 h-20 opacity-50" />
-            </div>
-
-            <div className="relative z-10 space-y-6 text-gray-700 leading-relaxed text-lg">
-              <h3 className="text-2xl font-bold text-primary mb-6 block">
-                Subject: What Most Property Owners Don't Know About Their Buildings
-              </h3>
-
-              <p>
-                To my fellow property owners,
-              </p>
-
-              <p>
-                I spent two decades inside the insurance industry. I've sat in the rooms where claim decisions are made. I've seen the checklists. I've seen what gets approved — and I've seen what gets thrown in the denial pile.
-              </p>
-
-              <p>
-                Here's what most property owners don't understand: insurance carriers are not in the business of paying claims. They're in the business of collecting premiums and minimizing payouts. If your documentation has a gap — any gap — they will find it and use it against you.
-              </p>
-
-              <p>
-                I've watched legitimate claims get denied for reasons that would infuriate you:
-              </p>
-
-              <ul className="list-disc pl-6 space-y-2 marker:text-accent">
-                <li><strong className="font-semibold text-primary">'No storm nexus'</strong> — meaning the paperwork didn't link the damage to a specific weather event</li>
-                <li><strong className="font-semibold text-primary">'Insufficient documentation'</strong> — meaning photos without measurements, context, or timestamps</li>
-                <li><strong className="font-semibold text-primary">'Pre-existing condition'</strong> — the catch-all excuse for denying anything they don't want to pay</li>
-              </ul>
-
-              <p>
-                The damage was real in every one of these cases. The inspections were accurate. But the documentation didn't check the right boxes — boxes that carriers intentionally don't publicize.
-              </p>
-
-              <p>
-                After 20 years of watching this happen, I left. I founded StormChecks to give property owners what they've never had: documentation built by someone who knows exactly what carriers need to see to approve a claim.
-              </p>
-
-              <p>
-                Our forensic files aren't contractor estimates. They're 100+ page evidence packages with NOAA weather data, microscopic damage analysis, storm-to-damage causation narratives, and Xactimate scopes that match carrier internal standards.
-              </p>
-
-              <p>
-                We find damage that nobody else finds. Then we document it so airtight that carriers can't deny it.
-              </p>
-              
-              <div className="bg-primary/5 border-l-4 border-accent p-6 my-8 rounded-r-lg">
-                <p className="font-medium text-primary italic">
-                  "Our analysis shows that latent storm damage typically represents $10–$15 per square foot in recoverable loss. For most commercial buildings, that's hundreds of thousands of dollars sitting on the table — money that belongs to you, not your insurance company."
-                </p>
+          <div className="max-w-4xl mx-auto bg-primary text-white rounded-2xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
+            {/* Background pattern */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent opacity-10 rounded-full blur-3xl pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center space-x-4 mb-8">
+                <div className="p-3 bg-accent/20 rounded-lg">
+                  <Building2 className="w-8 h-8 text-accent" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold">Why We Built StormChecks</h2>
               </div>
-
-              <p>
-                If your building has been through a storm in the last three years, it's worth two minutes to find out what you're owed.
-              </p>
-
-              <div className="mt-12 pt-8 border-t border-gray-100">
-                <div className="font-script text-3xl text-primary mb-2 font-bold font-serif italic">Michael Paul</div>
-                <div className="text-primary font-bold">Michael Paul</div>
-                <div className="text-gray-500 text-sm font-medium uppercase tracking-wide">Founder & Chief Claims Strategist</div>
-                <div className="text-gray-500 text-sm">StormChecks</div>
+              
+              <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+                <p>
+                  We're commercial property owners. Between us, we own and manage over $200 million in real estate — multifamily, retail, industrial, self-storage.
+                </p>
+                <p>
+                  A few years ago, we started comparing notes. Some of us had filed insurance claims after storms. Some hadn't. The ones who filed recovered hundreds of thousands of dollars. The ones who didn't had no idea they had damage.
+                </p>
+                <p>
+                  That's when we realized: most owners don't know what their buildings are hiding. Storm damage doesn't announce itself. It hides in membranes, behind cladding, inside systems. And unless you have forensic engineers and meteorologists looking for it, you'll never find it.
+                </p>
+                <p>
+                  So we built StormChecks — first for our own portfolios, then for owners like us. We combined weather intelligence, forensic engineering, and documentation expertise into one firm. Now we monitor properties, identify hidden damage, and produce the forensic files needed to protect asset value and support recovery.
+                </p>
+                <p className="font-bold text-white text-xl pt-4">
+                  We built the firm we wished existed. Now it does.
+                </p>
               </div>
             </div>
           </div>

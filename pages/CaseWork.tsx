@@ -100,10 +100,10 @@ const CaseWork: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-              Real Properties. Real Settlements.
+              Real Properties. Documented Results.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              We don't deal in hypotheticals. These are documented outcomes from real commercial properties — owners who discovered hidden storm damage and recovered what they were owed.
+              We don't deal in hypotheticals. These are documented outcomes from real commercial properties — owners who discovered hidden damage through forensic assessment — and chose to pursue recovery.
             </p>
           </div>
         </div>
@@ -126,25 +126,25 @@ const CaseWork: React.FC = () => {
              {/* Stat 1 */}
              <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">$30M+</div>
-                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">Total documented recoveries</div>
+                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">TOTAL DOCUMENTED DAMAGE</div>
              </div>
 
              {/* Stat 2 */}
              <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">$0 → $3.9M</div>
-                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">Largest denial reversal</div>
+                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">LARGEST ASSESSMENT OUTCOME</div>
              </div>
 
              {/* Stat 3 */}
              <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">9x</div>
-                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">Largest settlement increase</div>
+                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">LARGEST DOCUMENTATION IMPACT</div>
              </div>
 
              {/* Stat 4 */}
              <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
-                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">Of clients paid $0 upfront</div>
+                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">OF CLIENTS PAID $0 UPFRONT</div>
              </div>
 
           </div>

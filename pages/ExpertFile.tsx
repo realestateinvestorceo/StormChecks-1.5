@@ -85,7 +85,7 @@ const ExpertFile: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-4">Meteorological Verification</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Date-specific storm data from NOAA and private weather services — hail size, wind speed, duration, and direction — confirmed to your property's exact coordinates. This is the storm-to-location linkage carriers require.
+                  Date-specific storm data from NOAA and private weather services — hail size, wind speed, duration, and direction — confirmed to your property's exact coordinates. This is the storm-to-location linkage professional review requires.
                 </p>
               </div>
             </div>
@@ -285,7 +285,7 @@ const ExpertFile: React.FC = () => {
             Get Documentation That Holds Up
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Start with free assessment. If we find damage, we'll build the file that gets it paid.
+            Start with free assessment. If we find damage, we'll build the file that holds up.
           </p>
 
           <div className="flex flex-col items-center gap-4">

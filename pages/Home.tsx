@@ -532,7 +532,7 @@ const Home: React.FC = () => {
             Free Monitoring. Assessment on Recovery.
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Zero out-of-pocket cost. Zero upfront fees. StormChecks takes 10% only when your claim pays out. The public adjuster takes 20%. If the claim doesn't pay, you owe nothing to anyone.
+            Zero out-of-pocket cost. Zero upfront fees. StormChecks takes 10% only when your recovery pays out. The public adjuster takes 20%. If the claim doesn't pay, you owe nothing to anyone.
           </p>
 
           <div className="bg-white/5 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto border border-white/10 mb-12">
@@ -597,7 +597,7 @@ const Home: React.FC = () => {
           </p>
           
           <p className="text-lg text-gray-400 mb-8">
-            Storm damage recovery has a 1–3 year documentation window depending on your state.
+            Recovery has a 1–2 year documentation window depending on your state.
           </p>
 
           <Link to="/contact?focus=true" className="inline-block bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-[0_4px_20px_rgba(201,151,0,0.2)] hover:shadow-[0_4px_25px_rgba(201,151,0,0.35)] hover:-translate-y-1">

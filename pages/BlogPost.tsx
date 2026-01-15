@@ -362,7 +362,7 @@ const BlogPost: React.FC = () => {
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
               <h4 className="font-bold text-primary mb-6 uppercase tracking-wider text-sm">Explore Categories</h4>
               <div className="flex flex-wrap gap-2">
-                {['Success Stories', 'Insurance Insights', 'Technical Insights', 'Preparedness'].map(cat => (
+                {['Success Stories', 'Industry Insights', 'Technical Insights', 'Preparedness'].map(cat => (
                   <Link 
                     key={cat}
                     to="/resources"

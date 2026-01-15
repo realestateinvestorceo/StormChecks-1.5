@@ -6,7 +6,7 @@ export interface Article {
   id: string;
   title: string;
   excerpt: string;
-  category: 'Success Stories' | 'Insurance Insights' | 'Technical Insights' | 'Preparedness';
+  category: 'Success Stories' | 'Industry Insights' | 'Technical Insights' | 'Preparedness';
   image: string;
   date: string;
   readTime: string;
@@ -24,9 +24,9 @@ export const blogArticles: Article[] = [
   },
   {
     id: 'inside-the-carriers-mind-why-valid-claims-get-rejected',
-    title: "Inside the Carrier's Mind: Why Valid Claims Get Rejected",
+    title: "Inside the Review Process: Why Valid Documentation Gets Rejected",
     excerpt: "Our founder, Michael Paul, shares the unwritten internal checklists insurance adjusters use to flag files for denial and how to bypass them.",
-    category: 'Insurance Insights',
+    category: 'Industry Insights',
     image: 'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696614a902f1be4be50a711a.png',
     date: 'March 10, 2024',
     readTime: '8 min read'
@@ -51,7 +51,7 @@ export const blogArticles: Article[] = [
   },
   {
     id: 'retail-center-recovery-why-contractor-bids-arent-enough',
-    title: "Retail Center Recovery: Why Contractor Bids Aren't Enough",
+    title: "Retail Center Case Study: Why Contractor Bids Aren't Enough",
     excerpt: "A case study on a Missouri retail center where a standard contractor bid was lowballed by $3.3M until a carrier-grade forensic file was presented.",
     category: 'Success Stories',
     image: 'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696611cbccf2c6af04f18876.png',
@@ -72,7 +72,7 @@ export const blogArticles: Article[] = [
 const Resources: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const categories = ['All', 'Success Stories', 'Insurance Insights', 'Technical Insights', 'Preparedness'];
+  const categories = ['All', 'Success Stories', 'Industry Insights', 'Technical Insights', 'Preparedness'];
 
   const filteredArticles = activeCategory === 'All' 
     ? blogArticles 
@@ -94,7 +94,7 @@ const Resources: React.FC = () => {
               Resources & Insights
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              Expert analysis on forensic documentation, insurance strategy, and commercial property storm recovery.
+              Expert analysis on forensic documentation, building intelligence, and commercial property protection.
             </p>
           </div>
         </div>
