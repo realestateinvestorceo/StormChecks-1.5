@@ -8,19 +8,19 @@ const Leadership: React.FC = () => {
       name: "Mark Sullivan",
       title: "Chief Executive Officer",
       bio: "Mark leads StormChecks' operations and client experience. A commercial property owner himself, he ensures every assessment meets the standards he'd demand for his own portfolio.",
-      image: "https://ui-avatars.com/api/?name=Mark+Sullivan&background=0B1F33&color=fff&size=512"
+      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f95e125efd97b769085.png"
     },
     {
       name: "Javier Hinojo",
       title: "Chief Revenue & Strategic Partnerships",
       bio: "Javier has built and managed a commercial portfolio exceeding $170 million. He works directly with portfolio owners, fund managers, and national partners who need building intelligence at scale.",
-      image: "https://ui-avatars.com/api/?name=Javier+Hinojo&background=0B1F33&color=fff&size=512"
+      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f95e125efead3769084.png"
     },
     {
       name: "Josh Zieglowsky",
       title: "Chief Business Development",
       bio: "With nearly 20 years in commercial real estate — acquisitions, dispositions, asset management, and financing — Josh understands what owners need to protect and grow their investments.",
-      image: "https://ui-avatars.com/api/?name=Josh+Zieglowsky&background=0B1F33&color=fff&size=512"
+      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f9565d73d8dc6e249e0.png"
     },
     {
       name: "Michael Paul, Esq.",
@@ -32,13 +32,13 @@ const Leadership: React.FC = () => {
       name: "Josh Miller, PE",
       title: "Head of Engineering",
       bio: "Josh leads forensic inspections, structural analysis, and technical documentation. As a licensed Professional Engineer, he ensures every assessment meets rigorous defensibility standards.",
-      image: "https://ui-avatars.com/api/?name=Josh+Miller&background=0B1F33&color=fff&size=512"
+      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f9565d73d98ece249e1.png"
     },
     {
       name: "Nate Worcester",
       title: "Head of Operations",
       bio: "Nate oversees internal infrastructure — inspections, documentation workflows, technology systems, and partner communications. He builds the processes that let StormChecks scale nationally.",
-      image: "https://ui-avatars.com/api/?name=Nate+Worcester&background=0B1F33&color=fff&size=512"
+      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6969a0fbe125efb64076cf37.png"
     }
   ];
 
