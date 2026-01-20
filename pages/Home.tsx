@@ -42,9 +42,14 @@ const Home: React.FC = () => {
             </h1>
 
             {/* Subhead */}
-            <p className="text-xl text-gray-300 leading-relaxed max-w-2xl border-l-2 border-gray-700 pl-6">
-              Our team has assessed over $10 billion in commercial property damage. We built StormChecks to bring that expertise to owners like us.
-            </p>
+            <div className="text-xl text-gray-300 leading-relaxed max-w-2xl border-l-2 border-gray-700 pl-6 space-y-4">
+              <p>
+                Our team has assessed over $10 billion in commercial property damage. We built StormChecks to bring that expertise to owners like us.
+              </p>
+              <p className="font-semibold text-white">
+                Start viewing insurance as an asset rather than a liability.
+              </p>
+            </div>
 
             <div className="space-y-6 pt-4">
               {/* Body Text */}
@@ -550,7 +555,7 @@ const Home: React.FC = () => {
             Free Monitoring. Assessment on Recovery.
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Zero out-of-pocket cost. Zero upfront fees. StormChecks takes 20% only when your recovery pays out. The public adjuster takes 10%. You keep 70%. If the claim doesn't pay, you owe nothing to anyone.
+            Zero out-of-pocket cost. Zero upfront fees. We only get paid when your claim pays out. If you don't recover, you owe nothing.
           </p>
 
           <div className="bg-white/5 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto border border-white/10 mb-12">
@@ -580,7 +585,7 @@ const Home: React.FC = () => {
                   <div className="bg-accent/20 p-1 rounded-full">
                     <Check className="w-6 h-6 text-accent" />
                   </div>
-                  <span className="text-lg font-medium text-white">Vetted public adjuster network</span>
+                  <span className="text-lg font-medium text-white">Vetted professional network</span>
                </div>
             </div>
              <p className="text-gray-400 mt-10 pt-8 border-t border-white/10">
