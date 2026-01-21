@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
     };
 
     try {
-      const response = await fetch('https://hook.us2.make.com/3557od1wk5xx98h9r7tq6wnliojtvnri', {
+      const response = await fetch('https://hook.us2.make.com/unqb70ofcu6wo9hhfaoc1kqmnjsloioy', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
