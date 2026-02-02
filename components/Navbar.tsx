@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogIn } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,11 +48,17 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button - Portal Login */}
         <div className="hidden lg:block">
-          <Link to="/contact?focus=true" className="bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-all shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-sm uppercase tracking-wide">
-            Free Assessment
-          </Link>
+          <a 
+            href="https://app.stormchecks.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-all shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-sm uppercase tracking-wide flex items-center gap-2"
+          >
+            <LogIn className="w-4 h-4" />
+            Portal Login
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -89,13 +95,16 @@ const Navbar: React.FC = () => {
                   </Link>
               )
             ))}
-            <Link
-              to="/contact?focus=true"
-              className="bg-accent text-primary px-5 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors text-center block mt-4"
+            <a
+              href="https://app.stormchecks.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-accent text-primary px-5 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors text-center mt-4 flex items-center justify-center gap-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Free Assessment
-            </Link>
+              <LogIn className="w-4 h-4" />
+              Portal Login
+            </a>
           </div>
         </div>
       )}
