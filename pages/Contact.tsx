@@ -2,6 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Mail, Phone, Send, Check, CheckCircle, Loader2, MapPin, AlertCircle } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 
+declare global {
+  interface Window {
+    google: any;
+    Intercom: any;
+  }
+}
+
 const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -9,6 +16,8 @@ const Contact: React.FC = () => {
   const formRef = useRef<HTMLElement>(null);
   const contactInfoRef = useRef<HTMLDivElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
+  const addressInputRef = useRef<HTMLInputElement>(null);
+  const autocompleteRef = useRef<any>(null);
 
   const scrollToForm = (smooth = true) => {
     formRef.current?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
@@ -22,7 +31,6 @@ const Contact: React.FC = () => {
     contactInfoRef.current?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
   };
 
-  // Effect to handle deep linking and auto-focus from other pages
   useEffect(() => {
     if (searchParams.get('focus') === 'true') {
       const timer = setTimeout(() => {
@@ -38,6 +46,40 @@ const Contact: React.FC = () => {
       return () => clearTimeout(timer);
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    const initAutocomplete = () => {
+      if (window.google && window.google.maps && addressInputRef.current && !autocompleteRef.current) {
+        const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
+          types: ['address'],
+          fields: ['formatted_address'],
+          componentRestrictions: { country: 'us' }
+        });
+
+        autocomplete.addListener('place_changed', () => {
+          const place = autocomplete.getPlace();
+          if (place.formatted_address && addressInputRef.current) {
+            addressInputRef.current.value = place.formatted_address;
+          }
+        });
+
+        autocompleteRef.current = autocomplete;
+      }
+    };
+
+    if (window.google && window.google.maps) {
+      initAutocomplete();
+    } else {
+      const checkGoogle = setInterval(() => {
+        if (window.google && window.google.maps) {
+          clearInterval(checkGoogle);
+          initAutocomplete();
+        }
+      }, 100);
+
+      return () => clearInterval(checkGoogle);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,8 +107,19 @@ const Contact: React.FC = () => {
       });
 
       if (response.ok) {
+        if (window.Intercom) {
+          window.Intercom('trackEvent', 'Lead Form Submitted', {
+            fullName: data.fullName,
+            companyName: data.companyName,
+            email: data.email,
+            phone: data.phone,
+            address: data.address,
+            propertyType: data.propertyType,
+            sqFootage: data.sqFootage,
+            notes: data.notes
+          });
+        }
         setIsSubmitted(true);
-        // Scroll to top of form section to show success message clearly
         formRef.current?.scrollIntoView({ behavior: 'smooth' });
       } else {
         alert('Something went wrong. Please try again later.');
@@ -184,6 +237,7 @@ const Contact: React.FC = () => {
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Property Address <span className="text-red-500">*</span></label>
                       <input 
+                        ref={addressInputRef}
                         name="address"
                         type="text" 
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" 

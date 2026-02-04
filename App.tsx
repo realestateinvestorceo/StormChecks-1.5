@@ -13,7 +13,12 @@ import Terms from './pages/Terms';
 import Resources from './pages/Resources';
 import BlogPost from './pages/BlogPost';
 
-// Component that handles scrolling to top on route change
+declare global {
+  interface Window {
+    Intercom: any;
+  }
+}
+
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
 
@@ -25,6 +30,15 @@ const ScrollToTop: React.FC = () => {
 };
 
 const App: React.FC = () => {
+  useEffect(() => {
+    if (window.Intercom) {
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "onchtmjc",
+      });
+    }
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
