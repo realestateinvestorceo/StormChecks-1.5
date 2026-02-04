@@ -108,6 +108,20 @@ const Contact: React.FC = () => {
 
       if (response.ok) {
         if (window.Intercom) {
+          window.Intercom('update', {
+            email: data.email as string,
+            name: data.fullName as string,
+            phone: data.phone as string,
+            company: {
+              name: data.companyName as string
+            },
+            custom_attributes: {
+              property_address: data.address as string,
+              property_type: data.propertyType as string,
+              sq_footage: data.sqFootage as string
+            }
+          });
+          
           window.Intercom('trackEvent', 'Lead Form Submitted', {
             fullName: data.fullName,
             companyName: data.companyName,
