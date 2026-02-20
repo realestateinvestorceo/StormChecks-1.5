@@ -112,9 +112,6 @@ const Contact: React.FC = () => {
             email: data.email as string,
             name: data.fullName as string,
             phone: data.phone as string,
-            company: {
-              name: data.companyName as string
-            },
             custom_attributes: {
               property_address: data.address as string,
               property_type: data.propertyType as string,
