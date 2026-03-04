@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -14,30 +14,30 @@ import Resources from './pages/Resources';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 
-// SEO Pages — lazy loaded for code splitting
-const WhatToDoAfterStormDamage = lazy(() => import('./pages/seo/WhatToDoAfterStormDamage'));
-const WhyClaimsGetDenied = lazy(() => import('./pages/seo/WhyClaimsGetDenied'));
-const HiddenCostOfStormDamage = lazy(() => import('./pages/seo/HiddenCostOfStormDamage'));
-const InsuranceClaimProcessGuide = lazy(() => import('./pages/seo/InsuranceClaimProcessGuide'));
-const ForensicVsStandardInspection = lazy(() => import('./pages/seo/ForensicVsStandardInspection'));
-const ForensicDocVsContractorEstimate = lazy(() => import('./pages/seo/ForensicDocVsContractorEstimate'));
-const IndependentVsInsuranceAdjuster = lazy(() => import('./pages/seo/IndependentVsInsuranceAdjuster'));
-const WhatIsForensicBuildingConsulting = lazy(() => import('./pages/seo/WhatIsForensicBuildingConsulting'));
-const HailDamageCommercialRoofs = lazy(() => import('./pages/seo/HailDamageCommercialRoofs'));
-const WindDamageCommercialBuildings = lazy(() => import('./pages/seo/WindDamageCommercialBuildings'));
-const StateFilingDeadlines = lazy(() => import('./pages/seo/StateFilingDeadlines'));
-const StormDamageIndustrial = lazy(() => import('./pages/seo/StormDamageIndustrial'));
-const StormDamageRetail = lazy(() => import('./pages/seo/StormDamageRetail'));
-const StormDamageSelfStorage = lazy(() => import('./pages/seo/StormDamageSelfStorage'));
-const StormDamageOfficeBuildings = lazy(() => import('./pages/seo/StormDamageOfficeBuildings'));
-const StormDamageTexas = lazy(() => import('./pages/seo/StormDamageTexas'));
-const StormDamageColorado = lazy(() => import('./pages/seo/StormDamageColorado'));
-const StormDamageKansas = lazy(() => import('./pages/seo/StormDamageKansas'));
-const StormDamageOklahoma = lazy(() => import('./pages/seo/StormDamageOklahoma'));
-const StormDamageNebraska = lazy(() => import('./pages/seo/StormDamageNebraska'));
-const StormDamageMissouri = lazy(() => import('./pages/seo/StormDamageMissouri'));
-const StormDamageMinnesota = lazy(() => import('./pages/seo/StormDamageMinnesota'));
-const StormDamageNorthCarolina = lazy(() => import('./pages/seo/StormDamageNorthCarolina'));
+// SEO Pages — direct imports for Google indexability
+import WhatToDoAfterStormDamage from './pages/seo/WhatToDoAfterStormDamage';
+import WhyClaimsGetDenied from './pages/seo/WhyClaimsGetDenied';
+import HiddenCostOfStormDamage from './pages/seo/HiddenCostOfStormDamage';
+import InsuranceClaimProcessGuide from './pages/seo/InsuranceClaimProcessGuide';
+import ForensicVsStandardInspection from './pages/seo/ForensicVsStandardInspection';
+import ForensicDocVsContractorEstimate from './pages/seo/ForensicDocVsContractorEstimate';
+import IndependentVsInsuranceAdjuster from './pages/seo/IndependentVsInsuranceAdjuster';
+import WhatIsForensicBuildingConsulting from './pages/seo/WhatIsForensicBuildingConsulting';
+import HailDamageCommercialRoofs from './pages/seo/HailDamageCommercialRoofs';
+import WindDamageCommercialBuildings from './pages/seo/WindDamageCommercialBuildings';
+import StateFilingDeadlines from './pages/seo/StateFilingDeadlines';
+import StormDamageIndustrial from './pages/seo/StormDamageIndustrial';
+import StormDamageRetail from './pages/seo/StormDamageRetail';
+import StormDamageSelfStorage from './pages/seo/StormDamageSelfStorage';
+import StormDamageOfficeBuildings from './pages/seo/StormDamageOfficeBuildings';
+import StormDamageTexas from './pages/seo/StormDamageTexas';
+import StormDamageColorado from './pages/seo/StormDamageColorado';
+import StormDamageKansas from './pages/seo/StormDamageKansas';
+import StormDamageOklahoma from './pages/seo/StormDamageOklahoma';
+import StormDamageNebraska from './pages/seo/StormDamageNebraska';
+import StormDamageMissouri from './pages/seo/StormDamageMissouri';
+import StormDamageMinnesota from './pages/seo/StormDamageMinnesota';
+import StormDamageNorthCarolina from './pages/seo/StormDamageNorthCarolina';
 
 declare global {
   interface Window {
@@ -84,29 +84,29 @@ const App: React.FC = () => {
             <Route path="/resources/:id" element={<BlogPost />} />
 
             {/* SEO Pages */}
-            <Route path="/what-to-do-after-storm-damage-commercial-property" element={<Suspense fallback={null}><WhatToDoAfterStormDamage /></Suspense>} />
-            <Route path="/why-commercial-property-insurance-claims-get-denied" element={<Suspense fallback={null}><WhyClaimsGetDenied /></Suspense>} />
-            <Route path="/hidden-cost-of-undetected-storm-damage" element={<Suspense fallback={null}><HiddenCostOfStormDamage /></Suspense>} />
-            <Route path="/commercial-property-insurance-claim-process-guide" element={<Suspense fallback={null}><InsuranceClaimProcessGuide /></Suspense>} />
-            <Route path="/forensic-assessment-vs-standard-inspection" element={<Suspense fallback={null}><ForensicVsStandardInspection /></Suspense>} />
-            <Route path="/forensic-documentation-vs-contractor-estimate" element={<Suspense fallback={null}><ForensicDocVsContractorEstimate /></Suspense>} />
-            <Route path="/independent-assessment-vs-insurance-adjuster" element={<Suspense fallback={null}><IndependentVsInsuranceAdjuster /></Suspense>} />
-            <Route path="/what-is-forensic-building-consulting" element={<Suspense fallback={null}><WhatIsForensicBuildingConsulting /></Suspense>} />
-            <Route path="/how-to-identify-hail-damage-commercial-roofs" element={<Suspense fallback={null}><HailDamageCommercialRoofs /></Suspense>} />
-            <Route path="/how-to-identify-wind-damage-commercial-buildings" element={<Suspense fallback={null}><WindDamageCommercialBuildings /></Suspense>} />
-            <Route path="/state-by-state-insurance-claim-filing-deadlines" element={<Suspense fallback={null}><StateFilingDeadlines /></Suspense>} />
-            <Route path="/storm-damage-assessment-industrial-properties" element={<Suspense fallback={null}><StormDamageIndustrial /></Suspense>} />
-            <Route path="/storm-damage-assessment-retail-centers" element={<Suspense fallback={null}><StormDamageRetail /></Suspense>} />
-            <Route path="/storm-damage-assessment-self-storage-facilities" element={<Suspense fallback={null}><StormDamageSelfStorage /></Suspense>} />
-            <Route path="/storm-damage-assessment-office-buildings" element={<Suspense fallback={null}><StormDamageOfficeBuildings /></Suspense>} />
-            <Route path="/storm-damage-assessment-texas" element={<Suspense fallback={null}><StormDamageTexas /></Suspense>} />
-            <Route path="/storm-damage-assessment-colorado" element={<Suspense fallback={null}><StormDamageColorado /></Suspense>} />
-            <Route path="/storm-damage-assessment-kansas" element={<Suspense fallback={null}><StormDamageKansas /></Suspense>} />
-            <Route path="/storm-damage-assessment-oklahoma" element={<Suspense fallback={null}><StormDamageOklahoma /></Suspense>} />
-            <Route path="/storm-damage-assessment-nebraska" element={<Suspense fallback={null}><StormDamageNebraska /></Suspense>} />
-            <Route path="/storm-damage-assessment-missouri" element={<Suspense fallback={null}><StormDamageMissouri /></Suspense>} />
-            <Route path="/storm-damage-assessment-minnesota" element={<Suspense fallback={null}><StormDamageMinnesota /></Suspense>} />
-            <Route path="/storm-damage-assessment-north-carolina" element={<Suspense fallback={null}><StormDamageNorthCarolina /></Suspense>} />
+            <Route path="/what-to-do-after-storm-damage-commercial-property" element={<WhatToDoAfterStormDamage />} />
+            <Route path="/why-commercial-property-insurance-claims-get-denied" element={<WhyClaimsGetDenied />} />
+            <Route path="/hidden-cost-of-undetected-storm-damage" element={<HiddenCostOfStormDamage />} />
+            <Route path="/commercial-property-insurance-claim-process-guide" element={<InsuranceClaimProcessGuide />} />
+            <Route path="/forensic-assessment-vs-standard-inspection" element={<ForensicVsStandardInspection />} />
+            <Route path="/forensic-documentation-vs-contractor-estimate" element={<ForensicDocVsContractorEstimate />} />
+            <Route path="/independent-assessment-vs-insurance-adjuster" element={<IndependentVsInsuranceAdjuster />} />
+            <Route path="/what-is-forensic-building-consulting" element={<WhatIsForensicBuildingConsulting />} />
+            <Route path="/how-to-identify-hail-damage-commercial-roofs" element={<HailDamageCommercialRoofs />} />
+            <Route path="/how-to-identify-wind-damage-commercial-buildings" element={<WindDamageCommercialBuildings />} />
+            <Route path="/state-by-state-insurance-claim-filing-deadlines" element={<StateFilingDeadlines />} />
+            <Route path="/storm-damage-assessment-industrial-properties" element={<StormDamageIndustrial />} />
+            <Route path="/storm-damage-assessment-retail-centers" element={<StormDamageRetail />} />
+            <Route path="/storm-damage-assessment-self-storage-facilities" element={<StormDamageSelfStorage />} />
+            <Route path="/storm-damage-assessment-office-buildings" element={<StormDamageOfficeBuildings />} />
+            <Route path="/storm-damage-assessment-texas" element={<StormDamageTexas />} />
+            <Route path="/storm-damage-assessment-colorado" element={<StormDamageColorado />} />
+            <Route path="/storm-damage-assessment-kansas" element={<StormDamageKansas />} />
+            <Route path="/storm-damage-assessment-oklahoma" element={<StormDamageOklahoma />} />
+            <Route path="/storm-damage-assessment-nebraska" element={<StormDamageNebraska />} />
+            <Route path="/storm-damage-assessment-missouri" element={<StormDamageMissouri />} />
+            <Route path="/storm-damage-assessment-minnesota" element={<StormDamageMinnesota />} />
+            <Route path="/storm-damage-assessment-north-carolina" element={<StormDamageNorthCarolina />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
