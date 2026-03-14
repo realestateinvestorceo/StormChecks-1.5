@@ -11,22 +11,10 @@ const Leadership: React.FC = () => {
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f95e125efd97b769085.png"
     },
     {
-      name: "Javier Hinojo",
-      title: "Chief Revenue & Strategic Partnerships",
-      bio: "Javier has built and managed a commercial portfolio exceeding $170 million. He works directly with portfolio owners, fund managers, and national partners who need building intelligence at scale.",
-      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f95e125efead3769084.png"
-    },
-    {
       name: "Josh Zieglowsky",
       title: "Chief Business Development",
       bio: "With nearly 20 years in commercial real estate — acquisitions, dispositions, asset management, and financing — Josh understands what owners need to protect and grow their investments.",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f9565d73d8dc6e249e0.png"
-    },
-    {
-      name: "Michael Paul, Esq.",
-      title: "Chief Strategy Officer",
-      bio: "Michael brings decades of experience evaluating building documentation at the highest levels. A licensed attorney, he sets StormChecks' technical and evidentiary standards.",
-      image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696711e441565269703ea4cc.png"
     },
     {
       name: "Josh Miller, PE",
