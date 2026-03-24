@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, Clock, Tag, Search } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, Tag, Search, Calculator } from 'lucide-react';
 
 export interface Article {
   id: string;
@@ -71,32 +71,108 @@ export const blogArticles: Article[] = [
 
 const Resources: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [sqft, setSqft] = useState<string>('');
 
   const categories = ['All', 'Success Stories', 'Industry Insights', 'Technical Insights', 'Preparedness'];
 
-  const filteredArticles = activeCategory === 'All' 
-    ? blogArticles 
+  const filteredArticles = activeCategory === 'All'
+    ? blogArticles
     : blogArticles.filter(article => article.category === activeCategory);
+
+  const sqftNum = parseFloat(sqft.replace(/,/g, '')) || 0;
+  const conservativeEstimate = sqftNum * 10;
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(amount);
+  };
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero Section */}
+      {/* Recovery Calculator — First thing visitors see */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
-        {/* Decorative background elements (matching CaseWork.tsx) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -right-[10%] -top-[10%] w-[800px] h-[800px] bg-white opacity-[0.03] rounded-full blur-3xl"></div>
           <div className="absolute right-[5%] top-[25%] w-[600px] h-[600px] bg-accent opacity-[0.04] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-              Resources & Insights
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Recovery Estimator
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              Expert analysis on forensic documentation, building intelligence, and commercial property protection.
+            <p className="text-xl text-gray-300 leading-relaxed">
+              Find out how much your property could be owed in recoverable storm damage.
             </p>
           </div>
+
+          <div className="max-w-xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/15 p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <Calculator className="w-6 h-6 text-accent" />
+                <h2 className="text-lg font-bold text-white">Estimate Your Recovery</h2>
+              </div>
+
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Enter your property's square footage
+              </label>
+              <input
+                type="text"
+                value={sqft}
+                onChange={(e) => {
+                  const raw = e.target.value.replace(/[^0-9]/g, '');
+                  if (raw) {
+                    setSqft(Number(raw).toLocaleString());
+                  } else {
+                    setSqft('');
+                  }
+                }}
+                placeholder="e.g. 50,000"
+                className="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white text-2xl font-bold placeholder-white/30 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all"
+              />
+
+              {sqftNum > 0 && (
+                <div className="mt-8 bg-white/5 rounded-xl border border-accent/30 p-6 text-center">
+                  <div className="text-sm font-medium text-gray-400 mb-2 uppercase tracking-wider">Conservative Year Estimate</div>
+                  <div className="text-5xl md:text-6xl font-bold text-accent mb-3">
+                    {formatCurrency(conservativeEstimate)}
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    Based on {sqft} SF × $10 per square foot
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-white/10">
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      This is a conservative estimate. Actual recoverable damage can range from $10–$15 per square foot depending on building type, storm severity, and existing conditions.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {sqftNum > 0 && (
+                <div className="mt-6 text-center">
+                  <Link
+                    to="/contact?focus=true"
+                    className="inline-flex items-center gap-2 bg-accent text-primary px-8 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-0.5 group"
+                  >
+                    Get Your Free Assessment
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <p className="text-gray-500 text-xs mt-3">No cost. No obligation. We'll tell you what we find.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Resources & Insights Header */}
+      <section className="bg-gray-50 py-16 border-b border-gray-200">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Resources & Insights
+          </h2>
+          <p className="text-lg text-gray-600">
+            Expert analysis on forensic documentation, building intelligence, and commercial property protection.
+          </p>
         </div>
       </section>
 
