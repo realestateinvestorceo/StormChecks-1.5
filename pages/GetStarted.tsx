@@ -14,8 +14,9 @@ const C = {
   green:  "#22C55E",
 };
 /* ─── FONTS ──────────────────────────────────────────────────────────────── */
+const LOGO_URL = "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6966f948415652622e320969.png";
 const FONTS = `
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap');
 `;
 /* ─── KEYFRAMES ──────────────────────────────────────────────────────────── */
 const KF = `
@@ -187,7 +188,7 @@ const SCENES = [
 /* ─── HELPERS ─────────────────────────────────────────────────────────────── */
 const fmt = (n: number) => "$" + n.toLocaleString();
 const mono = { fontFamily: "'JetBrains Mono', monospace" };
-const disp = { fontFamily: "'Syne', sans-serif" };
+const disp = { fontFamily: "'Manrope', sans-serif" };
 const body = { fontFamily: "'Manrope', sans-serif" };
 /* ─── COMPONENT: Tag ─────────────────────────────────────────────────────── */
 const Tag = ({ label, hi }: { label: string; hi?: boolean }) => (
@@ -239,7 +240,7 @@ const Card = ({ children, amber=false, style={} }: { children: React.ReactNode; 
   }}>{children}</div>
 );
 /* ─── COMPONENT: NarratorBox ─────────────────────────────────────────────── */
-const NarratorBox = ({ script, playing, onPlay, onPause }: { script: string | null; playing: boolean; onPlay: () => void; onPause: () => void }) => {
+const NarratorBox = ({ script }: { script: string | null }) => {
   if (!script) return null;
   return (
     <div style={{
@@ -249,23 +250,17 @@ const NarratorBox = ({ script, playing, onPlay, onPause }: { script: string | nu
       display:"flex", gap:16, alignItems:"flex-start",
       flexShrink:0,
     }}>
-      <button onClick={playing ? onPause : onPlay} style={{
+      <div style={{
         flexShrink:0, width:34, height:34, borderRadius:"50%",
-        background: playing ? C.amber : C.aFaint,
-        border:`1px solid ${playing ? C.amber : C.aMid}`,
-        cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center",
-        transition:"all 0.2s",
+        background: C.aFaint,
+        border:`1px solid ${C.aMid}`,
+        display:"flex", alignItems:"center", justifyContent:"center",
       }}>
-        {playing
-          ? <div style={{ width:10, height:10, borderLeft:`3px solid ${C.navy}`, borderRight:`3px solid ${C.navy}`, display:"flex", gap:2 }}>
-              <div style={{width:3,height:10,background:C.navy}} /><div style={{width:3,height:10,background:C.navy}} />
-            </div>
-          : <div style={{ width:0, height:0, borderTop:"5px solid transparent", borderBottom:"5px solid transparent", borderLeft:`8px solid ${C.amber}`, marginLeft:3 }} />
-        }
-      </button>
+        <div style={{ width:0, height:0, borderTop:"5px solid transparent", borderBottom:"5px solid transparent", borderLeft:`8px solid ${C.amber}`, marginLeft:3 }} />
+      </div>
       <div style={{ flex:1 }}>
         <div style={{ ...mono, fontSize:9, color:C.amber, letterSpacing:"0.12em", marginBottom:6 }}>
-          {playing ? "▶ NARRATION PLAYING" : "▶ CLICK TO PLAY NARRATION"}
+          NARRATION
         </div>
         <div style={{ ...body, fontSize:13, color:C.dim, lineHeight:1.75 }}>{script}</div>
       </div>
@@ -276,7 +271,6 @@ const NarratorBox = ({ script, playing, onPlay, onPause }: { script: string | nu
 export default function GetStarted() {
   const [sceneIdx,    setSceneIdx]    = useState(0);
   const [soundOk,     setSoundOk]     = useState(false);
-  const [playing,     setPlaying]     = useState(false);
   const [stormCount,  setStormCount]  = useState(0);
   const [countVal,    setCountVal]    = useState(0);
   const [countDone,   setCountDone]   = useState(false);
@@ -303,7 +297,6 @@ export default function GetStarted() {
   }, [sceneIdx, scene.id]);
   const goTo = useCallback((idx: number) => {
     setSceneIdx(Math.max(0, Math.min(SCENES.length-1, idx)));
-    setPlaying(false);
     setProgressKey(k => k+1);
   }, []);
   const next = useCallback(() => goTo(sceneIdx + 1), [goTo, sceneIdx]);
@@ -347,17 +340,8 @@ export default function GetStarted() {
         ))}
         <div style={{ position:"relative", zIndex:1, textAlign:"center", maxWidth:520, animation:"fadeUp 0.8s ease" }}>
           {/* Logo */}
-          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:12, marginBottom:52 }}>
-            <div style={{ width:38, height:38, border:`1.5px solid ${C.amber}`, borderRadius:6, display:"flex", alignItems:"center", justifyContent:"center" }}>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M9 2L2 7v9h5v-5h4v5h5V7L9 2z" stroke={C.amber} strokeWidth="1.4" strokeLinejoin="round"/>
-                <circle cx="9" cy="9" r="1.8" fill={C.amber}/>
-              </svg>
-            </div>
-            <div style={{ textAlign:"left" }}>
-              <div style={{ ...disp, fontWeight:800, fontSize:16, letterSpacing:"0.12em", textTransform:"uppercase", color:C.white }}>StormChecks</div>
-              <div style={{ ...mono, fontSize:9, color:C.dim, letterSpacing:"0.1em", textTransform:"uppercase", marginTop:3 }}>Forensic Building Consultants</div>
-            </div>
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", marginBottom:52 }}>
+            <img src={LOGO_URL} alt="StormChecks" style={{ height:48 }} />
           </div>
           <div style={{ ...disp, fontSize:42, fontWeight:800, lineHeight:1.1, color:C.white, marginBottom:14 }}>
             Welcome to your<br/><span style={{ color:C.amber }}>onboarding briefing.</span>
@@ -431,11 +415,7 @@ export default function GetStarted() {
         <div style={{ flexShrink:0, borderBottom:`1px solid ${C.faint}`, background:"rgba(11,31,51,0.97)", backdropFilter:"blur(8px)", padding:"0 48px", height:52, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           {/* Logo */}
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-            <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-              <path d="M9 2L2 7v9h5v-5h4v5h5V7L9 2z" stroke={C.amber} strokeWidth="1.4" strokeLinejoin="round"/>
-              <circle cx="9" cy="9" r="1.8" fill={C.amber}/>
-            </svg>
-            <span style={{ ...disp, fontWeight:800, fontSize:13, letterSpacing:"0.1em", textTransform:"uppercase" }}>StormChecks</span>
+            <img src={LOGO_URL} alt="StormChecks" style={{ height:28 }} />
             <span style={{ ...mono, fontSize:9, color:C.dim, letterSpacing:"0.08em", marginLeft:6 }}>/ Onboarding Briefing</span>
           </div>
           {/* Section pill */}
@@ -464,7 +444,7 @@ export default function GetStarted() {
           <SceneContent scene={scene} stormCount={stormCount} countVal={countVal} countDone={countDone} />
         </div>
         {/* ── NARRATOR BOX ── */}
-        <NarratorBox script={scene.script} playing={playing} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
+        <NarratorBox script={scene.script} />
         {/* ── BOTTOM NAV ── */}
         <div style={{ flexShrink:0, borderTop:`1px solid ${C.faint}`, padding:"14px 48px", display:"flex", alignItems:"center", justifyContent:"space-between", background:"rgba(11,31,51,0.97)" }}>
           {/* Dot nav */}
