@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,6 +13,7 @@ import Terms from './pages/Terms';
 import Resources from './pages/Resources';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
+import GetStarted from './pages/GetStarted';
 
 // SEO Pages — direct imports for Google indexability
 import WhatToDoAfterStormDamage from './pages/seo/WhatToDoAfterStormDamage';
@@ -68,10 +69,12 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen font-sans text-gray-900 bg-gray-50">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
+      <Routes>
+        {/* Full-screen pages without Navbar/Footer */}
+        <Route path="/getstarted" element={<GetStarted />} />
+
+        {/* Standard layout with Navbar/Footer */}
+        <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/leadership" element={<Leadership />} />
@@ -110,12 +113,20 @@ const App: React.FC = () => {
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+        </Route>
+      </Routes>
     </Router>
   );
 };
+
+const MainLayout: React.FC = () => (
+  <div className="flex flex-col min-h-screen font-sans text-gray-900 bg-gray-50">
+    <Navbar />
+    <main className="flex-grow">
+      <Outlet />
+    </main>
+    <Footer />
+  </div>
+);
 
 export default App;
