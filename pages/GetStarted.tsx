@@ -112,6 +112,7 @@ export default function StormChecksOwnerOnboarding() {
   const [objIdx, setObjIdx] = useState(0);
   const [visible, setVisible] = useState(true);
   const [muted, setMuted] = useState(false);
+  const [introPlaying, setIntroPlaying] = useState(false);
   const mainRef = useRef(null);
   const audioRef = useRef(null);
   const mutedRef = useRef(false);
@@ -200,7 +201,7 @@ export default function StormChecksOwnerOnboarding() {
             <span style={{ color: "rgba(255,255,255,0.2)" }}> / {String(LAST - 1).padStart(2,"0")}</span>
           </span>
         )}
-        {screen > 0 && (
+        {(screen > 0 || introPlaying) && (
           <button onClick={toggleMute} style={S.muteBtn} aria-label={muted ? "Unmute narration" : "Mute narration"}>
             {muted ? "🔇" : "🔊"}
           </button>
@@ -216,7 +217,13 @@ export default function StormChecksOwnerOnboarding() {
           transform: visible ? "translateY(0)" : "translateY(8px)",
         }}
       >
-        {screen === 0 && <Welcome onStart={() => go(1)} />}
+        {screen === 0 && <Welcome introPlaying={introPlaying} onStart={() => {
+          if (introPlaying) { go(1); return; }
+          setIntroPlaying(true);
+          playAudio(0);
+          const a = audioRef.current;
+          if (a) a.addEventListener('ended', () => go(1), { once: true });
+        }} />}
         {screen === 1 && <Problem />}
         {screen === 2 && <HowItWorks />}
         {screen === 3 && <YourSteps />}
@@ -255,15 +262,16 @@ export default function StormChecksOwnerOnboarding() {
 
 /* ─── SCREENS ───────────────────────────────────────────────────────── */
 
-function Welcome({ onStart }) {
+function Welcome({ onStart, introPlaying }) {
   return (
     <div style={{ textAlign:"center", maxWidth:500 }}>
       <Pill>PROPERTY OWNER BRIEFING</Pill>
       <h1 style={S.h1}>Find out what your<br /><Em>building is hiding.</Em></h1>
       <p style={S.lead}>StormChecks is a forensic building consultancy. We find hidden storm damage using meteorological data and licensed engineering — then document it for insurance recovery at no upfront cost.</p>
       <p style={{ ...S.lead, fontSize:14, opacity:0.7, marginBottom:36 }}>What we do, what it costs, what you'll need to do. About 4 minutes.</p>
-      <button onClick={onStart} style={S.cta}>Start Briefing →</button>
-      <p style={S.hint}>Arrow keys or tap dots to navigate</p>
+      <button onClick={onStart} style={S.cta}>{introPlaying ? "Continue →" : "Start Briefing →"}</button>
+      {introPlaying && <p style={{ ...S.hint, color:"#C99700", marginTop:12 }}>🔊 Playing intro…</p>}
+      <p style={S.hint}>{introPlaying ? "Listening to intro — or tap Continue to skip ahead" : "Arrow keys or tap dots to navigate"}</p>
     </div>
   );
 }
