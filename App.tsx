@@ -14,6 +14,7 @@ import Resources from './pages/Resources';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 import GetStarted from './pages/GetStarted';
+import Affiliate from './pages/Affiliate';
 
 // SEO Pages — direct imports for Google indexability
 import WhatToDoAfterStormDamage from './pages/seo/WhatToDoAfterStormDamage';
@@ -72,6 +73,7 @@ const App: React.FC = () => {
       <Routes>
         {/* Full-screen pages without Navbar/Footer */}
         <Route path="/getstarted" element={<GetStarted />} />
+        <Route path="/affiliate" element={<Affiliate />} />
 
         {/* Standard layout with Navbar/Footer */}
         <Route element={<MainLayout />}>
