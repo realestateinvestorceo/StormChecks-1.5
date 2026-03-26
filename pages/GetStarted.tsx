@@ -234,27 +234,34 @@ export default function StormChecksOwnerOnboarding() {
         {screen === 8 && <CTA />}
       </main>
 
-      {/* ── Bottom Nav ── */}
+      {/* ── Side Nav Arrows ── */}
       {screen > 0 && screen < LAST && (
-        <nav style={S.nav}>
+        <>
           <button
             onClick={() => go(screen - 1)}
-            style={{ ...S.navBtn, opacity: screen > 1 ? 1 : 0.25 }}
+            style={{ ...S.sideNav, left: 0, borderRadius:"0 8px 8px 0", opacity: screen > 1 ? 1 : 0.25 }}
             disabled={screen <= 1}
+            aria-label="Previous slide"
           >←</button>
-          <div style={S.dots}>
-            {Array.from({ length: LAST - 1 }, (_, i) => (
-              <button key={i} onClick={() => go(i + 1)} style={{
-                ...S.dot,
-                width: i + 1 === screen ? 20 : 6,
-                background: i + 1 === screen ? "#C99700" : i + 1 < screen ? "rgba(201,151,0,0.35)" : "rgba(255,255,255,0.15)",
-              }} />
-            ))}
-          </div>
-          <button onClick={() => go(screen + 1)} style={S.navBtn}>
-            {screen === LAST - 1 ? "Finish" : "→"}
-          </button>
-        </nav>
+          <button
+            onClick={() => go(screen + 1)}
+            style={{ ...S.sideNav, right: 0, borderRadius:"8px 0 0 8px" }}
+            aria-label={screen === LAST - 1 ? "Finish" : "Next slide"}
+          >{screen === LAST - 1 ? "✓" : "→"}</button>
+        </>
+      )}
+
+      {/* ── Bottom Dots ── */}
+      {screen > 0 && screen < LAST && (
+        <div style={S.dotsBar}>
+          {Array.from({ length: LAST - 1 }, (_, i) => (
+            <button key={i} onClick={() => go(i + 1)} style={{
+              ...S.dot,
+              width: i + 1 === screen ? 20 : 6,
+              background: i + 1 === screen ? "#C99700" : i + 1 < screen ? "rgba(201,151,0,0.35)" : "rgba(255,255,255,0.15)",
+            }} />
+          ))}
+        </div>
       )}
     </div>
   );
@@ -581,10 +588,9 @@ const S = {
   progressBar:{ height:"100%", background:"#C99700", borderRadius:1, transition:"width 0.4s ease" },
   counter:{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:"0.08em", flexShrink:0 },
   muteBtn:{ background:"none", border:"none", cursor:"pointer", fontSize:16, opacity:0.55, flexShrink:0, padding:"4px", lineHeight:1, transition:"opacity 0.2s" },
-  main:{ flex:1, zIndex:1, padding:"36px 20px 24px", transition:"opacity 0.19s ease,transform 0.19s ease", display:"flex", flexDirection:"column", alignItems:"center", overflowY:"auto" },
-  nav:{ position:"sticky", bottom:0, zIndex:20, background:"rgba(11,31,51,0.96)", backdropFilter:"blur(14px)", WebkitBackdropFilter:"blur(14px)", borderTop:"1px solid rgba(255,255,255,0.05)", display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 20px", paddingBottom:"max(10px,env(safe-area-inset-bottom,10px))", gap:12 },
-  navBtn:{ background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.1)", color:"rgba(255,255,255,0.6)", borderRadius:8, minWidth:44, height:36, cursor:"pointer", fontSize:14, fontFamily:"monospace", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, transition:"all 0.15s", padding:"0 10px" },
-  dots:{ display:"flex", gap:6, alignItems:"center" },
+  main:{ flex:1, zIndex:1, padding:"36px 56px 48px", transition:"opacity 0.19s ease,transform 0.19s ease", display:"flex", flexDirection:"column", alignItems:"center", overflowY:"auto" },
+  sideNav:{ position:"fixed", top:"50%", transform:"translateY(-50%)", zIndex:30, background:"rgba(201,151,0,0.15)", border:"1px solid rgba(201,151,0,0.3)", color:"rgba(255,255,255,0.7)", width:40, height:72, cursor:"pointer", fontSize:18, fontFamily:"monospace", display:"flex", alignItems:"center", justifyContent:"center", transition:"all 0.2s", backdropFilter:"blur(8px)", WebkitBackdropFilter:"blur(8px)" },
+  dotsBar:{ position:"fixed", bottom:16, left:"50%", transform:"translateX(-50%)", zIndex:30, display:"flex", gap:6, alignItems:"center", background:"rgba(11,31,51,0.8)", backdropFilter:"blur(10px)", WebkitBackdropFilter:"blur(10px)", padding:"8px 16px", borderRadius:20, border:"1px solid rgba(255,255,255,0.06)" },
   dot:{ height:6, borderRadius:3, border:"none", cursor:"pointer", padding:0, transition:"all 0.25s ease" },
   h1:{ fontFamily:"'Manrope',sans-serif", fontSize:"clamp(28px,7vw,46px)", fontWeight:800, lineHeight:1.1, marginBottom:16, letterSpacing:"-0.01em" },
   h2:{ fontFamily:"'Manrope',sans-serif", fontSize:"clamp(21px,5vw,30px)", fontWeight:800, lineHeight:1.2, marginBottom:14, letterSpacing:"-0.01em" },
