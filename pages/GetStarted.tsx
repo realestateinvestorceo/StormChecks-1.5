@@ -330,7 +330,7 @@ function HowItWorks() {
 
 function YourSteps() {
   const steps = [
-    { n:"01", who:"YOU",   t:"Submit your property address",       d:"Go to app.stormchecks.com and enter your property address. No account required for the initial assessment. A team member confirms receipt — typically same day.",                               time:"60 seconds" },
+    { n:"01", who:"YOU",   t:"Submit your property address",       d:"Go to stormchecks.com/contact and enter your property address. No account required for the initial assessment. A team member confirms receipt — typically same day.",                               time:"60 seconds" },
     { n:"02", who:"SC",    t:"2-year weather analysis",            d:"We pull storm history for your exact coordinates: hail size, wind speed, storm path, and dates for the past 24 months. You receive the results with an estimated recovery range.",            time:"~1 week" },
     { n:"03", who:"YOU",   t:"Review your assessment on a call",   d:"We walk you through what we found: which storms hit your property, estimated damage range, and whether a forensic inspection makes sense. No commitment required at this stage.",             time:"30-min call" },
     { n:"04", who:"YOU",   t:"Share your insurance policy",        d:"Email us a copy of your current commercial property policy. We review deductibles, coverage limits, and filing deadlines — and confirm viability before anyone commits to next steps.",       time:"5 minutes" },
@@ -489,7 +489,7 @@ function Objections({ idx, setIdx }) {
 
 function Timeline() {
   const items = [
-    { phase:"Day 1",          who:"YOU", t:"Submit property address",       d:"Log in at app.stormchecks.com → enter your property address. A team member confirms receipt typically same-day and may follow up with one quick question about square footage or ownership." },
+    { phase:"Day 1",          who:"YOU", t:"Submit property address",       d:"Go to stormchecks.com/contact → enter your property address. A team member confirms receipt typically same-day and may follow up with one quick question about square footage or ownership." },
     { phase:"Week 1–2",       who:"SC",  t:"Weather assessment delivered",  d:"You receive a preliminary report showing which storms hit your property, estimated damage range per square foot, and a recommendation on whether to proceed to inspection." },
     { phase:"Week 2–3",       who:"YOU", t:"Policy review call",            d:"15–30 minutes with our team. We review your insurance policy together — deductibles, coverage limits, and filing deadlines. You decide whether to proceed. No pressure, no commitment." },
     { phase:"Week 3–7",       who:"SC",  t:"Forensic inspection on-site",   d:"Our licensed PE team arrives on-site for 2–6 hours. You arrange access; you don't need to be present. All storm-exposed building systems are inspected and documented." },
@@ -530,7 +530,7 @@ function CTA() {
       <div style={{ fontSize:38, marginBottom:20 }}>🏢</div>
       <h2 style={{ ...S.h2, marginBottom:12 }}>Ready to find out what<br /><Em>your building is hiding?</Em></h2>
       <p style={{ ...S.lead, maxWidth:360, margin:"0 auto 32px", fontSize:15 }}>Submit your property address. We run the 2-year weather analysis at no cost — no obligation to proceed.</p>
-      <a href="https://app.stormchecks.com" target="_blank" rel="noopener noreferrer" style={S.ctaLink}>Submit Your Property →</a>
+      <a href="https://www.stormchecks.com/contact?focus=true" target="_blank" rel="noopener noreferrer" style={S.ctaLink}>Submit Your Property →</a>
       <div style={{ display:"flex", justifyContent:"center", gap:20, margin:"18px 0 28px", flexWrap:"wrap" }}>
         {["$0 upfront","2-year lookback","You keep 70%"].map(t => (
           <span key={t} style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"rgba(255,255,255,0.3)", letterSpacing:"0.04em" }}>✓ {t}</span>
