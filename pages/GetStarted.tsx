@@ -92,21 +92,39 @@ const OBJECTIONS = [
 
 /* ─── COMPONENT ────────────────────────────────────────────────────── */
 
+// Audio file map — place MP3s in /public/audio/
+// Files: owner-00.mp3 through owner-08.mp3
+const OWNER_AUDIO = [
+  "/audio/owner-00.mp3",
+  "/audio/owner-01.mp3",
+  "/audio/owner-02.mp3",
+  "/audio/owner-03.mp3",
+  "/audio/owner-04.mp3",
+  "/audio/owner-05.mp3",
+  "/audio/owner-06.mp3",
+  "/audio/owner-07.mp3",
+  "/audio/owner-08.mp3",
+];
+
 export default function StormChecksOwnerOnboarding() {
   const [screen, setScreen] = useState(0);
   const [caseIdx, setCaseIdx] = useState(0);
   const [objIdx, setObjIdx] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [muted, setMuted] = useState(false);
   const mainRef = useRef(null);
+  const audioRef = useRef(null);
+  const mutedRef = useRef(false);
   const LAST = 8;
 
+  // Keep mutedRef in sync so the go() callback always reads current value
+  useEffect(() => { mutedRef.current = muted; }, [muted]);
+
   useEffect(() => {
-    // Fonts
     const link = document.createElement("link");
     link.href = "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
-    // Global styles + Intercom suppression
     const s = document.createElement("style");
     s.id = "sc-owner-style";
     s.textContent = `
@@ -117,7 +135,10 @@ export default function StormChecksOwnerOnboarding() {
       ::-webkit-scrollbar-thumb{background:#C99700;border-radius:2px}
     `;
     if (!document.getElementById("sc-owner-style")) document.head.appendChild(s);
-    return () => { document.getElementById("sc-owner-style")?.remove(); };
+    return () => {
+      document.getElementById("sc-owner-style")?.remove();
+      if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+    };
   }, []);
 
   useEffect(() => {
@@ -130,6 +151,17 @@ export default function StormChecksOwnerOnboarding() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen]);
 
+  const playAudio = useCallback((idx) => {
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
+    const src = OWNER_AUDIO[idx];
+    if (!src) return;
+    const audio = new Audio(src);
+    audio.volume = 1;
+    audio.muted = mutedRef.current;
+    audioRef.current = audio;
+    audio.play().catch(() => {}); // swallow autoplay policy errors silently
+  }, []);
+
   const go = useCallback((idx) => {
     if (idx < 0 || idx > LAST) return;
     setVisible(false);
@@ -137,8 +169,16 @@ export default function StormChecksOwnerOnboarding() {
       setScreen(idx);
       setVisible(true);
       mainRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+      playAudio(idx);
     }, 190);
-  }, []);
+  }, [playAudio]);
+
+  const toggleMute = () => {
+    const next = !muted;
+    setMuted(next);
+    mutedRef.current = next;
+    if (audioRef.current) audioRef.current.muted = next;
+  };
 
   const pct = screen === 0 ? 0 : screen >= LAST ? 100 : Math.round((screen / (LAST - 1)) * 100);
 
@@ -159,6 +199,11 @@ export default function StormChecksOwnerOnboarding() {
             <b style={{ color: "#C99700" }}>{String(screen).padStart(2,"0")}</b>
             <span style={{ color: "rgba(255,255,255,0.2)" }}> / {String(LAST - 1).padStart(2,"0")}</span>
           </span>
+        )}
+        {screen > 0 && (
+          <button onClick={toggleMute} style={S.muteBtn} aria-label={muted ? "Unmute narration" : "Mute narration"}>
+            {muted ? "🔇" : "🔊"}
+          </button>
         )}
       </header>
 
@@ -527,6 +572,7 @@ const S = {
   progressTrack:{ flex:1, height:2, background:"rgba(255,255,255,0.07)", borderRadius:1, overflow:"hidden" },
   progressBar:{ height:"100%", background:"#C99700", borderRadius:1, transition:"width 0.4s ease" },
   counter:{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:"0.08em", flexShrink:0 },
+  muteBtn:{ background:"none", border:"none", cursor:"pointer", fontSize:16, opacity:0.55, flexShrink:0, padding:"4px", lineHeight:1, transition:"opacity 0.2s" },
   main:{ flex:1, zIndex:1, padding:"36px 20px 24px", transition:"opacity 0.19s ease,transform 0.19s ease", display:"flex", flexDirection:"column", alignItems:"center", overflowY:"auto" },
   nav:{ position:"sticky", bottom:0, zIndex:20, background:"rgba(11,31,51,0.96)", backdropFilter:"blur(14px)", WebkitBackdropFilter:"blur(14px)", borderTop:"1px solid rgba(255,255,255,0.05)", display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 20px", paddingBottom:"max(10px,env(safe-area-inset-bottom,10px))", gap:12 },
   navBtn:{ background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.1)", color:"rgba(255,255,255,0.6)", borderRadius:8, minWidth:44, height:36, cursor:"pointer", fontSize:14, fontFamily:"monospace", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, transition:"all 0.15s", padding:"0 10px" },
