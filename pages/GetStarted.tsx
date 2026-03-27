@@ -308,7 +308,7 @@ function Welcome({ onStart, introPlaying }) {
   return (
     <div style={{ textAlign:"center", maxWidth:500 }}>
       {/* Speaker prompt */}
-      <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(201,151,0,0.08)", border:"2px solid #E2E6EA", borderRadius:8, padding:"6px 14px", marginBottom:20, fontSize:12, color:"#4A5568" }}>
+      <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(201,151,0,0.08)", border:"2px solid #E2E6EA", borderRadius:8, padding:"6px 14px", marginBottom:20, fontSize:14, color:"#4A5568" }}>
         🔊 <span>Please ensure your speakers are on</span>
       </div>
       <Pill>PROPERTY OWNER BRIEFING</Pill>
@@ -352,8 +352,8 @@ function IntroSlide({ videoRef }) {
           <div key={item.t} style={{ ...S.card, display:"flex", gap:14, alignItems:"flex-start" }}>
             <span style={{ fontSize:20, flexShrink:0, paddingTop:2 }}>{item.icon}</span>
             <div>
-              <div style={{ fontSize:13, fontWeight:700, color:"#0B1F33", marginBottom:4 }}>{item.t}</div>
-              <div style={{ fontSize:12, color:"#555F6D", lineHeight:1.6 }}>{item.d}</div>
+              <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:4 }}>{item.t}</div>
+              <div style={{ fontSize:14, color:"#555F6D", lineHeight:1.6 }}>{item.d}</div>
             </div>
           </div>
         ))}
@@ -437,9 +437,9 @@ function ThreeOptions() {
           <div key={o.rank} style={{ background:o.color, border:`1px solid ${o.border}`, borderRadius:12, padding:"16px 18px" }}>
             <div style={{ display:"flex", gap:10, alignItems:"center", marginBottom:8 }}>
               <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:o.accent, letterSpacing:"0.1em", flexShrink:0 }}>{o.rank.toUpperCase()}</span>
-              <div style={{ fontSize:14, fontWeight:700, color:"#0B1F33" }}>{o.title}</div>
+              <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33" }}>{o.title}</div>
             </div>
-            <p style={{ fontSize:13, color:"#555F6D", lineHeight:1.65 }}>{o.body}</p>
+            <p style={{ fontSize:14, color:"#555F6D", lineHeight:1.65 }}>{o.body}</p>
           </div>
         ))}
       </div>
@@ -473,22 +473,22 @@ function ProcessSlide() {
           <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", letterSpacing:"0.1em", marginBottom:12 }}>YOUR ROLE</div>
           {ownerSteps.map((s, i) => (
             <div key={i} style={{ marginBottom:12 }}>
-              <div style={{ fontSize:12, fontWeight:700, color:"#0B1F33", marginBottom:3 }}>{s.t}</div>
-              <div style={{ fontSize:11, color:"#555F6D", lineHeight:1.55 }}>{s.d}</div>
+              <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:3 }}>{s.t}</div>
+              <div style={{ fontSize:14, color:"#555F6D", lineHeight:1.55 }}>{s.d}</div>
             </div>
           ))}
           <div style={{ marginTop:10, borderTop:"1px solid rgba(201,151,0,0.2)", paddingTop:10, fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700" }}>Total: a few hours</div>
         </div>
         {/* SC column */}
         <div style={{ background:"#F0F2F5", border:"1px solid #E2E6EA", borderRadius:12, padding:"16px" }}>
-          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#8A9AB0", letterSpacing:"0.1em", marginBottom:12 }}>STORMCHECKS HANDLES</div>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0", letterSpacing:"0.1em", marginBottom:12 }}>STORMCHECKS HANDLES</div>
           {scSteps.map((s, i) => (
             <div key={i} style={{ marginBottom:12 }}>
-              <div style={{ fontSize:12, fontWeight:700, color:"#0B1F33", marginBottom:3 }}>{s.t}</div>
-              <div style={{ fontSize:11, color:"#8A9AB0", lineHeight:1.55 }}>{s.d}</div>
+              <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:3 }}>{s.t}</div>
+              <div style={{ fontSize:13, color:"#8A9AB0", lineHeight:1.55 }}>{s.d}</div>
             </div>
           ))}
-          <div style={{ marginTop:10, borderTop:"1px solid #E2E6EA", paddingTop:10, fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#8A9AB0" }}>Duration: ~12 months</div>
+          <div style={{ marginTop:10, borderTop:"1px solid #E2E6EA", paddingTop:10, fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0" }}>Duration: ~12 months</div>
         </div>
       </div>
       <Note>The highlighted (amber) items are the only things that require your attention. Everything else is on us.</Note>
@@ -515,17 +515,17 @@ function Fees() {
             border:`1px solid ${f.hi ? "#C99700" : "#E2E6EA"}`,
             borderRadius:14, padding:"18px 10px", textAlign:"center",
           }}>
-            <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"clamp(22px,5vw,30px)", fontWeight:600, color:f.hi?"#C99700":"#fff", marginBottom:5 }}>{f.pct}</div>
-            <div style={{ fontSize:12, fontWeight:700, color:f.hi?"#C99700":"#fff", marginBottom:3 }}>{f.lbl}</div>
-            <div style={{ fontSize:10, color:"#8A9AB0" }}>{f.sub}</div>
+            <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"clamp(22px,5vw,30px)", fontWeight:600, color:f.hi?"#C99700":"#0B1F33", marginBottom:5 }}>{f.pct}</div>
+            <div style={{ fontSize:12, fontWeight:700, color:f.hi?"#C99700":"#0B1F33", marginBottom:3 }}>{f.lbl}</div>
+            <div style={{ fontSize:11, color:"#8A9AB0" }}>{f.sub}</div>
           </div>
         ))}
       </div>
       <div style={{ ...S.card, padding:"15px 16px", marginBottom:12 }}>
-        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#8A9AB0", letterSpacing:"0.12em", marginBottom:10 }}>WORKED EXAMPLE — $400K RECOVERY</div>
+        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0", letterSpacing:"0.12em", marginBottom:10 }}>WORKED EXAMPLE — $400K RECOVERY</div>
         {[["Recovery","$400,000"],["StormChecks (20%)","−$80,000"],["Public Adjuster (10%)","−$40,000"],["You receive","$280,000"]].map(([k,v],i) => (
           <div key={k} style={{
-            display:"flex", justifyContent:"space-between", fontSize:13, padding:"5px 0",
+            display:"flex", justifyContent:"space-between", fontSize:14, padding:"5px 0",
             borderTop: i===3 ? "1px solid rgba(201,151,0,0.25)" : "none",
             marginTop: i===3 ? 6 : 0, paddingTop: i===3 ? 10 : 5,
           }}>
@@ -573,8 +573,8 @@ function Timeline() {
           </div>
           <div style={{ paddingLeft:8, paddingBottom:20, flex:1 }}>
             <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:colors[item.who], letterSpacing:"0.07em", marginBottom:3 }}>{item.phase}</div>
-            <div style={{ fontSize:14, fontWeight:700, color:"#0B1F33", marginBottom:4 }}>{item.t}</div>
-            <p style={{ fontSize:13, color:"#555F6D", lineHeight:1.65 }}>{item.d}</p>
+            <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:4 }}>{item.t}</div>
+            <p style={{ fontSize:14, color:"#555F6D", lineHeight:1.65 }}>{item.d}</p>
           </div>
         </div>
       ))}
@@ -588,29 +588,29 @@ function CaseStudies({ idx, setIdx }) {
     <Wrap>
       <Tag>Real Outcomes</Tag>
       <h2 style={{ ...S.h2, marginBottom:6 }}>Properties our team has documented.</h2>
-      <p style={{ fontSize:13, color:"#4A5568", lineHeight:1.6, marginBottom:8 }}>
+      <p style={{ fontSize:14, color:"#4A5568", lineHeight:1.6, marginBottom:8 }}>
         In most cases, the owner had <b style={{ color:"#0B1F33" }}>no idea they had damage</b> before we ran the assessment.
       </p>
-      <p style={{ fontSize:12, color:"#8A9AB0", lineHeight:1.5, marginBottom:16 }}>
+      <p style={{ fontSize:13, color:"#8A9AB0", lineHeight:1.5, marginBottom:16 }}>
         We only move forward if we're confident the benefit outweighs the cost — for everyone involved.
       </p>
       <div style={{ background:"rgba(201,151,0,0.07)", border:"1px solid rgba(201,151,0,0.22)", borderRadius:14, padding:"20px 18px", marginBottom:12 }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", flexWrap:"wrap", gap:10, marginBottom:14 }}>
           <div>
             <div style={{ fontSize:16, fontWeight:700, color:"#0B1F33", marginBottom:4 }}>{c.type}</div>
-            <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0" }}>{c.location} · {c.sqft}</div>
+            <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:13, color:"#8A9AB0" }}>{c.location} · {c.sqft}</div>
           </div>
           <div style={{ background:"rgba(201,151,0,0.15)", border:"1px solid rgba(201,151,0,0.3)", borderRadius:8, padding:"5px 14px", fontFamily:"'JetBrains Mono',monospace", fontSize:20, fontWeight:600, color:"#C99700", flexShrink:0 }}>{c.found}</div>
         </div>
         <div style={{ display:"flex", gap:16, flexWrap:"wrap", marginBottom:14 }}>
           {[["Before",c.prior],["Documented",c.found]].map(([l,v],i)=>(
             <div key={l} style={{ flex:"1 1 100px" }}>
-              <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#8A9AB0", letterSpacing:"0.1em", marginBottom:3 }}>{l.toUpperCase()}</div>
+              <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0", letterSpacing:"0.1em", marginBottom:3 }}>{l.toUpperCase()}</div>
               <div style={{ fontSize:13, fontWeight:600, color:i===1?"#C99700":"#fff" }}>{v}</div>
             </div>
           ))}
         </div>
-        <p style={{ fontSize:13, color:"#555F6D", fontStyle:"italic", lineHeight:1.65 }}>"{c.story}"</p>
+        <p style={{ fontSize:14, color:"#555F6D", fontStyle:"italic", lineHeight:1.65 }}>"{c.story}"</p>
       </div>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:6, marginBottom:14 }}>
         {CASES.map((cs,i) => (
@@ -619,12 +619,12 @@ function CaseStudies({ idx, setIdx }) {
             border:`1px solid ${i===idx?"#C99700":"#E2E6EA"}`,
             borderRadius:10, padding:"10px 6px", cursor:"pointer", textAlign:"center", transition:"all 0.2s",
           }}>
-            <div style={{ fontSize:11, fontWeight:600, color:i===idx?"#C99700":"#8A9AB0", lineHeight:1.4, marginBottom:4 }}>{cs.type.split(" ")[0]}</div>
+            <div style={{ fontSize:13, fontWeight:600, color:i===idx?"#C99700":"#8A9AB0", lineHeight:1.4, marginBottom:4 }}>{cs.type.split(" ")[0]}</div>
             <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:i===idx?"#C99700":"#8A9AB0" }}>{cs.found}</div>
           </button>
         ))}
       </div>
-      <div style={{ fontSize:11, color:"#8A9AB0", lineHeight:1.65, padding:"10px 14px", background:"#F0F2F5", borderRadius:8 }}>
+      <div style={{ fontSize:13, color:"#8A9AB0", lineHeight:1.65, padding:"10px 14px", background:"#F0F2F5", borderRadius:8 }}>
         All recoveries were negotiated by independent public adjusters using our forensic files — not by StormChecks directly.
       </div>
     </Wrap>
@@ -673,7 +673,7 @@ function CTA() {
       <a href="https://www.stormchecks.com/contact?focus=true" target="_blank" rel="noopener noreferrer" style={S.ctaLink}>Submit Your Property →</a>
       <div style={{ display:"flex", justifyContent:"center", gap:20, margin:"18px 0 28px", flexWrap:"wrap" }}>
         {["$0 upfront","2-year lookback","You keep 70%"].map(t => (
-          <span key={t} style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0", letterSpacing:"0.04em" }}>✓ {t}</span>
+          <span key={t} style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:13, color:"#8A9AB0", letterSpacing:"0.04em" }}>✓ {t}</span>
         ))}
       </div>
       <div style={{ marginBottom:24, fontSize:13, color:"#8A9AB0" }}>
@@ -709,7 +709,7 @@ function Pill({ children }) {
 function Wrap({ children }) { return <div style={{ width:"100%", maxWidth:620 }}>{children}</div>; }
 function Tag({ children }) { return <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:10 }}>{children}</div>; }
 function Note({ children }) {
-  return <div style={{ background:"rgba(201,151,0,0.07)", border:"1px solid rgba(201,151,0,0.18)", borderRadius:10, padding:"13px 16px", fontSize:13, color:"#555F6D", lineHeight:1.65, marginTop:14 }}>{children}</div>;
+  return <div style={{ background:"rgba(201,151,0,0.07)", border:"1px solid rgba(201,151,0,0.18)", borderRadius:10, padding:"13px 16px", fontSize:14, color:"#555F6D", lineHeight:1.65, marginTop:14 }}>{children}</div>;
 }
 
 /* ─── STYLES ────────────────────────────────────────────────────────── */
@@ -732,11 +732,11 @@ const S = {
   hint:{ fontSize:13, color:"#AABBCC", marginTop:16 },
   card:{ background:"#FFFFFF", border:"1px solid #E2E6EA", borderRadius:12, padding:"16px", boxShadow:"0 1px 3px rgba(0,0,0,0.04)" },
   cardNum:{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", letterSpacing:"0.1em", marginBottom:8 },
-  cardTitle:{ fontSize:13, fontWeight:700, color:"#0B1F33", marginBottom:6 },
-  cardDesc:{ fontSize:12, color:"#555F6D", lineHeight:1.6 },
+  cardTitle:{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:6 },
+  cardDesc:{ fontSize:14, color:"#555F6D", lineHeight:1.6 },
   statCard:{ background:"#FFFFFF", border:"1px solid #E2E6EA", borderRadius:12, padding:"16px 14px", textAlign:"center", boxShadow:"0 1px 3px rgba(0,0,0,0.04)" },
   statNum:{ fontFamily:"'JetBrains Mono',monospace", fontSize:"clamp(18px,4vw,24px)", fontWeight:600, color:"#C99700", marginBottom:6 },
-  statLbl:{ fontSize:12, color:"#555F6D", lineHeight:1.5 },
+  statLbl:{ fontSize:14, color:"#555F6D", lineHeight:1.5 },
   cta:{ display:"inline-block", background:"#C99700", color:"#fff", border:"none", borderRadius:10, padding:"16px 40px", fontFamily:"'Manrope',sans-serif", fontSize:16, fontWeight:700, cursor:"pointer", letterSpacing:"0.02em", marginBottom:10, boxShadow:"0 2px 10px rgba(201,151,0,0.35)" },
   ctaLink:{ display:"inline-block", background:"#C99700", color:"#fff", border:"none", borderRadius:10, padding:"16px 40px", fontFamily:"'Manrope',sans-serif", fontSize:16, fontWeight:700, cursor:"pointer", letterSpacing:"0.02em", marginBottom:10, textDecoration:"none", width:"100%", maxWidth:320, textAlign:"center", boxShadow:"0 2px 10px rgba(201,151,0,0.35)" },
 };
