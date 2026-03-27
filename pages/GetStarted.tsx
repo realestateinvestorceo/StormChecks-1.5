@@ -150,6 +150,8 @@ export default function StormChecksOwnerOnboarding() {
   }, [screen]);
 
   const playAudio = useCallback((idx) => {
+    // Slide 1 audio is handled by the video-first useEffect
+    if (idx === 1) return;
     if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
     const src = OWNER_AUDIO[idx];
     if (!src) return;
@@ -157,27 +159,42 @@ export default function StormChecksOwnerOnboarding() {
     audio.volume = 1;
     audio.muted = mutedRef.current;
     audioRef.current = audio;
-    // Slide 1: play video first, then audio after video ends
-    if (idx === 1) {
-      const v = videoRef.current;
-      if (v) {
-        v.currentTime = 0;
-        v.muted = true; // muted autoplay allowed by browsers
-        v.play().then(() => {
-          v.addEventListener('ended', () => {
-            audio.play().catch(() => {});
-          }, { once: true });
-        }).catch(() => {
-          // video autoplay blocked, fall back to audio immediately
-          audio.play().catch(() => {});
-        });
-      } else {
-        audio.play().catch(() => {});
-      }
-    } else {
-      audio.play().catch(() => {});
-    }
+    audio.play().catch(() => {});
   }, []);
+
+  // Slide 1: auto-play video first (muted), then narration after video ends
+  useEffect(() => {
+    if (screen !== 1) return;
+    const t = setTimeout(() => {
+      const v = videoRef.current;
+      if (!v) return;
+      v.currentTime = 0;
+      v.muted = true;
+      v.play().then(() => {
+        v.addEventListener('ended', () => {
+          if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
+          const src = OWNER_AUDIO[1];
+          if (!src) return;
+          const a = new Audio(src);
+          a.volume = 1;
+          a.muted = mutedRef.current;
+          audioRef.current = a;
+          a.play().catch(() => {});
+        }, { once: true });
+      }).catch(() => {
+        // video autoplay blocked, fall back to audio
+        if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
+        const src = OWNER_AUDIO[1];
+        if (!src) return;
+        const a = new Audio(src);
+        a.volume = 1;
+        a.muted = mutedRef.current;
+        audioRef.current = a;
+        a.play().catch(() => {});
+      });
+    }, 100);
+    return () => clearTimeout(t);
+  }, [screen]);
 
   const go = useCallback((idx) => {
     if (idx < 0 || idx > LAST) return;
