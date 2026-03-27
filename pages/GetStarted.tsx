@@ -157,13 +157,25 @@ export default function StormChecksOwnerOnboarding() {
     audio.volume = 1;
     audio.muted = mutedRef.current;
     audioRef.current = audio;
-    audio.play().catch(() => {});
-    // Auto-start video from beginning when slide 1 audio ends
+    // Slide 1: play video first, then audio after video ends
     if (idx === 1) {
-      audio.addEventListener('ended', () => {
-        const v = videoRef.current;
-        if (v) { v.currentTime = 0; v.play().catch(() => {}); }
-      }, { once: true });
+      const v = videoRef.current;
+      if (v) {
+        v.currentTime = 0;
+        v.muted = true; // muted autoplay allowed by browsers
+        v.play().then(() => {
+          v.addEventListener('ended', () => {
+            audio.play().catch(() => {});
+          }, { once: true });
+        }).catch(() => {
+          // video autoplay blocked, fall back to audio immediately
+          audio.play().catch(() => {});
+        });
+      } else {
+        audio.play().catch(() => {});
+      }
+    } else {
+      audio.play().catch(() => {});
     }
   }, []);
 

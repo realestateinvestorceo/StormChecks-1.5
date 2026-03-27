@@ -187,6 +187,7 @@ export default function StormChecksAffiliateOnboarding() {
   const mainRef  = useRef(null);
   const audioRef = useRef(null);
   const mutedRef = useRef(false);
+  const loomRef  = useRef(null);
   const LAST = 8;
 
   useEffect(() => { mutedRef.current = muted; }, [muted]);
@@ -231,6 +232,16 @@ export default function StormChecksAffiliateOnboarding() {
     audio.muted = mutedRef.current;
     audioRef.current = audio;
     audio.play().catch(() => {});
+    // Auto-play Loom video after screen 7 narration ends
+    if (idx === 7) {
+      audio.addEventListener('ended', () => {
+        const iframe = loomRef.current;
+        if (iframe) {
+          const base = "https://www.loom.com/embed/8aa6323281744a71b41b2a85b735151b";
+          iframe.src = base + "?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true&autoplay=1";
+        }
+      }, { once: true });
+    }
   }, []);
 
   const go = useCallback((idx) => {
@@ -294,7 +305,7 @@ export default function StormChecksAffiliateOnboarding() {
         {screen === 4 && <Commission />}
         {screen === 5 && <BestLeads idx={leadIdx} setIdx={setLeadIdx} />}
         {screen === 6 && <Objections idx={objIdx} setIdx={setObjIdx} />}
-        {screen === 7 && <PortalWalkthrough />}
+        {screen === 7 && <PortalWalkthrough loomRef={loomRef} />}
         {screen === 8 && <StartNow />}
       </main>
 
@@ -607,7 +618,7 @@ function Objections({ idx, setIdx }) {
   );
 }
 
-function PortalWalkthrough() {
+function PortalWalkthrough({ loomRef }) {
   return (
     <Wrap>
       <Tag>Portal Walkthrough</Tag>
@@ -617,11 +628,13 @@ function PortalWalkthrough() {
       </p>
       <div style={{ borderRadius:14, overflow:"hidden", marginBottom:16, background:"rgba(0,0,0,0.4)", border:"1px solid rgba(201,151,0,0.2)", position:"relative", paddingTop:"56.25%" }}>
         <iframe
+          ref={loomRef}
           src="https://www.loom.com/embed/8aa6323281744a71b41b2a85b735151b?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
           frameBorder="0"
           webkitAllowFullScreen
           mozAllowFullScreen
           allowFullScreen
+          allow="autoplay"
           style={{ position:"absolute", top:0, left:0, width:"100%", height:"100%" }}
           title="StormChecks Affiliate Portal Walkthrough"
         />
