@@ -170,7 +170,7 @@ export default function StormChecksOwnerOnboarding() {
       const v = videoRef.current;
       if (!v) return;
       v.currentTime = 0;
-      v.muted = true;
+      v.muted = false;
       v.play().then(() => {
         v.addEventListener('ended', () => {
           if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
