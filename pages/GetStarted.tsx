@@ -113,6 +113,7 @@ export default function StormChecksOwnerOnboarding() {
   const mainRef = useRef(null);
   const audioRef = useRef(null);
   const mutedRef = useRef(false);
+  const videoRef = useRef(null);
   const LAST = 9;
 
   useEffect(() => { mutedRef.current = muted; }, [muted]);
@@ -157,6 +158,13 @@ export default function StormChecksOwnerOnboarding() {
     audio.muted = mutedRef.current;
     audioRef.current = audio;
     audio.play().catch(() => {});
+    // Auto-start video from beginning when slide 1 audio ends
+    if (idx === 1) {
+      audio.addEventListener('ended', () => {
+        const v = videoRef.current;
+        if (v) { v.currentTime = 0; v.play().catch(() => {}); }
+      }, { once: true });
+    }
   }, []);
 
   const go = useCallback((idx) => {
@@ -220,7 +228,7 @@ export default function StormChecksOwnerOnboarding() {
           const a = audioRef.current;
           if (a) a.addEventListener("ended", () => go(1), { once: true });
         }} />}
-        {screen === 1 && <IntroSlide />}
+        {screen === 1 && <IntroSlide videoRef={videoRef} />}
         {screen === 2 && <WhoWeAre />}
         {screen === 3 && <ThreeOptions />}
         {screen === 4 && <ProcessSlide />}
@@ -236,8 +244,8 @@ export default function StormChecksOwnerOnboarding() {
         <>
           <button
             onClick={() => go(screen - 1)}
-            style={{ ...S.sideNav, left: 0, borderRadius:"0 8px 8px 0", opacity: screen > 1 ? 1 : 0.25 }}
-            disabled={screen <= 1}
+            style={{ ...S.sideNav, left: 0, borderRadius:"0 8px 8px 0", opacity: screen > 0 ? 1 : 0.25 }}
+            disabled={screen <= 0}
             aria-label="Previous slide"
           >←</button>
           <button
@@ -284,7 +292,7 @@ function Welcome({ onStart, introPlaying }) {
   );
 }
 
-function IntroSlide() {
+function IntroSlide({ videoRef }) {
   return (
     <Wrap>
       <Tag>The Reality</Tag>
@@ -293,22 +301,14 @@ function IntroSlide() {
         Insurance companies spend billions in advertising to sign you up. Once you're a customer, their entire claims operation is designed to pay out as little as possible — or nothing at all.
       </p>
 
-      {/* Senator clip embed — replace src with actual embed URL */}
       <div style={{ borderRadius:14, overflow:"hidden", marginBottom:20, background:"rgba(0,0,0,0.4)", border:"1px solid rgba(201,151,0,0.2)" }}>
-          {/*
-          VIDEO DEPLOY NOTE:
-          Place your video file in /public/videos/senator-hearing.mp4 on Vercel.
-          Rename 0123__2__1_.mov → senator-hearing.mp4 (convert to mp4 for broad browser support).
-          The <video> tag below will serve it directly from Vercel's CDN.
-        */}
         <video
+          ref={videoRef}
           controls
           playsInline
           style={{ width:"100%", display:"block", borderRadius:0 }}
-          poster=""
         >
           <source src="/videos/senator-hearing.mp4" type="video/mp4" />
-          <source src="/videos/senator-hearing.mov" type="video/quicktime" />
           Your browser does not support the video tag.
         </video>
       </div>

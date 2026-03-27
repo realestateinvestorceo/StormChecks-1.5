@@ -183,6 +183,7 @@ export default function StormChecksAffiliateOnboarding() {
   const [copied, setCopied]   = useState(false);
   const [visible, setVisible] = useState(true);
   const [muted, setMuted]     = useState(false);
+  const [introPlaying, setIntroPlaying] = useState(false);
   const mainRef  = useRef(null);
   const audioRef = useRef(null);
   const mutedRef = useRef(false);
@@ -272,7 +273,7 @@ export default function StormChecksAffiliateOnboarding() {
             <span style={{ color:"rgba(255,255,255,0.2)" }}> / {String(LAST-1).padStart(2,"00")}</span>
           </span>
         )}
-        {screen > 0 && (
+        {(screen > 0 || introPlaying) && (
           <button onClick={toggleMute} style={S.muteBtn} aria-label={muted ? "Unmute narration" : "Mute narration"}>
             {muted ? "🔇" : "🔊"}
           </button>
@@ -280,7 +281,13 @@ export default function StormChecksAffiliateOnboarding() {
       </header>
 
       <main ref={mainRef} style={{ ...S.main, opacity:visible?1:0, transform:visible?"translateY(0)":"translateY(8px)" }}>
-        {screen === 0 && <Welcome onStart={() => go(1)} />}
+        {screen === 0 && <Welcome introPlaying={introPlaying} onStart={() => {
+          if (introPlaying) { go(1); return; }
+          setIntroPlaying(true);
+          playAudio(0);
+          const a = audioRef.current;
+          if (a) a.addEventListener('ended', () => go(1), { once: true });
+        }} />}
         {screen === 1 && <YourJob />}
         {screen === 2 && <Script copied={copied} onCopy={copyScript} />}
         {screen === 3 && <FullProcess />}
@@ -296,8 +303,8 @@ export default function StormChecksAffiliateOnboarding() {
         <>
           <button
             onClick={() => go(screen - 1)}
-            style={{ ...S.sideNav, left: 0, borderRadius:"0 8px 8px 0", opacity: screen > 1 ? 1 : 0.25 }}
-            disabled={screen <= 1}
+            style={{ ...S.sideNav, left: 0, borderRadius:"0 8px 8px 0", opacity: screen > 0 ? 1 : 0.25 }}
+            disabled={screen <= 0}
             aria-label="Previous slide"
           >←</button>
           <button
@@ -326,7 +333,7 @@ export default function StormChecksAffiliateOnboarding() {
 
 /* ─── SCREENS ───────────────────────────────────────────────────────── */
 
-function Welcome({ onStart }) {
+function Welcome({ onStart, introPlaying }) {
   return (
     <div style={{ textAlign:"center", maxWidth:500 }}>
       {/* Speaker prompt */}
@@ -342,8 +349,9 @@ function Welcome({ onStart }) {
         You identify the owner and get the address. We handle everything else. You earn a commission when they get paid.
       </p>
       <p style={{ ...S.lead, fontSize:14, opacity:0.7, marginBottom:36 }}>What to say, who to call, how objections work, how commissions work. About 4 minutes.</p>
-      <button onClick={onStart} style={S.cta}>Start Briefing →</button>
-      <p style={S.hint}>Arrow keys or tap dots to navigate</p>
+      <button onClick={onStart} style={S.cta}>{introPlaying ? "Continue →" : "Start Briefing →"}</button>
+      {introPlaying && <p style={{ ...S.hint, color:"#C99700", marginTop:12 }}>🔊 Playing intro…</p>}
+      <p style={S.hint}>{introPlaying ? "Listening to intro — or tap Continue to skip ahead" : "Arrow keys or tap dots to navigate"}</p>
     </div>
   );
 }
