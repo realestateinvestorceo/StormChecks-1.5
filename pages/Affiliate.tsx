@@ -1,11 +1,11 @@
 /**
- * StormChecks — Affiliate Onboarding (v2)
+ * StormChecks — Affiliate Onboarding (v3)
  * Route: /affiliate/start
  *
  * DEPLOY NOTES:
  * 1. No extra deps — uses React only
- * 2. Intercom: CSS below suppresses the launcher automatically.
- * 3. Audio: place MP3s in /public/audio/ → affiliate-00.mp3 through affiliate-07.mp3
+ * 2. Audio: place MP3s in /public/audio/ → affiliate-00.mp3 through affiliate-08.mp3
+ * 3. Reference card: place PDF at /public/downloads/StormChecks_Affiliate_Reference.pdf
  * 4. Fonts: Manrope + JetBrains Mono injected on mount.
  * 5. "Copy script" uses navigator.clipboard — works on HTTPS.
  */
@@ -15,53 +15,57 @@ const LOGO = "data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJ
 
 /* ─── DATA ─────────────────────────────────────────────────────────── */
 
-const OPENING_SCRIPT = `Hey [Name], I work with a company called StormChecks — they help commercial property owners find hidden storm damage that standard inspections completely miss. Most owners don't know they have it, because it doesn't show up as leaks — it hides in the roofing system and mechanical components.
+const OPENING_SCRIPT = `Hey [Name], I work with a company called StormChecks — they help commercial property owners recover money from storm damage that most standard inspections completely miss.
 
-Here's what makes this different: there's no cost to the owner upfront, ever. StormChecks fronts everything. Their fee only comes out if and when a recovery happens.
+Here's the thing most owners don't realize: insurance companies spend a lot of money convincing you that filing a claim will raise your premiums or get you dropped. That's largely not true — and for peril events like hail and wind, it's actually illegal for carriers to raise your rates.
 
-They do a free 2-year weather analysis for any commercial property — no obligation. If they find potential damage, the owner decides what to do next. If they find nothing, everyone moves on. Zero cost, zero commitment.
+The math is simple: if there's a potential $1M recovery and premiums go up $20K, the decision is obvious.
 
-Can I get your property address to run the initial assessment?`;
+StormChecks only moves forward when they're confident there's a real opportunity — they front the engineering and meteorology costs themselves, so if they're proceeding, they believe in it.
+
+They offer a free 2-year weather analysis for any commercial property — no cost, no commitment. If they find potential damage, you decide what to do next.
+
+Can I get your property address so we can run the initial assessment?`;
 
 const STEPS = [
   {
     n:"01",
     phase:"Identify a qualified owner",
     what:"You",
-    detail:"Any commercial property owner with a building 10,000+ SF. Not single-family residential — ever. Best lead types: multifamily, retail, industrial, self-storage. All 50 states qualify.",
-    action:"Find an owner. Cold call, LinkedIn, trade show, networking, referral. Any channel works.",
+    detail:"Any commercial property owner with a building 10,000+ SF. Not single-family residential — ever. Best lead types: multifamily, retail, industrial, self-storage, office. All 50 states qualify.",
+    action:"Find an owner. Cold call, LinkedIn, trade show, networking, referral — any channel works.",
     time:"Ongoing",
   },
   {
     n:"02",
-    phase:"Start the conversation",
+    phase:"Start the conversation and get the address",
     what:"You",
-    detail:"Use the approved opening script (next screen). Your only goal is to get the property address — not to explain forensic engineering, not to sell the full service. If they ask deeper questions, say: 'The StormChecks team will walk you through everything on the assessment call.'",
-    action:"Memorize the script. Get the address. That's the win for this step.",
+    detail:"Your goal in the first conversation is just to get the property address. Not a full yes — just the address. Use the opening script. If they ask detailed questions you can't answer, tell them you'll find out and follow up. Then check with StormChecks and get back to them.",
+    action:"Get the address. Submit it. Keep following up until the owner has signed the agreement.",
     time:"2-minute conversation",
   },
   {
     n:"03",
-    phase:"Get portal access & submit the lead",
+    phase:"Submit the address in the portal",
     what:"You",
-    detail:"PORTAL_ACCESS_STEP",
-    action:"",
-    time:"First time: 1 business day · Each submission: 60 sec",
+    detail:"Log into app.stormchecks.com. Add the owner's contact info, then add their property address. StormChecks is notified automatically and begins the weather analysis. The owner gets a notification too.",
+    action:"Two portal link types: one to recruit sub-affiliates under you, one to add property owners directly. Most of your submissions will use the property owner link.",
+    time:"~60 seconds per submission",
   },
   {
     n:"04",
     phase:"StormChecks runs the 2-year weather analysis",
     what:"StormChecks",
-    detail:"We pull storm history for the property's exact coordinates. If qualifying storm exposure exists, we prepare a preliminary assessment showing estimated recovery range per square foot.",
-    action:"Nothing required from you. You and the owner both receive a notification when results are ready.",
+    detail:"We pull exact storm history for the property coordinates — hail size, wind speed, dates. If qualifying storm exposure exists, we generate an estimated recovery range specific to that property.",
+    action:"Pro tip: once the analysis is done, use the property-specific link when you follow up with the owner. They land on a page that already shows a dollar amount tied to their property — far more compelling than a generic invite.",
     time:"~1 week",
   },
   {
     n:"05",
-    phase:"Owner reviews assessment and decides",
-    what:"Owner + SC",
-    detail:"StormChecks walks the owner through the results. If they want to proceed, they share their insurance policy and sign the engagement agreement. If they decline, the conversation ends here — no cost to anyone.",
-    action:"Optional: follow up with the owner to see if they have questions. Don't pressure. Let the data do the work.",
+    phase:"Walk the owner through it — get them to sign",
+    what:"You + SC",
+    detail:"Once the weather assessment is ready, reach back out to the owner, walk them through what was found, and answer their questions. If something comes up you can't answer, find out and follow up. The goal here is to get them to sign the engagement agreement so StormChecks can proceed.",
+    action:"Follow up consistently. The assessment creates urgency — use it.",
     time:"1–2 weeks",
   },
   {
@@ -69,23 +73,23 @@ const STEPS = [
     phase:"Forensic inspection + Expert File",
     what:"StormChecks",
     detail:"Licensed PE team inspects on-site. Produces the complete forensic documentation package. Owner reviews and approves before anything goes to the PA.",
-    action:"Nothing required from you during this phase.",
+    action:"Nothing required from you during this phase. Stay in touch with the owner if they have questions.",
     time:"3–6 weeks",
   },
   {
     n:"07",
     phase:"Public adjuster files and negotiates",
     what:"PA",
-    detail:"The PA submits the claim using the expert file and handles all carrier communication. This phase typically runs about 12 months — the PA and StormChecks handle everything.",
-    action:"Nothing required from you. StormChecks keeps you informed on major milestones.",
+    detail:"The PA submits the claim using the forensic file and handles all carrier communication. StormChecks keeps you informed on major milestones.",
+    action:"Nothing required from you. Keep the owner informed if they reach out.",
     time:"~12 months",
   },
   {
     n:"08",
     phase:"Settlement — you receive your commission",
     what:"You",
-    detail:"When the owner receives their settlement, StormChecks pays your commission from our 20% fee. Your commission tier is based on cumulative successful claims: 15% at Tier 1, 20% at Tier 2, 25% at Tier 3.",
-    action:"Example at Tier 3: $400K recovery → SC fee $80K → your commission: $20,000.",
+    detail:"When the owner receives their settlement, StormChecks pays your commission from our 20% fee. Commission is based on your tier. Top-tier affiliates also earn a 5% override on claims closed by sub-affiliates they've recruited.",
+    action:"On a $1M recovery at top tier: SC fee $200K → your commission: $50,000.",
     time:"Upon settlement",
   },
 ];
@@ -93,73 +97,78 @@ const STEPS = [
 const OBJECTIONS = [
   {
     tag:"Premiums",
-    q:"Will my premiums go up?",
-    script:"Most claims tie to catalogued storms the carrier already priced in. You're paying for it whether you file or not — we just help you collect it.",
+    q:"Won't this raise my premiums?",
+    script:"That's actually the #1 thing insurance companies want you to believe — and it keeps billions in their pocket every year. For peril events like hail and wind, it's illegal for carriers to raise your rates. And even if premiums nudged up slightly, run the math: if you recover $1M and premiums go up $20K, the decision is obvious. You're already paying for this coverage.",
   },
   {
-    tag:"Sounds too good",
+    tag:"Too good to be true",
     q:"This sounds too good to be true.",
-    script:"We only get paid if you get paid — 20% of recovery, nothing upfront. StormChecks fronts all the engineering costs, which can be $50K or more. Licensed PEs, decades of experience. Happy to share references.",
+    script:"StormChecks only moves forward when they're confident there's a real opportunity — they front the engineering and meteorology costs themselves, which can run $50K or more. If they're investing that, they believe in the claim. Our fee is 20% of recovery only. Nothing upfront. Nothing if there's no recovery.",
   },
   {
     tag:"Just inspected",
     q:"I just had my roof inspected.",
-    script:"Roofers look for leaks. Our engineers look for hail fractures, membrane compression, and impact patterns — a completely different discipline. We've found $1.2M after a roofer gave a clean bill of health.",
+    script:"Roofers look for leaks. Forensic engineers look for hail fractures, membrane compression, and impact patterns — a completely different discipline. We've found over $1M in damage after a roofer gave a clean bill of health six months prior.",
   },
   {
     tag:"Use a PA instead",
     q:"Why not just call a public adjuster directly?",
-    script:"PAs file for damage you already know about — they don't find it. StormChecks identifies damage you didn't know existed, then hands a forensic file to the PA. PAs love our files because they close faster and for more.",
+    script:"PAs file for damage you already know about — they don't find it. StormChecks identifies damage that wasn't visible to the naked eye, then hands a complete forensic file to the PA. PAs who work with our files close faster and for significantly more.",
   },
   {
     tag:"Already denied",
     q:"My carrier already denied a claim.",
-    script:"Denials are almost always documentation failures, not damage failures. Our forensic file gives the PA what they need to reopen it. One outcome: $0 denial overturned to $3.9M.",
+    script:"Denials are almost always documentation failures, not damage failures. Our forensic file gives the PA exactly what they need to reopen it. We've overturned a $0 denial and recovered $3.9M for that same property.",
   },
   {
     tag:"No damage",
     q:"I don't think I have any damage.",
-    script:"Storm damage hides in membranes and HVAC systems — not as visible leaks. We consistently find $10–$15/SF that maintenance teams never catch. Assessment is completely free. 60 seconds to start.",
+    script:"Storm damage doesn't show as leaks — it hides in roofing membranes and HVAC systems. We consistently find $10–$15 per square foot that maintenance teams never flag. The weather assessment is completely free. 60 seconds to start.",
   },
 ];
 
 const LEADS = [
   {
     icon:"🚫",
+    rank:"#1",
     type:"Previously denied claims",
-    why:"Denials are almost always documentation failures, not damage failures. Our file gives the PA what's needed to reopen it — highest-conversion lead type.",
-    how:"Ask: 'Have you ever had a claim denied or underpaid?' If yes, strong candidate.",
+    why:"A denial is almost always a documentation failure, not a damage failure. Our forensic file gives the PA exactly what's needed to reopen it. Highest conversion rate of any lead type.",
+    how:"Ask: 'Have you ever had a claim denied or underpaid?' If yes, that's your strongest lead.",
   },
   {
     icon:"🏷",
+    rank:"#2",
     type:"Property about to be sold",
-    why:"Owner recovers before the asset leaves their portfolio. Claim goes against their current policy, full benefit stays with them.",
-    how:"Ask: 'Planning to sell any assets in the next 12–18 months?' Recovery before close is a strong hook.",
-  },
-  {
-    icon:"🔨",
-    type:"Roofer gave a clean bill of health",
-    why:"High probability of real damage that wasn't found. Forensic scope is fundamentally different from a roofing inspection.",
-    how:"Ask: 'Has anyone ever assessed for hail impact specifically — not just leaks?' Most say no.",
+    why:"The owner recovers value before the asset leaves their portfolio. The claim goes against their current policy — the full benefit stays with them, not the buyer.",
+    how:"Ask: 'Are you planning to sell any assets in the next 12–18 months?' Recovery before close is a compelling hook.",
   },
   {
     icon:"🌀",
+    rank:"#3",
     type:"Storm-prone markets",
-    why:"Texas, Midwest, Southeast, Mountain West. Recent hail = high probability of qualifying damage.",
-    how:"Cold call owners in zip codes from recent NOAA hail reports — very high qualification rate.",
+    why:"Texas, Midwest, Southeast, Mountain West. Recent hail events = high probability of qualifying damage that nobody's looked for yet.",
+    how:"Cold call owners in zip codes with recent NOAA hail reports. Very high qualification rate.",
+  },
+  {
+    icon:"🔨",
+    rank:"#4",
+    type:"Roofer gave a clean bill of health",
+    why:"Roofers aren't forensic engineers. High probability of real damage that wasn't found with the wrong methodology.",
+    how:"Ask: 'Has anyone ever assessed for hail impact specifically — not just leaks?' Most say no.",
   },
   {
     icon:"📋",
+    rank:"#5",
     type:"Long-hold portfolios",
-    why:"5+ year holds in storm-prone regions have almost certainly been through qualifying events. Large portfolios multiply your per-submission value.",
-    how:"Target asset managers, family office principals, portfolio directors — one relationship, multiple submissions.",
+    why:"5+ year holds in storm-prone regions have almost certainly been through qualifying events. One relationship, multiple submissions.",
+    how:"Target asset managers, family office principals, and portfolio directors.",
   },
 ];
 
 const TIERS = [
-  { tier:"Tier 1", range:"0–10 successful claims",  rate:"15%", ex:"$400K recovery → SC fee $80K → your cut: $12,000" },
-  { tier:"Tier 2", range:"11–25 successful claims", rate:"20%", ex:"$400K recovery → SC fee $80K → your cut: $16,000" },
-  { tier:"Tier 3", range:"26+ successful claims",   rate:"25%", ex:"$400K recovery → SC fee $80K → your cut: $20,000", hi:true },
+  { tier:"Tier 1", desc:"Getting started",     rate:"15%", ex1:"$1M recovery → SC fee $200K → your commission: $30,000",   override:false },
+  { tier:"Tier 2", desc:"Building momentum",   rate:"20%", ex1:"$1M recovery → SC fee $200K → your commission: $40,000",   override:false },
+  { tier:"Tier 3", desc:"Top affiliate",        rate:"25%", ex1:"$1M recovery → SC fee $200K → your commission: $50,000",   override:true, overrideEx:"+ 5% override on sub-affiliates: $1M sub-close → additional $10,000 to you" },
 ];
 
 const AFFILIATE_AUDIO = [
@@ -201,9 +210,9 @@ export default function StormChecksAffiliateOnboarding() {
     s.id = "sc-aff-style";
     s.textContent = `
       *{box-sizing:border-box;margin:0;padding:0}
-      body{background:#0B1F33;overscroll-behavior:none}
+      body{background:#F8F9FA;overscroll-behavior:none}
       .intercom-launcher,.intercom-namespace .intercom-lightweight-app{display:none!important}
-      ::-webkit-scrollbar{width:3px}
+      ::-webkit-scrollbar{width:4px}
       ::-webkit-scrollbar-thumb{background:#C99700;border-radius:2px}
     `;
     if (!document.getElementById("sc-aff-style")) document.head.appendChild(s);
@@ -251,7 +260,8 @@ export default function StormChecksAffiliateOnboarding() {
       setScreen(idx);
       setVisible(true);
       mainRef.current?.scrollTo({ top:0, behavior:"smooth" });
-      playAudio(idx);
+      if (idx > 0) playAudio(idx);
+      else { if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; } setIntroPlaying(false); }
     }, 190);
   }, [playAudio]);
 
@@ -277,11 +287,11 @@ export default function StormChecksAffiliateOnboarding() {
       <header style={S.header}>
         <Logo />
         {screen > 0 && <div style={S.progressTrack}><div style={{ ...S.progressBar, width:`${pct}%` }} /></div>}
-        {screen > 0 && <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", background:"rgba(201,151,0,0.1)", border:"1px solid rgba(201,151,0,0.2)", borderRadius:10, padding:"3px 10px", letterSpacing:"0.08em", flexShrink:0 }}>AFFILIATE</span>}
+        {screen > 0 && <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#C99700", background:"rgba(201,151,0,0.1)", border:"1px solid rgba(201,151,0,0.25)", borderRadius:10, padding:"3px 10px", letterSpacing:"0.08em", flexShrink:0 }}>AFFILIATE</span>}
         {screen > 0 && screen < LAST && (
           <span style={S.counter}>
-            <b style={{ color:"#C99700" }}>{String(screen).padStart(2,"00")}</b>
-            <span style={{ color:"rgba(255,255,255,0.2)" }}> / {String(LAST-1).padStart(2,"00")}</span>
+            <b style={{ color:"#C99700" }}>{String(screen).padStart(2,"0")}</b>
+            <span style={{ color:"#AABBCC" }}> / {String(LAST-1).padStart(2,"0")}</span>
           </span>
         )}
         {(screen > 0 || introPlaying) && (
@@ -299,14 +309,14 @@ export default function StormChecksAffiliateOnboarding() {
           const a = audioRef.current;
           if (a) a.addEventListener('ended', () => go(1), { once: true });
         }} />}
-        {screen === 1 && <YourJob />}
+        {screen === 1 && <YourRole />}
         {screen === 2 && <Script copied={copied} onCopy={copyScript} />}
         {screen === 3 && <FullProcess />}
         {screen === 4 && <Commission />}
         {screen === 5 && <BestLeads idx={leadIdx} setIdx={setLeadIdx} />}
         {screen === 6 && <Objections idx={objIdx} setIdx={setObjIdx} />}
         {screen === 7 && <PortalWalkthrough loomRef={loomRef} />}
-        {screen === 8 && <StartNow />}
+        {screen === 8 && <StartNow onBack={() => go(7)} />}
       </main>
 
       {/* ── Side Nav Arrows ── */}
@@ -314,13 +324,12 @@ export default function StormChecksAffiliateOnboarding() {
         <>
           <button
             onClick={() => go(screen - 1)}
-            style={{ ...S.sideNav, left: 0, borderRadius:"0 8px 8px 0", opacity: screen > 0 ? 1 : 0.25 }}
-            disabled={screen <= 0}
+            style={{ ...S.sideNav, left: 0, borderRadius:"0 10px 10px 0" }}
             aria-label="Previous slide"
           >←</button>
           <button
             onClick={() => go(screen + 1)}
-            style={{ ...S.sideNav, right: 0, borderRadius:"8px 0 0 8px" }}
+            style={{ ...S.sideNav, right: 0, borderRadius:"10px 0 0 10px" }}
             aria-label={screen === LAST - 1 ? "Finish" : "Next slide"}
           >{screen === LAST - 1 ? "✓" : "→"}</button>
         </>
@@ -332,8 +341,8 @@ export default function StormChecksAffiliateOnboarding() {
           {Array.from({ length: LAST - 1 }, (_, i) => (
             <button key={i} onClick={() => go(i + 1)} style={{
               ...S.dot,
-              width: i + 1 === screen ? 20 : 6,
-              background: i + 1 === screen ? "#C99700" : i + 1 < screen ? "rgba(201,151,0,0.35)" : "rgba(255,255,255,0.15)",
+              width: i + 1 === screen ? 22 : 7,
+              background: i + 1 === screen ? "#C99700" : i + 1 < screen ? "rgba(201,151,0,0.4)" : "#D1D9E0",
             }} />
           ))}
         </div>
@@ -346,57 +355,83 @@ export default function StormChecksAffiliateOnboarding() {
 
 function Welcome({ onStart, introPlaying }) {
   return (
-    <div style={{ textAlign:"center", maxWidth:500 }}>
-      {/* Speaker prompt */}
-      <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(201,151,0,0.08)", border:"1px solid rgba(201,151,0,0.2)", borderRadius:8, padding:"6px 14px", marginBottom:20, fontSize:12, color:"rgba(255,255,255,0.55)" }}>
+    <div style={{ textAlign:"center", maxWidth:540 }}>
+      <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(201,151,0,0.08)", border:"1px solid rgba(201,151,0,0.25)", borderRadius:8, padding:"7px 16px", marginBottom:22, fontSize:13, color:"#7A6000" }}>
         🔊 <span>Please ensure your speakers are on</span>
       </div>
       <Pill>AFFILIATE PARTNER BRIEFING</Pill>
-      <h1 style={S.h1}>Your job is simple.<br /><Em>Get the address.</Em></h1>
-      <p style={S.lead}>
-        Insurance companies are set up to pay out as little as possible. StormChecks exists to flip that — and we need people like you to connect us with property owners before their filing window closes.
-      </p>
-      <p style={{ ...S.lead, marginBottom:8 }}>
-        You identify the owner and get the address. We handle everything else. You earn a commission when they get paid.
-      </p>
-      <p style={{ ...S.lead, fontSize:14, opacity:0.7, marginBottom:36 }}>What to say, who to call, how objections work, how commissions work. About 4 minutes.</p>
+      <h1 style={S.h1}>Welcome to the<br /><Em>StormChecks Affiliate Network.</Em></h1>
+      <p style={S.lead}>We're excited to have you. The opportunity here is massive — every commercial property that's been through a storm event is a potential lead.</p>
+      <div style={{ display:"flex", flexDirection:"column", gap:10, margin:"20px 0 28px", textAlign:"left" }}>
+        {[
+          { icon:"💰", t:"The money is already there", d:"Owners are leaving real recovery money on the table — not because damage doesn't exist, but because no one pointed them to the right process." },
+          { icon:"⏱", t:"The #1 opportunity", d:"Property owners who've had a storm event but don't realize they can — and should — file a claim before the 1–2 year filing window closes." },
+          { icon:"🚫", t:"The lie insurance companies tell", d:"They spend enormous amounts convincing owners that filing will raise premiums or get them dropped. For peril events, raising premiums is actually illegal. The math is simple: $1M recovery vs. $20K premium bump — there's no decision to make." },
+          { icon:"✅", t:"StormChecks only pursues real opportunities", d:"We front the engineering and meteorology costs ourselves — that can be $50K+ per property. If we're moving forward, we believe in the claim." },
+        ].map(item => (
+          <div key={item.t} style={{ ...S.card, display:"flex", gap:14, alignItems:"flex-start" }}>
+            <span style={{ fontSize:22, flexShrink:0 }}>{item.icon}</span>
+            <div>
+              <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:4 }}>{item.t}</div>
+              <div style={{ fontSize:14, color:"#555F6D", lineHeight:1.6 }}>{item.d}</div>
+            </div>
+          </div>
+        ))}
+      </div>
       <button onClick={onStart} style={S.cta}>{introPlaying ? "Continue →" : "Start Briefing →"}</button>
       {introPlaying && <p style={{ ...S.hint, color:"#C99700", marginTop:12 }}>🔊 Playing intro…</p>}
-      <p style={S.hint}>{introPlaying ? "Listening to intro — or tap Continue to skip ahead" : "Arrow keys or tap dots to navigate"}</p>
+      <p style={S.hint}>{introPlaying ? "Listening to intro — or tap Continue to skip ahead" : "Arrow keys or tap dots to navigate · ~4 minutes"}</p>
     </div>
   );
 }
 
-function YourJob() {
+function YourRole() {
   return (
     <Wrap>
       <Tag>Your Role</Tag>
-      <h2 style={S.h2}>One task.<br /><Em>One submission.</Em></h2>
-      <p style={{ ...S.body, marginBottom:16 }}>
-        Insurance companies spend billions getting property owners signed up — then spend everything they can to avoid paying valid claims. Owners have a short filing window (1–2 years from the storm date) and most don't know it exists. You're the connection that gets them paid before it's too late.
+      <h2 style={S.h2}>Here's exactly what<br /><Em>you need to do.</Em></h2>
+      <p style={{ ...S.body, marginBottom:20 }}>
+        Get the property address, submit it, and follow through until the owner signs the agreement. If an owner has questions, get them answered — either from what you know or by checking with StormChecks. Keep the conversation going until they're across the line. After that, StormChecks and the PA take it from there.
       </p>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:14 }}>
-        <div style={{ background:"rgba(201,151,0,0.07)", border:"1px solid rgba(201,151,0,0.22)", borderRadius:12, padding:"18px 16px" }}>
-          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", letterSpacing:"0.1em", marginBottom:12 }}>YOUR JOB</div>
-          {["Identify a commercial property owner","Start the conversation","Get the property address","Submit via app.stormchecks.com","Follow up if they have questions"].map((t,i)=>(
-            <div key={i} style={{ display:"flex", gap:7, alignItems:"flex-start", marginBottom:7 }}>
-              <span style={{ color:"#C99700", fontSize:12, flexShrink:0, paddingTop:1 }}>✓</span>
-              <span style={{ fontSize:12, color:"rgba(255,255,255,0.7)", lineHeight:1.45 }}>{t}</span>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:16 }}>
+        <div style={{ background:"#FFFBEA", border:"2px solid #C99700", borderRadius:12, padding:"18px 16px" }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#9B7300", letterSpacing:"0.1em", marginBottom:12, fontWeight:700 }}>YOUR JOB</div>
+          {[
+            "Identify a commercial property owner",
+            "Start the conversation",
+            "Get the property address",
+            "Submit it via the portal",
+            "Answer questions or get answers from StormChecks",
+            "Follow up until the owner signs",
+          ].map((t,i)=>(
+            <div key={i} style={{ display:"flex", gap:8, alignItems:"flex-start", marginBottom:8 }}>
+              <span style={{ color:"#C99700", fontSize:13, flexShrink:0, paddingTop:1, fontWeight:700 }}>✓</span>
+              <span style={{ fontSize:13, color:"#0B1F33", lineHeight:1.5 }}>{t}</span>
             </div>
           ))}
         </div>
-        <div style={{ background:"rgba(255,255,255,0.03)", border:"1px solid rgba(255,255,255,0.07)", borderRadius:12, padding:"18px 16px" }}>
-          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"rgba(255,255,255,0.25)", letterSpacing:"0.1em", marginBottom:12 }}>NOT YOUR JOB</div>
-          {["Explain the engineering","Handle insurance questions","Be on-site for inspections","Negotiate anything with anyone","Manage the recovery process"].map((t,i)=>(
-            <div key={i} style={{ display:"flex", gap:7, alignItems:"flex-start", marginBottom:7 }}>
-              <span style={{ color:"rgba(255,255,255,0.2)", fontSize:12, flexShrink:0, paddingTop:1 }}>✗</span>
-              <span style={{ fontSize:12, color:"rgba(255,255,255,0.3)", lineHeight:1.45 }}>{t}</span>
+        <div style={{ background:"#F8F9FA", border:"1px solid #E2E6EA", borderRadius:12, padding:"18px 16px" }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0", letterSpacing:"0.1em", marginBottom:12 }}>NOT YOUR JOB</div>
+          {[
+            "Explain the engineering in depth",
+            "Negotiate with anyone",
+            "Be on-site for inspections",
+            "Manage the insurance process",
+          ].map((t,i)=>(
+            <div key={i} style={{ display:"flex", gap:8, alignItems:"flex-start", marginBottom:8 }}>
+              <span style={{ color:"#AABBCC", fontSize:13, flexShrink:0, paddingTop:1 }}>✗</span>
+              <span style={{ fontSize:13, color:"#8A9AB0", lineHeight:1.5 }}>{t}</span>
             </div>
           ))}
         </div>
       </div>
       <Note>
-        <b style={{ color:"#C99700" }}>Qualifying criteria:</b> Commercial property, 10,000+ SF, any US state. Never single-family residential — under any circumstances, ever.
+        <b style={{ color:"#9B7300" }}>If an owner asks something you can't answer:</b>{" "}
+        Tell them you'll find out and follow up. Check with StormChecks, get the answer, and get back to the owner. You don't need to know everything — you just need to keep the conversation moving until they sign.
+      </Note>
+      <Note>
+        <b style={{ color:"#9B7300" }}>Qualifying criteria:</b>{" "}
+        Commercial property, 10,000+ SF, any US state. Never single-family residential — under any circumstances.
       </Note>
     </Wrap>
   );
@@ -408,29 +443,29 @@ function Script({ copied, onCopy }) {
       <Tag>The Opening</Tag>
       <h2 style={S.h2}>One script.<br /><Em>Memorize it.</Em></h2>
       <p style={{ ...S.body, marginBottom:16 }}>
-        Works for cold calls, LinkedIn, trade shows, and networking. Goal: get the address only. Deeper questions → <em style={{ color:"rgba(255,255,255,0.65)" }}>"The StormChecks team will walk you through everything."</em>
+        Works for cold calls, LinkedIn, trade shows, and networking. Your only goal in the first conversation is the property address. If deeper questions come up that you can't answer, tell them you'll find out and follow up — then do it.
       </p>
-      <div style={{ background:"rgba(201,151,0,0.07)", border:"1px solid rgba(201,151,0,0.25)", borderRadius:14, padding:"22px 20px", marginBottom:10, position:"relative" }}>
-        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#C99700", letterSpacing:"0.12em", marginBottom:14 }}>APPROVED OPENING SCRIPT — COLD CALL / NETWORKING</div>
-        <p style={{ fontSize:14, color:"rgba(255,255,255,0.75)", lineHeight:1.85, fontStyle:"italic", whiteSpace:"pre-line" }}>{`"${OPENING_SCRIPT}"`}</p>
+      <div style={{ background:"#FFFBEA", border:"2px solid #C99700", borderRadius:14, padding:"24px 22px", marginBottom:12 }}>
+        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#9B7300", letterSpacing:"0.12em", marginBottom:16, fontWeight:700 }}>OPENING SCRIPT — COLD CALL / NETWORKING</div>
+        <p style={{ fontSize:15, color:"#2D3748", lineHeight:1.9, fontStyle:"italic", whiteSpace:"pre-line" }}>{`"${OPENING_SCRIPT}"`}</p>
         <button
           onClick={onCopy}
           style={{
-            marginTop:16,
-            background: copied ? "rgba(34,197,94,0.12)" : "rgba(255,255,255,0.06)",
-            border:`1px solid ${copied?"rgba(34,197,94,0.3)":"rgba(255,255,255,0.12)"}`,
-            borderRadius:7, padding:"7px 14px",
-            fontFamily:"'JetBrains Mono',monospace", fontSize:10,
-            color: copied?"#22C55E":"rgba(255,255,255,0.4)",
-            cursor:"pointer", letterSpacing:"0.06em", transition:"all 0.2s",
+            marginTop:18,
+            background: copied ? "rgba(34,197,94,0.1)" : "#FFFFFF",
+            border:`2px solid ${copied?"#22C55E":"#D1D9E0"}`,
+            borderRadius:8, padding:"8px 16px",
+            fontFamily:"'JetBrains Mono',monospace", fontSize:11,
+            color: copied?"#16A34A":"#555F6D",
+            cursor:"pointer", letterSpacing:"0.06em", transition:"all 0.2s", fontWeight:600,
           }}
         >{copied ? "✓ COPIED TO CLIPBOARD" : "COPY SCRIPT"}</button>
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:6 }}>
-        {[["📞","Cold Call"],["💼","LinkedIn DM"],["🤝","Trade Show"]].map(([icon,label])=>(
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8 }}>
+        {[["📞","Cold Call"],["💼","LinkedIn DM"],["🤝","Trade Show / Networking"]].map(([icon,label])=>(
           <div key={label} style={S.miniCard}>
-            <div style={{ fontSize:16, marginBottom:5 }}>{icon}</div>
-            <div style={{ fontSize:11, color:"rgba(255,255,255,0.4)" }}>{label}</div>
+            <div style={{ fontSize:20, marginBottom:6 }}>{icon}</div>
+            <div style={{ fontSize:12, color:"#555F6D", fontWeight:600 }}>{label}</div>
           </div>
         ))}
       </div>
@@ -441,61 +476,52 @@ function Script({ copied, onCopy }) {
 function FullProcess() {
   return (
     <Wrap>
-      <Tag>The Full Process</Tag>
-      <h2 style={S.h2}>What happens<br /><Em>after you submit.</Em></h2>
-      <p style={{ ...S.body, fontSize:13, marginBottom:8 }}>
-        Here's the owner's journey so you understand exactly what you're offering — and why it's a genuinely good deal for them. No upfront cost. No obligation at any point. Settlement arrives in about 12 months.
+      <Tag>The Process</Tag>
+      <h2 style={S.h2}>Your steps are highlighted.<br /><Em>Everything else is handled.</Em></h2>
+      <p style={{ ...S.body, fontSize:14, marginBottom:8 }}>
+        Amber = <b style={{ color:"#9B7300" }}>your responsibility</b>. Gray = StormChecks. Blue = Public Adjuster.
       </p>
-      <p style={{ ...S.body, fontSize:13, marginBottom:16 }}>
-        <span style={{ color:"#C99700" }}>Amber</span> = you · <span style={{ color:"rgba(255,255,255,0.45)" }}>Gray</span> = StormChecks · <span style={{ color:"#6B9FE4" }}>Blue</span> = PA
+      <p style={{ ...S.body, fontSize:13, marginBottom:18 }}>
+        Settlement typically arrives about 12 months after submission. Your active involvement is concentrated in the first few weeks.
       </p>
-      <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+      <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
         {STEPS.map((step, i) => {
-          const isYou = step.what === "You";
+          const isYou = step.what === "You" || step.what === "You + SC";
           const isPA  = step.what === "PA";
+          const isSC  = step.what === "StormChecks";
           return (
             <div key={i} style={{
-              display:"flex", borderRadius:10, overflow:"hidden", border:"1px solid",
-              background:isYou?"rgba(201,151,0,0.07)":"rgba(255,255,255,0.03)",
-              borderColor:isYou?"rgba(201,151,0,0.22)":"rgba(255,255,255,0.07)",
+              borderRadius:12, overflow:"hidden", border:"2px solid",
+              background:isYou?"#FFFBEA":"#FFFFFF",
+              borderColor:isYou?"#C99700":"#E2E6EA",
+              boxShadow:isYou?"0 2px 8px rgba(201,151,0,0.1)":"0 1px 3px rgba(0,0,0,0.04)",
             }}>
-              <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:5, padding:"13px 10px 13px 12px", minWidth:50, flexShrink:0 }}>
-                <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700" }}>{step.n}</span>
-                <span style={{
-                  fontFamily:"'JetBrains Mono',monospace", fontSize:9, borderRadius:4, padding:"2px 5px", letterSpacing:"0.06em",
-                  color: isYou?"#C99700":isPA?"#6B9FE4":"rgba(255,255,255,0.3)",
-                  background:isYou?"rgba(201,151,0,0.12)":isPA?"rgba(107,159,228,0.1)":"rgba(255,255,255,0.05)",
-                }}>{step.what === "Owner+SC" ? "SC" : step.what.toUpperCase().replace("STORMCHECKS","SC")}</span>
-              </div>
-              <div style={{ padding:"13px 14px 13px 0", flex:1 }}>
-                <div style={{ fontSize:13, fontWeight:700, color:"#fff", marginBottom:4 }}>{step.phase}</div>
-                {step.detail === "PORTAL_ACCESS_STEP" ? (
-                  <div style={{ fontSize:12, color:"rgba(255,255,255,0.5)", lineHeight:1.6 }}>
-                    <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#C99700", letterSpacing:"0.08em", marginBottom:5 }}>FIRST TIME ONLY</div>
-                    {["Email info@stormchecks.com","Subject: 'Affiliate Access Request'","Credentials arrive within 1 business day"].map((s,i)=>(
-                      <div key={i} style={{ display:"flex", gap:7, marginBottom:3 }}>
-                        <span style={{ color:"rgba(201,151,0,0.5)", flexShrink:0, fontFamily:"'JetBrains Mono',monospace", fontSize:10 }}>{i+1}.</span>
-                        <span>{s}</span>
-                      </div>
-                    ))}
-                    <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#C99700", letterSpacing:"0.08em", margin:"10px 0 5px" }}>EVERY SUBMISSION</div>
-                    {["Go to app.stormchecks.com → Log in","Toggle Affiliate Mode (switch, bottom-left)","Click 'Add Owner' → name, email, phone","Click 'Add Property' → enter address","Submit — owner notified automatically"].map((s,i)=>(
-                      <div key={i} style={{ display:"flex", gap:7, marginBottom:3 }}>
-                        <span style={{ color:"rgba(201,151,0,0.5)", flexShrink:0, fontFamily:"'JetBrains Mono',monospace", fontSize:10 }}>{i+1}.</span>
-                        <span>{s}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div style={{ fontSize:12, color:"rgba(255,255,255,0.45)", lineHeight:1.6, marginBottom:isYou?6:0 }}>{step.detail}</div>
-                )}
-                {isYou && step.action && (
-                  <div style={{ display:"flex", gap:6, alignItems:"flex-start", marginTop:6 }}>
-                    <span style={{ fontSize:10, color:"#C99700", flexShrink:0, paddingTop:1 }}>→</span>
-                    <span style={{ fontSize:12, color:"rgba(201,151,0,0.7)", lineHeight:1.5, fontStyle:"italic" }}>{step.action}</span>
-                  </div>
-                )}
-                <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"rgba(255,255,255,0.2)", letterSpacing:"0.04em", marginTop:5 }}>⏱ {step.time}</div>
+              <div style={{ display:"flex" }}>
+                <div style={{
+                  display:"flex", flexDirection:"column", alignItems:"center", gap:5,
+                  padding:"16px 12px 16px 16px", minWidth:56, flexShrink:0,
+                  background:isYou?"rgba(201,151,0,0.12)":"#F8F9FA",
+                  borderRight:`2px solid ${isYou?"#C99700":"#E2E6EA"}`,
+                }}>
+                  <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#9B7300", fontWeight:700 }}>{step.n}</span>
+                  <span style={{
+                    fontFamily:"'JetBrains Mono',monospace", fontSize:9, borderRadius:4,
+                    padding:"3px 6px", letterSpacing:"0.06em", fontWeight:700,
+                    color: isYou?"#9B7300":isPA?"#1D4ED8":isSC?"#374151":"#555F6D",
+                    background:isYou?"rgba(201,151,0,0.15)":isPA?"rgba(59,130,246,0.1)":"rgba(0,0,0,0.05)",
+                  }}>{step.what.replace("You + SC","YOU").toUpperCase().replace("STORMCHECKS","SC")}</span>
+                </div>
+                <div style={{ padding:"16px 18px", flex:1 }}>
+                  <div style={{ fontSize:15, fontWeight:700, color:isYou?"#7A5500":"#0B1F33", marginBottom:6 }}>{step.phase}</div>
+                  <div style={{ fontSize:13, color:"#555F6D", lineHeight:1.65, marginBottom:isYou&&step.action?8:0 }}>{step.detail}</div>
+                  {isYou && step.action && (
+                    <div style={{ display:"flex", gap:7, alignItems:"flex-start", background:"rgba(201,151,0,0.08)", borderRadius:8, padding:"8px 12px" }}>
+                      <span style={{ fontSize:12, color:"#C99700", flexShrink:0, paddingTop:1, fontWeight:700 }}>→</span>
+                      <span style={{ fontSize:13, color:"#9B7300", lineHeight:1.5, fontWeight:600 }}>{step.action}</span>
+                    </div>
+                  )}
+                  <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#AABBCC", letterSpacing:"0.04em", marginTop:8 }}>⏱ {step.time}</div>
+                </div>
               </div>
             </div>
           );
@@ -509,42 +535,60 @@ function Commission() {
   return (
     <Wrap>
       <Tag>How You Get Paid</Tag>
-      <h2 style={S.h2}>A % of StormChecks' fee.<br /><Em>Paid when the owner gets paid.</Em></h2>
-      <p style={{ ...S.body, marginBottom:16 }}>
-        Commission only, on recovery only. StormChecks fronts all engineering and forensic costs — which can run $50,000 or more per property. Our fee is 20% of recovery. Your commission comes from that.
+      <h2 style={S.h2}>Commission from recovery only.<br /><Em>Three tiers + sub-affiliate override.</Em></h2>
+      <p style={{ ...S.body, marginBottom:18 }}>
+        Your commission comes from StormChecks' 20% fee — the owner's 70% is never affected by your tier. No recovery means no commission for anyone.
       </p>
-      <div style={{ display:"flex", flexDirection:"column", gap:8, marginBottom:16 }}>
-        {TIERS.map(t => (
+      <div style={{ display:"flex", flexDirection:"column", gap:10, marginBottom:18 }}>
+        {TIERS.map((t,i) => (
           <div key={t.tier} style={{
-            display:"flex", alignItems:"center", gap:14, borderRadius:12, padding:"16px 18px",
-            background:t.hi?"rgba(201,151,0,0.1)":"rgba(255,255,255,0.04)",
-            border:`1px solid ${t.hi?"rgba(201,151,0,0.35)":"rgba(255,255,255,0.08)"}`,
+            borderRadius:12, padding:"18px 20px",
+            background:t.override?"#FFFBEA":"#FFFFFF",
+            border:`2px solid ${t.override?"#C99700":"#E2E6EA"}`,
+            boxShadow:t.override?"0 2px 10px rgba(201,151,0,0.12)":"0 1px 3px rgba(0,0,0,0.04)",
           }}>
-            <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"clamp(22px,5vw,28px)", fontWeight:600, color:t.hi?"#C99700":"#fff", minWidth:52, flexShrink:0 }}>{t.rate}</div>
-            <div style={{ flex:1 }}>
-              <div style={{ display:"flex", gap:8, alignItems:"center", marginBottom:4, flexWrap:"wrap" }}>
-                <span style={{ fontSize:14, fontWeight:700, color:"#fff" }}>{t.tier}</span>
-                <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"rgba(255,255,255,0.3)", background:"rgba(255,255,255,0.05)", borderRadius:4, padding:"2px 6px" }}>{t.range}</span>
+            <div style={{ display:"flex", alignItems:"center", gap:16, marginBottom:t.override?10:0 }}>
+              <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:28, fontWeight:700, color:t.override?"#C99700":"#0B1F33", minWidth:56, flexShrink:0 }}>{t.rate}</div>
+              <div>
+                <div style={{ display:"flex", gap:8, alignItems:"center", marginBottom:4 }}>
+                  <span style={{ fontSize:16, fontWeight:700, color:"#0B1F33" }}>{t.tier}</span>
+                  <span style={{ fontSize:11, color:"#8A9AB0", background:"#F0F2F5", borderRadius:4, padding:"2px 7px", fontFamily:"'JetBrains Mono',monospace" }}>{t.desc}</span>
+                </div>
+                <div style={{ fontSize:13, color:t.override?"#9B7300":"#555F6D", fontWeight:t.override?600:400 }}>{t.ex1}</div>
               </div>
-              <div style={{ fontSize:12, color:t.hi?"#C99700":"rgba(255,255,255,0.4)" }}>{t.ex}</div>
             </div>
+            {t.override && (
+              <div style={{ background:"rgba(201,151,0,0.1)", border:"1px solid rgba(201,151,0,0.3)", borderRadius:8, padding:"10px 14px" }}>
+                <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#9B7300", letterSpacing:"0.08em", marginBottom:4, fontWeight:700 }}>SUB-AFFILIATE OVERRIDE</div>
+                <div style={{ fontSize:13, color:"#7A5500", fontWeight:600 }}>{t.overrideEx}</div>
+              </div>
+            )}
           </div>
         ))}
       </div>
-      <div style={{ background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:12, padding:"16px 18px", marginBottom:12 }}>
-        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"rgba(255,255,255,0.22)", letterSpacing:"0.12em", marginBottom:12 }}>FULL FEE BREAKDOWN — TIER 3 EXAMPLE</div>
-        {[["Recovery","$400,000"],["SC fee (20%)","$80,000"],["PA fee (10%)","$40,000"],["Owner receives","$280,000"],["Your commission (25% of SC fee)","$20,000"]].map(([k,v],i)=>(
+      <div style={{ background:"#FFFFFF", border:"2px solid #E2E6EA", borderRadius:12, padding:"18px 20px", marginBottom:14 }}>
+        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#8A9AB0", letterSpacing:"0.12em", marginBottom:14, fontWeight:700 }}>WORKED EXAMPLE — $1,000,000 RECOVERY · TOP TIER</div>
+        {[
+          ["Total recovery","$1,000,000"],
+          ["StormChecks fee (20%)","$200,000"],
+          ["PA fee (10%)","$100,000"],
+          ["Owner receives (70%)","$700,000"],
+          ["Your commission (25% of SC fee)","$50,000"],
+        ].map(([k,v],i)=>(
           <div key={k} style={{
-            display:"flex", justifyContent:"space-between", fontSize:13, padding:"5px 0",
-            borderTop:i===4?"1px solid rgba(201,151,0,0.25)":"none",
-            marginTop:i===4?6:0, paddingTop:i===4?10:5,
+            display:"flex", justifyContent:"space-between", fontSize:14, padding:"6px 0",
+            borderTop:i===4?"2px solid #E2E6EA":"none",
+            marginTop:i===4?8:0, paddingTop:i===4?12:6,
           }}>
-            <span style={{ color:i===4?"#C99700":"rgba(255,255,255,0.45)", fontWeight:i===4?600:400 }}>{k}</span>
-            <span style={{ fontFamily:"'JetBrains Mono',monospace", color:i===4?"#C99700":i===0?"#fff":"rgba(255,255,255,0.4)", fontWeight:i===4?600:400 }}>{v}</span>
+            <span style={{ color:i===4?"#9B7300":i===0?"#0B1F33":"#555F6D", fontWeight:i===4||i===0?700:400 }}>{k}</span>
+            <span style={{ fontFamily:"'JetBrains Mono',monospace", color:i===4?"#C99700":i===0?"#0B1F33":"#8A9AB0", fontWeight:i===4||i===0?700:400 }}>{v}</span>
           </div>
         ))}
       </div>
-      <Note>Commission is paid when the <b style={{ color:"#C99700" }}>owner receives their settlement</b> — not when the claim is filed. No recovery = no commission = no obligation for anyone.</Note>
+      <Note>
+        <b style={{ color:"#9B7300" }}>Sub-affiliate override:</b>{" "}
+        When you recruit another affiliate and they close a claim, you earn 5% of StormChecks' fee on that recovery — in addition to your own commissions. Build a team, multiply your earnings.
+      </Note>
     </Wrap>
   );
 }
@@ -553,33 +597,33 @@ function BestLeads({ idx, setIdx }) {
   const l = LEADS[idx];
   return (
     <Wrap>
-      <Tag>Lead Prioritization</Tag>
-      <h2 style={S.h2}>Who to call first.<br /><Em>Highest conversion by category.</Em></h2>
-      <p style={{ ...S.body, marginBottom:18 }}>Five categories in order of conversion rate. Start with 1 and 2 — shortest path to commission.</p>
-      <div style={{ background:"rgba(201,151,0,0.07)", border:"1px solid rgba(201,151,0,0.22)", borderRadius:14, padding:"22px 20px", marginBottom:12, minHeight:200 }}>
-        <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:16 }}>
-          <span style={{ fontSize:26 }}>{l.icon}</span>
-          <div>
-            <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", letterSpacing:"0.1em", marginBottom:4 }}>CATEGORY {idx+1} OF {LEADS.length}</div>
-            <div style={{ fontSize:16, fontWeight:700, color:"#fff" }}>{l.type}</div>
-          </div>
+      <Tag>Lead Quality</Tag>
+      <h2 style={S.h2}>Not all leads convert equally.<br /><Em>Start with the top two.</Em></h2>
+      <p style={{ ...S.body, marginBottom:18 }}>Ranked by conversion rate. Categories 1 and 2 are your fastest path to commission — start there.</p>
+      <div style={{ background:"#FFFBEA", border:"2px solid #C99700", borderRadius:14, padding:"22px 20px", marginBottom:14, minHeight:220 }}>
+        <div style={{ display:"flex", alignItems:"center", gap:14, marginBottom:18 }}>
+          <div style={{ background:"#C99700", color:"#fff", borderRadius:8, width:40, height:40, display:"flex", alignItems:"center", justifyContent:"center", fontSize:13, fontWeight:800, flexShrink:0 }}>{l.rank}</div>
+          <div style={{ fontSize:26, flexShrink:0 }}>{l.icon}</div>
+          <div style={{ fontSize:17, fontWeight:700, color:"#0B1F33" }}>{l.type}</div>
         </div>
-        <p style={{ fontSize:13, color:"rgba(255,255,255,0.55)", lineHeight:1.7, marginBottom:14 }}>{l.why}</p>
-        <div style={{ background:"rgba(255,255,255,0.04)", borderLeft:"2px solid #C99700", borderRadius:"0 8px 8px 0", padding:"11px 14px" }}>
-          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#C99700", letterSpacing:"0.1em", marginBottom:6 }}>HOW TO START THE CONVERSATION</div>
-          <p style={{ fontSize:13, color:"rgba(255,255,255,0.65)", fontStyle:"italic", lineHeight:1.65 }}>{l.how}</p>
+        <p style={{ fontSize:14, color:"#555F6D", lineHeight:1.7, marginBottom:16 }}>{l.why}</p>
+        <div style={{ background:"#FFFFFF", borderLeft:"3px solid #C99700", borderRadius:"0 10px 10px 0", padding:"12px 16px" }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#9B7300", letterSpacing:"0.1em", marginBottom:7, fontWeight:700 }}>HOW TO START THE CONVERSATION</div>
+          <p style={{ fontSize:14, color:"#0B1F33", fontStyle:"italic", lineHeight:1.65 }}>{l.how}</p>
         </div>
       </div>
-      <div style={{ display:"flex", gap:6, flexWrap:"wrap" }}>
+      <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
         {LEADS.map((ld,i) => (
           <button key={i} onClick={() => setIdx(i)} style={{
-            flex:"1 1 calc(33% - 4px)",
-            background:i===idx?"rgba(201,151,0,0.12)":"rgba(255,255,255,0.04)",
-            border:`1px solid ${i===idx?"rgba(201,151,0,0.35)":"rgba(255,255,255,0.07)"}`,
-            borderRadius:9, padding:"10px 8px", cursor:"pointer", textAlign:"center", transition:"all 0.2s",
+            flex:"1 1 calc(33% - 6px)",
+            background:i===idx?"#FFFBEA":"#FFFFFF",
+            border:`2px solid ${i===idx?"#C99700":"#E2E6EA"}`,
+            borderRadius:10, padding:"10px 8px", cursor:"pointer", textAlign:"center", transition:"all 0.2s",
+            boxShadow:i===idx?"0 2px 8px rgba(201,151,0,0.15)":"none",
           }}>
-            <div style={{ fontSize:16, marginBottom:4 }}>{ld.icon}</div>
-            <div style={{ fontSize:10, color:i===idx?"#C99700":"rgba(255,255,255,0.3)", lineHeight:1.3 }}>{ld.type.split(" ").slice(0,2).join(" ")}</div>
+            <div style={{ fontSize:14, fontWeight:800, color:"#C99700", marginBottom:3 }}>{ld.rank}</div>
+            <div style={{ fontSize:18, marginBottom:4 }}>{ld.icon}</div>
+            <div style={{ fontSize:11, color:i===idx?"#9B7300":"#8A9AB0", lineHeight:1.3, fontWeight:i===idx?600:400 }}>{ld.type.split(" ").slice(0,3).join(" ")}</div>
           </button>
         ))}
       </div>
@@ -591,26 +635,30 @@ function Objections({ idx, setIdx }) {
   const o = OBJECTIONS[idx];
   return (
     <Wrap>
-      <Tag>Objection Scripts</Tag>
-      <h2 style={S.h2}>Word-for-word responses.<br /><Em>The six you'll hear most.</Em></h2>
-      <div style={{ ...S.card, minHeight:200, marginBottom:12 }}>
-        <div style={{ display:"flex", gap:10, alignItems:"flex-start", marginBottom:14, flexWrap:"wrap" }}>
-          <div style={{ fontSize:15, fontWeight:700, color:"#fff", flex:1, lineHeight:1.4 }}>"{o.q}"</div>
-          <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", background:"rgba(201,151,0,0.1)", borderRadius:4, padding:"3px 8px", flexShrink:0 }}>{o.tag}</span>
+      <Tag>Handling Objections</Tag>
+      <h2 style={S.h2}>The six you'll hear most.<br /><Em>Word-for-word responses.</Em></h2>
+      <p style={{ ...S.body, marginBottom:16 }}>
+        When an objection comes up, address it directly. You don't need to know everything — if you're unsure, say "Let me get you an answer on that" and follow up. The goal is to keep the conversation going, not close it.
+      </p>
+      <div style={{ ...S.card, minHeight:210, marginBottom:14 }}>
+        <div style={{ display:"flex", gap:10, alignItems:"flex-start", marginBottom:16, flexWrap:"wrap" }}>
+          <div style={{ fontSize:16, fontWeight:700, color:"#0B1F33", flex:1, lineHeight:1.4 }}>"{o.q}"</div>
+          <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#9B7300", background:"rgba(201,151,0,0.1)", borderRadius:5, padding:"3px 9px", flexShrink:0, fontWeight:700 }}>{o.tag}</span>
         </div>
-        <div style={{ background:"rgba(201,151,0,0.06)", borderLeft:"2px solid #C99700", borderRadius:"0 8px 8px 0", padding:"13px 15px" }}>
-          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#C99700", letterSpacing:"0.1em", marginBottom:8 }}>YOUR RESPONSE</div>
-          <p style={{ fontSize:13, color:"rgba(255,255,255,0.7)", lineHeight:1.75, fontStyle:"italic" }}>"{o.script}"</p>
+        <div style={{ background:"#FFFBEA", borderLeft:"3px solid #C99700", borderRadius:"0 10px 10px 0", padding:"14px 16px" }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#9B7300", letterSpacing:"0.1em", marginBottom:9, fontWeight:700 }}>YOUR RESPONSE</div>
+          <p style={{ fontSize:14, color:"#2D3748", lineHeight:1.8, fontStyle:"italic" }}>"{o.script}"</p>
         </div>
       </div>
-      <div style={{ display:"flex", flexWrap:"wrap", gap:6 }}>
+      <div style={{ display:"flex", flexWrap:"wrap", gap:7 }}>
         {OBJECTIONS.map((ob,i) => (
           <button key={i} onClick={() => setIdx(i)} style={{
-            flex:"1 1 calc(50% - 3px)",
-            background:i===idx?"rgba(201,151,0,0.1)":"rgba(255,255,255,0.03)",
-            border:`1px solid ${i===idx?"rgba(201,151,0,0.3)":"rgba(255,255,255,0.07)"}`,
-            borderRadius:8, padding:"8px 10px", fontSize:12, fontFamily:"'Manrope',sans-serif",
-            color:i===idx?"#C99700":"rgba(255,255,255,0.35)", cursor:"pointer", textAlign:"left", lineHeight:1.4, transition:"all 0.18s",
+            flex:"1 1 calc(50% - 4px)",
+            background:i===idx?"#FFFBEA":"#FFFFFF",
+            border:`2px solid ${i===idx?"#C99700":"#E2E6EA"}`,
+            borderRadius:9, padding:"9px 12px", fontSize:13, fontFamily:"'Manrope',sans-serif",
+            color:i===idx?"#9B7300":"#555F6D", cursor:"pointer", textAlign:"left",
+            lineHeight:1.4, transition:"all 0.18s", fontWeight:i===idx?700:400,
           }}>{ob.tag}</button>
         ))}
       </div>
@@ -621,12 +669,43 @@ function Objections({ idx, setIdx }) {
 function PortalWalkthrough({ loomRef }) {
   return (
     <Wrap>
-      <Tag>Portal Walkthrough</Tag>
-      <h2 style={S.h2}>Watch how to submit<br /><Em>your first lead.</Em></h2>
+      <Tag>The Portal</Tag>
+      <h2 style={S.h2}>Two link types.<br /><Em>One smart workflow.</Em></h2>
       <p style={{ ...S.body, marginBottom:18 }}>
-        This 3-minute walkthrough shows exactly how to log in, toggle affiliate mode, and submit a property address. Watch it once — you'll know the whole process.
+        The portal has two main link types. Understanding the difference is key to maximizing your conversions.
       </p>
-      <div style={{ borderRadius:14, overflow:"hidden", marginBottom:16, background:"rgba(0,0,0,0.4)", border:"1px solid rgba(201,151,0,0.2)", position:"relative", paddingTop:"56.25%" }}>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:18 }}>
+        <div style={{ background:"#FFFFFF", border:"2px solid #E2E6EA", borderRadius:12, padding:"18px 16px" }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#8A9AB0", letterSpacing:"0.1em", marginBottom:10, fontWeight:700 }}>LINK TYPE 1</div>
+          <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:6 }}>Sub-affiliate signup</div>
+          <div style={{ fontSize:13, color:"#555F6D", lineHeight:1.6 }}>Share this link to recruit affiliates under you. When they close deals, you earn the 5% override on those recoveries.</div>
+        </div>
+        <div style={{ background:"#FFFBEA", border:"2px solid #C99700", borderRadius:12, padding:"18px 16px" }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#9B7300", letterSpacing:"0.1em", marginBottom:10, fontWeight:700 }}>LINK TYPE 2 ← USE THIS</div>
+          <div style={{ fontSize:15, fontWeight:700, color:"#0B1F33", marginBottom:6 }}>Property owner submission</div>
+          <div style={{ fontSize:13, color:"#555F6D", lineHeight:1.6 }}>This is your primary tool. Add an owner and their property address directly. Most of your activity will be here.</div>
+        </div>
+      </div>
+      <Note>
+        <b style={{ color:"#9B7300" }}>The recommended workflow — don't just send a generic link:</b>
+        <div style={{ marginTop:10, display:"flex", flexDirection:"column", gap:8 }}>
+          {[
+            { n:"1", t:"Add the lead yourself first", d:"Submit the property address in the portal before reaching back out to the owner." },
+            { n:"2", t:"Let StormChecks run the analysis", d:"Within ~1 week, you'll get an estimated recovery value for that specific property." },
+            { n:"3", t:"Share the property-specific link", d:"When you follow up, the owner lands on a page that already shows a dollar amount tied to their property. That's far more compelling than a blank invite." },
+            { n:"4", t:"Walk them through it", d:"Your job is to make the owner aware, answer their questions, and get them to sign the agreement. StormChecks handles everything after that — but getting the owner across the line is yours." },
+          ].map(item => (
+            <div key={item.n} style={{ display:"flex", gap:12, alignItems:"flex-start" }}>
+              <div style={{ background:"#C99700", color:"#fff", borderRadius:"50%", width:22, height:22, display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:800, flexShrink:0, marginTop:1 }}>{item.n}</div>
+              <div>
+                <div style={{ fontSize:14, fontWeight:700, color:"#0B1F33", marginBottom:2 }}>{item.t}</div>
+                <div style={{ fontSize:13, color:"#555F6D", lineHeight:1.5 }}>{item.d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Note>
+      <div style={{ borderRadius:14, overflow:"hidden", marginTop:18, background:"#000", border:"2px solid #E2E6EA", position:"relative", paddingTop:"56.25%" }}>
         <iframe
           ref={loomRef}
           src="https://www.loom.com/embed/8aa6323281744a71b41b2a85b735151b?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
@@ -639,94 +718,100 @@ function PortalWalkthrough({ loomRef }) {
           title="StormChecks Affiliate Portal Walkthrough"
         />
       </div>
-      <Note>
-        <b style={{ color:"#C99700" }}>Questions after watching?</b>{" "}
-        Email info@stormchecks.com or call +1 801-821-2530. We'll get you set up.
-      </Note>
+      <p style={{ fontSize:12, color:"#8A9AB0", marginTop:10, textAlign:"center" }}>3-minute portal walkthrough video above</p>
     </Wrap>
   );
 }
 
-function StartNow() {
+function StartNow({ onBack }) {
   return (
-    <div style={{ textAlign:"center", maxWidth:460 }}>
-      <div style={{ fontSize:38, marginBottom:20 }}>🎯</div>
-      <h2 style={{ ...S.h2, marginBottom:12 }}>Ready to submit<br /><Em>your first lead?</Em></h2>
-      <p style={{ ...S.lead, maxWidth:360, margin:"0 auto 16px", fontSize:15 }}>
-        Log into the portal, toggle to affiliate mode, and submit a property address. Everything else is handled.
+    <div style={{ textAlign:"center", maxWidth:480 }}>
+      <div style={{ fontSize:42, marginBottom:20 }}>🎯</div>
+      <h2 style={{ ...S.h2, marginBottom:12 }}>You're ready.<br /><Em>Submit your first lead.</Em></h2>
+      <p style={{ ...S.lead, maxWidth:380, margin:"0 auto 10px", fontSize:16 }}>
+        Log into the portal, add the owner and property address, and submit. Follow up with the owner until they sign — then StormChecks and the PA handle the rest.
       </p>
-      <p style={{ ...S.lead, maxWidth:360, margin:"0 auto 28px", fontSize:14, opacity:0.7 }}>
-        If you have questions before getting started, call or email — details are below.
+      <p style={{ ...S.lead, maxWidth:380, margin:"0 auto 28px", fontSize:14, color:"#8A9AB0" }}>
+        Questions before getting started? Call or email — details below.
       </p>
       <a href="https://app.stormchecks.com" target="_blank" rel="noopener noreferrer" style={S.ctaLink}>Go to Affiliate Portal →</a>
-      <div style={{ ...S.card, textAlign:"left", marginTop:24, padding:"16px 18px" }}>
-        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"rgba(255,255,255,0.22)", letterSpacing:"0.12em", marginBottom:12 }}>QUICK REFERENCE</div>
+      <div style={{ display:"flex", gap:10, justifyContent:"center", margin:"16px 0 28px" }}>
+        <a
+          href="/downloads/StormChecks_Affiliate_Reference.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display:"inline-flex", alignItems:"center", gap:7, background:"#FFFFFF", border:"2px solid #E2E6EA", borderRadius:9, padding:"9px 18px", fontSize:14, color:"#0B1F33", textDecoration:"none", fontWeight:600 }}
+        >
+          📄 Download Reference Card
+        </a>
+      </div>
+      <div style={{ ...S.card, textAlign:"left", marginBottom:16 }}>
+        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#8A9AB0", letterSpacing:"0.12em", marginBottom:14, fontWeight:700 }}>QUICK REFERENCE</div>
         {[
           ["Portal","app.stormchecks.com"],
-          ["First-time access","Email info@stormchecks.com — 'Affiliate Access Request'"],
-          ["Submit a lead","Log in → Affiliate Mode (bottom-left) → Add Owner → Add Property"],
-          ["Minimum size","10,000+ SF commercial"],
-          ["Excluded","Single-family residential (always)"],
-          ["Tier 1 rate","15% of SC's 20% fee"],
+          ["Minimum property size","10,000+ SF commercial"],
+          ["Never submit","Single-family residential"],
+          ["Tier 1 commission","15% of SC's 20% fee"],
+          ["Top tier override","+ 5% on sub-affiliate recoveries"],
           ["Payout timing","Upon owner's settlement"],
-          ["Questions","info@stormchecks.com · +1 801-821-2530"],
+          ["Phone","+1 801-821-2530"],
+          ["Email","info@stormchecks.com"],
         ].map(([k,v])=>(
-          <div key={k} style={{ display:"flex", justifyContent:"space-between", fontSize:12, padding:"5px 0", borderBottom:"1px solid rgba(255,255,255,0.05)" }}>
-            <span style={{ color:"rgba(255,255,255,0.35)" }}>{k}</span>
-            <span style={{ fontFamily:"'JetBrains Mono',monospace", color:"rgba(255,255,255,0.6)", textAlign:"right", maxWidth:"55%" }}>{v}</span>
+          <div key={k} style={{ display:"flex", justifyContent:"space-between", fontSize:13, padding:"6px 0", borderBottom:"1px solid #F0F2F5" }}>
+            <span style={{ color:"#8A9AB0" }}>{k}</span>
+            <span style={{ fontFamily:"'JetBrains Mono',monospace", color:"#0B1F33", textAlign:"right", maxWidth:"55%", fontWeight:600 }}>{v}</span>
           </div>
         ))}
       </div>
-      <p style={{ marginTop:20, fontSize:11, color:"rgba(255,255,255,0.18)", lineHeight:1.65 }}>Need a pre-qualified lead list? Email info@stormchecks.com and request owners with recent storm exposure in your target market.</p>
+      <button
+        onClick={onBack}
+        style={{ background:"none", border:"2px solid #E2E6EA", borderRadius:9, padding:"9px 20px", fontSize:13, color:"#555F6D", cursor:"pointer", fontFamily:"'Manrope',sans-serif", fontWeight:600 }}
+      >
+        ← Back to Portal Walkthrough
+      </button>
     </div>
   );
 }
 
 /* ─── PRIMITIVES ────────────────────────────────────────────────────── */
 function Logo() {
-  return (
-    <img
-      src={LOGO}
-      alt="StormChecks"
-      style={{ height:28, width:"auto", flexShrink:0 }}
-    />
-  );
+  return <img src={LOGO} alt="StormChecks" style={{ height:30, width:"auto", flexShrink:0 }} />;
 }
 function Em({ children }) { return <span style={{ color:"#C99700" }}>{children}</span>; }
 function Pill({ children }) {
   return (
-    <div style={{ display:"inline-flex", alignItems:"center", gap:7, background:"rgba(201,151,0,0.1)", border:"1px solid rgba(201,151,0,0.25)", borderRadius:20, padding:"5px 14px", marginBottom:20 }}>
-      <span style={{ width:5, height:5, borderRadius:"50%", background:"#C99700", display:"inline-block" }} />
-      <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", letterSpacing:"0.1em" }}>{children}</span>
+    <div style={{ display:"inline-flex", alignItems:"center", gap:7, background:"rgba(201,151,0,0.1)", border:"1px solid rgba(201,151,0,0.3)", borderRadius:20, padding:"6px 16px", marginBottom:20 }}>
+      <span style={{ width:6, height:6, borderRadius:"50%", background:"#C99700", display:"inline-block" }} />
+      <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#9B7300", letterSpacing:"0.1em", fontWeight:700 }}>{children}</span>
     </div>
   );
 }
-function Wrap({ children }) { return <div style={{ width:"100%", maxWidth:620 }}>{children}</div>; }
-function Tag({ children }) { return <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#C99700", letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:10 }}>{children}</div>; }
+function Wrap({ children }) { return <div style={{ width:"100%", maxWidth:640 }}>{children}</div>; }
+function Tag({ children }) { return <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#9B7300", letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:10, fontWeight:700 }}>{children}</div>; }
 function Note({ children }) {
-  return <div style={{ background:"rgba(201,151,0,0.07)", border:"1px solid rgba(201,151,0,0.18)", borderRadius:10, padding:"13px 16px", fontSize:13, color:"rgba(255,255,255,0.6)", lineHeight:1.65, marginTop:14 }}>{children}</div>;
+  return <div style={{ background:"#FFFBEA", border:"1px solid rgba(201,151,0,0.35)", borderRadius:10, padding:"14px 18px", fontSize:14, color:"#555F6D", lineHeight:1.65, marginTop:14 }}>{children}</div>;
 }
 
 /* ─── STYLES ────────────────────────────────────────────────────────── */
 const S = {
-  root:{ minHeight:"100dvh", width:"100%", background:"#0B1F33", display:"flex", flexDirection:"column", fontFamily:"'Manrope',sans-serif", color:"#fff", position:"relative", overflowX:"hidden" },
-  gridBg:{ position:"fixed", inset:0, backgroundImage:"linear-gradient(rgba(201,151,0,0.025)1px,transparent 1px),linear-gradient(90deg,rgba(201,151,0,0.025)1px,transparent 1px)", backgroundSize:"48px 48px", pointerEvents:"none", zIndex:0 },
-  header:{ position:"sticky", top:0, zIndex:20, background:"rgba(11,31,51,0.94)", backdropFilter:"blur(14px)", WebkitBackdropFilter:"blur(14px)", display:"flex", alignItems:"center", gap:12, padding:"0 20px", height:52, borderBottom:"1px solid rgba(255,255,255,0.05)" },
-  progressTrack:{ flex:1, height:2, background:"rgba(255,255,255,0.07)", borderRadius:1, overflow:"hidden" },
-  progressBar:{ height:"100%", background:"#C99700", borderRadius:1, transition:"width 0.4s ease" },
-  counter:{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:"0.08em", flexShrink:0 },
-  muteBtn:{ background:"none", border:"none", cursor:"pointer", fontSize:16, opacity:0.55, flexShrink:0, padding:"4px", lineHeight:1, transition:"opacity 0.2s" },
-  main:{ flex:1, zIndex:1, padding:"36px 56px 80px", transition:"opacity 0.19s ease,transform 0.19s ease", display:"flex", flexDirection:"column", alignItems:"center", overflowY:"auto" },
-  sideNav:{ position:"fixed", top:"50%", transform:"translateY(-50%)", zIndex:30, background:"rgba(201,151,0,0.15)", border:"1px solid rgba(201,151,0,0.3)", color:"rgba(255,255,255,0.7)", width:40, height:72, cursor:"pointer", fontSize:18, fontFamily:"monospace", display:"flex", alignItems:"center", justifyContent:"center", transition:"all 0.2s", backdropFilter:"blur(8px)", WebkitBackdropFilter:"blur(8px)" },
-  dotsBar:{ position:"fixed", bottom:16, left:"50%", transform:"translateX(-50%)", zIndex:30, display:"flex", gap:6, alignItems:"center", background:"rgba(11,31,51,0.8)", backdropFilter:"blur(10px)", WebkitBackdropFilter:"blur(10px)", padding:"8px 16px", borderRadius:20, border:"1px solid rgba(255,255,255,0.06)" },
-  dot:{ height:6, borderRadius:3, border:"none", cursor:"pointer", padding:0, transition:"all 0.25s ease" },
-  h1:{ fontFamily:"'Manrope',sans-serif", fontSize:"clamp(28px,7vw,46px)", fontWeight:800, lineHeight:1.1, marginBottom:16, letterSpacing:"-0.01em" },
-  h2:{ fontFamily:"'Manrope',sans-serif", fontSize:"clamp(21px,5vw,30px)", fontWeight:800, lineHeight:1.2, marginBottom:14, letterSpacing:"-0.01em" },
-  lead:{ fontSize:16, color:"rgba(255,255,255,0.55)", lineHeight:1.75, marginBottom:12 },
-  body:{ fontSize:15, color:"rgba(255,255,255,0.5)", lineHeight:1.75, marginBottom:10 },
-  hint:{ fontSize:12, color:"rgba(255,255,255,0.2)", marginTop:16 },
-  card:{ background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:12, padding:"18px 16px" },
-  miniCard:{ background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.07)", borderRadius:10, padding:"14px 8px", textAlign:"center" },
-  cta:{ display:"inline-block", background:"#C99700", color:"#0B1F33", border:"none", borderRadius:10, padding:"15px 36px", fontFamily:"'Manrope',sans-serif", fontSize:15, fontWeight:700, cursor:"pointer", letterSpacing:"0.02em", marginBottom:8 },
-  ctaLink:{ display:"inline-block", background:"#C99700", color:"#0B1F33", border:"none", borderRadius:10, padding:"15px 36px", fontFamily:"'Manrope',sans-serif", fontSize:15, fontWeight:700, cursor:"pointer", letterSpacing:"0.02em", marginBottom:8, textDecoration:"none", width:"100%", maxWidth:300, textAlign:"center" },
+  root:{ minHeight:"100dvh", width:"100%", background:"#F8F9FA", display:"flex", flexDirection:"column", fontFamily:"'Manrope',sans-serif", color:"#0B1F33", position:"relative", overflowX:"hidden" },
+  gridBg:{ position:"fixed", inset:0, backgroundImage:"linear-gradient(rgba(11,31,51,0.03)1px,transparent 1px),linear-gradient(90deg,rgba(11,31,51,0.03)1px,transparent 1px)", backgroundSize:"48px 48px", pointerEvents:"none", zIndex:0 },
+  header:{ position:"sticky", top:0, zIndex:20, background:"rgba(248,249,250,0.97)", backdropFilter:"blur(14px)", WebkitBackdropFilter:"blur(14px)", display:"flex", alignItems:"center", gap:12, padding:"0 24px", height:56, borderBottom:"1px solid #E2E6EA", boxShadow:"0 1px 4px rgba(0,0,0,0.04)" },
+  progressTrack:{ flex:1, height:3, background:"#E2E6EA", borderRadius:2, overflow:"hidden" },
+  progressBar:{ height:"100%", background:"#C99700", borderRadius:2, transition:"width 0.4s ease" },
+  counter:{ fontFamily:"'JetBrains Mono',monospace", fontSize:12, letterSpacing:"0.08em", flexShrink:0, color:"#555F6D" },
+  muteBtn:{ background:"none", border:"none", cursor:"pointer", fontSize:18, opacity:0.6, flexShrink:0, padding:"4px", lineHeight:1, transition:"opacity 0.2s" },
+  main:{ flex:1, zIndex:1, padding:"36px 56px 90px", transition:"opacity 0.19s ease,transform 0.19s ease", display:"flex", flexDirection:"column", alignItems:"center", overflowY:"auto" },
+  sideNav:{ position:"fixed", top:"50%", transform:"translateY(-50%)", zIndex:30, background:"#C99700", border:"none", color:"#fff", width:42, height:74, cursor:"pointer", fontSize:18, fontFamily:"monospace", display:"flex", alignItems:"center", justifyContent:"center", transition:"all 0.2s", boxShadow:"0 2px 10px rgba(201,151,0,0.35)" },
+  dotsBar:{ position:"fixed", bottom:18, left:"50%", transform:"translateX(-50%)", zIndex:30, display:"flex", gap:7, alignItems:"center", background:"rgba(248,249,250,0.95)", backdropFilter:"blur(10px)", WebkitBackdropFilter:"blur(10px)", padding:"10px 18px", borderRadius:22, border:"1px solid #E2E6EA", boxShadow:"0 2px 8px rgba(0,0,0,0.06)" },
+  dot:{ height:7, borderRadius:4, border:"none", cursor:"pointer", padding:0, transition:"all 0.25s ease" },
+  h1:{ fontFamily:"'Manrope',sans-serif", fontSize:"clamp(30px,7vw,50px)", fontWeight:800, lineHeight:1.1, marginBottom:18, letterSpacing:"-0.02em", color:"#0B1F33" },
+  h2:{ fontFamily:"'Manrope',sans-serif", fontSize:"clamp(22px,5vw,34px)", fontWeight:800, lineHeight:1.2, marginBottom:14, letterSpacing:"-0.01em", color:"#0B1F33" },
+  lead:{ fontSize:17, color:"#4A5568", lineHeight:1.75, marginBottom:12 },
+  body:{ fontSize:16, color:"#555F6D", lineHeight:1.75, marginBottom:10 },
+  hint:{ fontSize:13, color:"#AABBCC", marginTop:16 },
+  card:{ background:"#FFFFFF", border:"1px solid #E2E6EA", borderRadius:12, padding:"18px 16px", boxShadow:"0 1px 3px rgba(0,0,0,0.04)" },
+  miniCard:{ background:"#FFFFFF", border:"1px solid #E2E6EA", borderRadius:10, padding:"16px 10px", textAlign:"center", boxShadow:"0 1px 3px rgba(0,0,0,0.04)" },
+  cta:{ display:"inline-block", background:"#C99700", color:"#fff", border:"none", borderRadius:10, padding:"16px 40px", fontFamily:"'Manrope',sans-serif", fontSize:16, fontWeight:700, cursor:"pointer", letterSpacing:"0.02em", marginBottom:10, boxShadow:"0 2px 10px rgba(201,151,0,0.35)" },
+  ctaLink:{ display:"inline-block", background:"#C99700", color:"#fff", border:"none", borderRadius:10, padding:"16px 40px", fontFamily:"'Manrope',sans-serif", fontSize:16, fontWeight:700, cursor:"pointer", letterSpacing:"0.02em", marginBottom:10, textDecoration:"none", width:"100%", maxWidth:320, textAlign:"center", boxShadow:"0 2px 10px rgba(201,151,0,0.35)" },
 };
