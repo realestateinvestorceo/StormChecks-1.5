@@ -150,9 +150,10 @@ export default function StormChecksOwnerOnboarding() {
   }, [screen]);
 
   const playAudio = useCallback((idx) => {
+    // Always stop any playing audio first
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; audioRef.current = null; }
     // Slide 1 audio is handled by the video-first useEffect
     if (idx === 1) return;
-    if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
     const src = OWNER_AUDIO[idx];
     if (!src) return;
     const audio = new Audio(src);
