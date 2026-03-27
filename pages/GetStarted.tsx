@@ -569,7 +569,7 @@ function Timeline() {
         <div key={i} style={{ display:"flex", gap:0, position:"relative" }}>
           <div style={{ display:"flex", flexDirection:"column", alignItems:"center", width:28, flexShrink:0, paddingTop:4 }}>
             <div style={{ width:10, height:10, borderRadius:"50%", background:colors[item.who]||"#D1D9E0", border:`2px solid ${colors[item.who]||"#E2E6EA"}`, flexShrink:0, zIndex:1 }} />
-            {i < items.length-1 && <div style={{ width:1, flex:1, minHeight:20, background:"#FFFFFF", margin:"4px 0" }} />}
+            {i < items.length-1 && <div style={{ width:2, flex:1, minHeight:20, background:"#D1D9E0", margin:"4px 0" }} />}
           </div>
           <div style={{ paddingLeft:8, paddingBottom:20, flex:1 }}>
             <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:colors[item.who], letterSpacing:"0.07em", marginBottom:3 }}>{item.phase}</div>
@@ -606,7 +606,7 @@ function CaseStudies({ idx, setIdx }) {
           {[["Before",c.prior],["Documented",c.found]].map(([l,v],i)=>(
             <div key={l} style={{ flex:"1 1 100px" }}>
               <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, color:"#8A9AB0", letterSpacing:"0.1em", marginBottom:3 }}>{l.toUpperCase()}</div>
-              <div style={{ fontSize:13, fontWeight:600, color:i===1?"#C99700":"#fff" }}>{v}</div>
+              <div style={{ fontSize:13, fontWeight:600, color:i===1?"#C99700":"#EF4444" }}>{v}</div>
             </div>
           ))}
         </div>
