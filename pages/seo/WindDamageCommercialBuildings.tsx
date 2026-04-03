@@ -37,7 +37,7 @@ const WindDamageCommercialBuildings: React.FC = () => {
       title="How to Identify Wind Damage on Commercial Buildings"
       subtitle="Recognizing visible and hidden wind damage across roofing systems, cladding, and building components — and why surface inspections miss the most costly damage."
       metaTitle="How to Identify Wind Damage on Commercial Buildings"
-      metaDescription="Learn how to identify wind damage on commercial building roofs, walls, and structural systems. Understand hidden damage and how forensic assessment finds it."
+      metaDescription="Learn how to identify wind damage on commercial building roofs, walls, and structural systems. How forensic assessment finds hidden damage."
       canonicalPath="/how-to-identify-wind-damage-commercial-buildings"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'How to Identify Wind Damage on Commercial Buildings' }]}

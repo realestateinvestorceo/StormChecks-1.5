@@ -45,7 +45,7 @@ const StormDamageColorado: React.FC = () => {
       title="Storm Damage Assessment in Colorado"
       subtitle="Colorado's Front Range is one of the most hail-prone regions in the world. StormChecks provides forensic building assessments for commercial property owners across the state."
       metaTitle="Storm Damage Assessment in Colorado | Commercial Property"
-      metaDescription="Colorado storm damage assessment for commercial properties. Front Range hail is among the worst in the nation. Free weather analysis and forensic assessment."
+      metaDescription="Colorado storm damage assessment for commercial properties. Front Range hail is among the worst in the nation. Free weather analysis."
       canonicalPath="/storm-damage-assessment-colorado"
       schemas={[articleSchema, localBusinessSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Colorado' }]}

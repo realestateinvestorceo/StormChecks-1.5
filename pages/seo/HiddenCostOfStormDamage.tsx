@@ -37,7 +37,7 @@ const HiddenCostOfStormDamage: React.FC = () => {
       title="The Hidden Cost of Undetected Storm Damage"
       subtitle="Why surface-level inspections miss thousands in damage — and how forensic assessment finds what others overlook."
       metaTitle="Hidden Cost of Undetected Storm Damage on Commercial Properties"
-      metaDescription="Surface-level inspections miss costly hidden storm damage. Learn how forensic building assessments find moisture intrusion, compromised insulation, and structural issues others miss."
+      metaDescription="Surface-level inspections miss costly hidden storm damage. Learn how forensic assessments find moisture intrusion and structural issues others miss."
       canonicalPath="/hidden-cost-of-undetected-storm-damage"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Hidden Cost of Undetected Storm Damage' }]}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Building2 } from 'lucide-react';
+import SEOHead from '../components/seo/SEOHead';
 
 const Leadership: React.FC = () => {
   const team = [
@@ -32,6 +33,11 @@ const Leadership: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="Leadership"
+        description="Meet the StormChecks leadership team. Experienced forensic building consultants with $10B+ in commercial property damage assessed."
+        canonicalPath="/leadership"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
         

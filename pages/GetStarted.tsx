@@ -25,6 +25,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import SEOHead from '../components/seo/SEOHead';
 const LOGO = "/stormchecks-logo.png";
 
 /* ─── DATA ─────────────────────────────────────────────────────────── */
@@ -277,6 +278,11 @@ export default function StormChecksOwnerOnboarding() {
 
   return (
     <div style={S.root}>
+      <SEOHead
+        title="Get Started"
+        description="See how StormChecks works for property owners. Free weather analysis, forensic assessment, and storm monitoring for commercial buildings."
+        canonicalPath="/getstarted"
+      />
       <div style={S.gridBg} />
 
       {/* ── Header ── */}

@@ -11,6 +11,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import SEOHead from '../components/seo/SEOHead';
 const LOGO = "/stormchecks-logo.png";
 
 /* ─── DATA ─────────────────────────────────────────────────────────── */
@@ -340,6 +341,11 @@ export default function StormChecksAffiliateOnboarding() {
 
   return (
     <div style={S.root}>
+      <SEOHead
+        title="Affiliate Program"
+        description="Join the StormChecks affiliate program. Earn referral income by connecting commercial property owners with forensic storm damage assessments."
+        canonicalPath="/affiliate"
+      />
       <div style={S.gridBg} />
 
       <header style={S.header}>

@@ -37,7 +37,7 @@ const HailDamageCommercialRoofs: React.FC = () => {
       title="How to Identify Hail Damage on Commercial Roofs"
       subtitle="A guide to recognizing hail damage across different commercial roofing systems — and why most damage is invisible without forensic assessment."
       metaTitle="How to Identify Hail Damage on Commercial Roofs"
-      metaDescription="Learn how to identify hail damage on TPO, EPDM, metal, and built-up commercial roofs. Understand what hidden damage looks like and when forensic assessment is needed."
+      metaDescription="Learn how to identify hail damage on TPO, EPDM, metal, and built-up commercial roofs. Know when forensic assessment is needed."
       canonicalPath="/how-to-identify-hail-damage-commercial-roofs"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'How to Identify Hail Damage on Commercial Roofs' }]}

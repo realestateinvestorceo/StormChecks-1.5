@@ -37,7 +37,7 @@ const StormDamageIndustrial: React.FC = () => {
       title="Storm Damage Assessment for Industrial Properties"
       subtitle="Industrial properties face unique storm damage challenges. Large roof areas, exposed mechanical systems, and production dependencies make forensic assessment critical."
       metaTitle="Storm Damage Assessment for Industrial Properties"
-      metaDescription="Storm damage assessment for industrial properties. Learn about risks unique to warehouses, manufacturing facilities, and distribution centers. Free assessment."
+      metaDescription="Storm damage assessment for industrial properties. Risks unique to warehouses, manufacturing facilities, and distribution centers."
       canonicalPath="/storm-damage-assessment-industrial-properties"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Industrial Properties' }]}

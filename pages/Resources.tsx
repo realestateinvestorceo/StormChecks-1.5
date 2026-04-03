@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Clock, Tag, Search, Calculator } from 'lucide-react';
+import SEOHead from '../components/seo/SEOHead';
 
 export interface Article {
   id: string;
@@ -88,6 +89,11 @@ const Resources: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="Resources & Insights"
+        description="Storm damage guides, case studies, and expert insights for commercial property owners. Learn how forensic assessments maximize claim recovery."
+        canonicalPath="/resources"
+      />
       {/* Recovery Calculator — First thing visitors see */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, AlertTriangle, FileWarning, FileText, XCircle, Search, CheckCircle, Clock, Eye, Bell, Check, FileDown, TrendingUp, ShieldCheck, Cloud, ClipboardCheck, Scale } from 'lucide-react';
+import SEOHead from '../components/seo/SEOHead';
 
 const Home: React.FC = () => {
   return (
     <>
+      <SEOHead
+        title="Forensic Building Consultants"
+        description="StormChecks provides forensic building assessments for commercial property owners. $10B+ in property damage assessed. Free weather analysis."
+        canonicalPath="/"
+      />
       {/* Hero Section */}
       <section className="relative bg-primary min-h-[calc(100vh-64px)] flex items-center overflow-hidden">
         

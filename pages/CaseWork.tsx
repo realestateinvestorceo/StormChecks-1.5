@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileDown } from 'lucide-react';
+import SEOHead from '../components/seo/SEOHead';
 
 const CaseWork: React.FC = () => {
   const cases = [
@@ -98,6 +99,11 @@ const CaseWork: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="Case Work"
+        description="Real StormChecks case results. See how forensic building assessments turned denied claims into six- and seven-figure recoveries."
+        canonicalPath="/case-work"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
         {/* Decorative background elements */}

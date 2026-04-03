@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const NotFound: React.FC = () => {
+  useEffect(() => {
+    document.title = 'Page Not Found | StormChecks';
+    let el = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute('name', 'robots');
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', 'noindex');
+    return () => { el?.remove(); };
+  }, []);
+
   return (
     <section className="bg-primary py-32 min-h-[60vh] flex items-center">
       <div className="container mx-auto px-6 text-center">

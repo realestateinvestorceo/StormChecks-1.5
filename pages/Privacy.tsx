@@ -1,8 +1,14 @@
 import React from 'react';
+import SEOHead from '../components/seo/SEOHead';
 
 const Privacy: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="Privacy Policy"
+        description="StormChecks privacy policy. Learn how we collect, use, and protect your personal information and property data."
+        canonicalPath="/privacy"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

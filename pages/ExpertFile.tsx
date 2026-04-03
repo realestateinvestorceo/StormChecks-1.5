@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Cloud, Search, Camera, FileText, Calculator, ClipboardCheck, XCircle, CheckCircle } from 'lucide-react';
+import SEOHead from '../components/seo/SEOHead';
 
 const ExpertFile: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="The Expert File"
+        description="See what goes into a StormChecks forensic expert file. Weather data, damage documentation, and carrier-ready evidence packages."
+        canonicalPath="/expert-file"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
         

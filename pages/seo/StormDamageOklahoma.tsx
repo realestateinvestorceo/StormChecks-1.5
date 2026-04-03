@@ -19,7 +19,7 @@ const StormDamageOklahoma: React.FC = () => {
       title="Storm Damage Assessment in Oklahoma"
       subtitle="Oklahoma faces some of the most severe weather in the nation. StormChecks provides forensic building assessments for commercial property owners across the Sooner State."
       metaTitle="Storm Damage Assessment in Oklahoma | Commercial Property"
-      metaDescription="Oklahoma storm damage assessment for commercial properties. Top 5 for hail and tornado risk. Free weather analysis and forensic assessment. 5-year filing deadline."
+      metaDescription="Oklahoma storm damage assessment for commercial properties. Top 5 for hail and tornado risk. Free weather analysis. 5-year deadline."
       canonicalPath="/storm-damage-assessment-oklahoma"
       schemas={[articleSchema, localBusinessSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Oklahoma' }]}

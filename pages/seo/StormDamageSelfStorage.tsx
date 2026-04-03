@@ -37,7 +37,7 @@ const StormDamageSelfStorage: React.FC = () => {
       title="Storm Damage Assessment for Self-Storage Facilities"
       subtitle="Self-storage facilities face unique storm damage risks. Metal construction, multiple buildings, and cosmetic damage exclusions make forensic assessment essential."
       metaTitle="Storm Damage Assessment for Self-Storage Facilities"
-      metaDescription="Storm damage assessment for self-storage facilities. Learn about risks unique to storage properties and how forensic assessment maximizes insurance recovery."
+      metaDescription="Storm damage assessment for self-storage facilities. Unique risks to storage properties and how forensic assessment maximizes recovery."
       canonicalPath="/storm-damage-assessment-self-storage-facilities"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Self-Storage Facilities' }]}

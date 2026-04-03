@@ -54,7 +54,7 @@ const WhatToDoAfterStormDamage: React.FC = () => {
       title="What to Do After Storm Damage to Your Commercial Property"
       subtitle="A step-by-step guide to protecting your property, preserving evidence, and maximizing your insurance claim after storm damage."
       metaTitle="What to Do After Storm Damage to Your Commercial Property"
-      metaDescription="Step-by-step guide for commercial property owners after storm damage. Learn how to protect your property, document damage, and maximize your insurance claim."
+      metaDescription="Step-by-step guide for commercial property owners after storm damage. Protect your property, document damage, and maximize your claim."
       canonicalPath="/what-to-do-after-storm-damage-commercial-property"
       schemas={[articleSchema, howToSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'What to Do After Storm Damage' }]}

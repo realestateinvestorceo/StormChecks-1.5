@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 
+const DEFAULT_OG_IMAGE = 'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696fb1b584438d714c0c7a73.png';
+
 interface SEOHeadProps {
   title: string;
   description: string;
   canonicalPath: string;
+  ogImage?: string;
   schemas?: object[];
 }
 
@@ -27,7 +30,7 @@ function upsertLink(rel: string, href: string) {
   el.setAttribute('href', href);
 }
 
-const SEOHead: React.FC<SEOHeadProps> = ({ title, description, canonicalPath, schemas = [] }) => {
+const SEOHead: React.FC<SEOHeadProps> = ({ title, description, canonicalPath, ogImage, schemas = [] }) => {
   useEffect(() => {
     const fullTitle = `${title} | StormChecks`;
     const canonicalUrl = `https://stormchecks.com${canonicalPath}`;
@@ -38,6 +41,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({ title, description, canonicalPath, sc
     upsertMeta('property', 'og:description', description);
     upsertMeta('property', 'og:url', canonicalUrl);
     upsertMeta('property', 'og:type', 'article');
+    upsertMeta('property', 'og:image', ogImage || DEFAULT_OG_IMAGE);
     upsertLink('canonical', canonicalUrl);
 
     const scriptElements = schemas.map(schema => {

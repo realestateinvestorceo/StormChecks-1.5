@@ -38,7 +38,7 @@ const ForensicVsStandardInspection: React.FC = () => {
       title="Forensic Assessment vs. Standard Inspection"
       subtitle="Understanding the critical differences between a forensic building assessment and a standard property inspection — and why it matters for your insurance claim."
       metaTitle="Forensic Assessment vs Standard Inspection | Commercial Property"
-      metaDescription="Compare forensic building assessments and standard inspections. Learn which finds more damage, produces better documentation, and maximizes insurance claim recovery."
+      metaDescription="Compare forensic building assessments and standard inspections. See which finds more damage and maximizes insurance claim recovery."
       canonicalPath="/forensic-assessment-vs-standard-inspection"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Forensic Assessment vs Standard Inspection' }]}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, Share2, AlertCircle, ArrowRight, CheckCircle2, XCircle, TrendingUp, Microscope, ClipboardCheck, ShieldCheck } from 'lucide-react';
 import { blogArticles } from './Resources';
+import SEOHead from '../components/seo/SEOHead';
 
 // Section Title Component to ensure consistent size
 // Updated to 24px as per user request.
@@ -276,6 +277,11 @@ const BlogPost: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title={article.title}
+        description={article.excerpt.length > 155 ? article.excerpt.slice(0, 152) + '...' : article.excerpt}
+        canonicalPath={`/resources/${article.id}`}
+      />
       {/* Article Header */}
       <div className="bg-primary pt-32 pb-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">

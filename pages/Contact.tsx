@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Mail, Phone, Send, Check, CheckCircle, Loader2, MapPin, AlertCircle } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
+import SEOHead from '../components/seo/SEOHead';
 
 declare global {
   interface Window {
@@ -145,6 +146,11 @@ const Contact: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="Start Your Free Assessment"
+        description="Get a free storm damage assessment for your commercial property. We analyze weather history and monitor your building at no cost."
+        canonicalPath="/contact"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
         

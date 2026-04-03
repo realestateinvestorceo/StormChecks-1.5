@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, ShieldCheck, Banknote, ChevronDown, ChevronUp, Plus, Minus } from 'lucide-react';
+import SEOHead from '../components/seo/SEOHead';
 
 const steps = [
   {
@@ -110,6 +111,11 @@ const HowItWorks: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="How It Works"
+        description="See the 8-step StormChecks process from free weather analysis to claim recovery. Zero upfront cost. About 12 months start to finish."
+        canonicalPath="/how-it-works"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

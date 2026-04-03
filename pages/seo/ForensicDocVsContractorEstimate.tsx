@@ -38,7 +38,7 @@ const ForensicDocVsContractorEstimate: React.FC = () => {
       title="Forensic Documentation vs. Contractor Estimate"
       subtitle="Why insurance carriers dismiss contractor estimates — and why forensic documentation gets claims paid."
       metaTitle="Forensic Documentation vs Contractor Estimate | Insurance Claims"
-      metaDescription="Learn why forensic documentation outperforms contractor estimates for commercial property insurance claims. Compare credibility, methodology, and claim outcomes."
+      metaDescription="Learn why forensic documentation outperforms contractor estimates for commercial property insurance claims. Compare methodology and outcomes."
       canonicalPath="/forensic-documentation-vs-contractor-estimate"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Forensic Documentation vs Contractor Estimate' }]}

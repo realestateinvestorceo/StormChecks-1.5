@@ -1,8 +1,14 @@
 import React from 'react';
+import SEOHead from '../components/seo/SEOHead';
 
 const Terms: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
+      <SEOHead
+        title="Terms of Service"
+        description="StormChecks terms of service. Review the terms governing use of our forensic building assessment and storm monitoring services."
+        canonicalPath="/terms"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-16 md:py-24 relative overflow-hidden text-white">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

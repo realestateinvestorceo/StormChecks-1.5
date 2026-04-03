@@ -38,7 +38,7 @@ const IndependentVsInsuranceAdjuster: React.FC = () => {
       title="Independent Assessment vs. Insurance Adjuster"
       subtitle="Why the adjuster who works for your insurance company may not be documenting the full extent of your property damage."
       metaTitle="Independent Assessment vs Insurance Adjuster | Commercial Property"
-      metaDescription="Compare independent forensic assessments with insurance adjuster inspections. Learn why independent assessments find 2-5x more damage and improve claim outcomes."
+      metaDescription="Compare independent forensic assessments with insurance adjuster inspections. Why independent assessments find 2-5x more damage."
       canonicalPath="/independent-assessment-vs-insurance-adjuster"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Independent Assessment vs Insurance Adjuster' }]}
