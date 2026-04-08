@@ -1,5 +1,5 @@
 /**
- * StormChecks — Property Owner Briefing (v4)
+ * StormChecks — Property Owner Briefing (v5)
  * Route: /getstarted
  *
  * DEPLOY NOTES:
@@ -9,19 +9,20 @@
  * 3. Senator clip: /public/videos/senator-hearing.mp4
  * 4. Fonts: Manrope + JetBrains Mono injected on mount.
  *
- * v4 CHANGES:
- * - Slides stripped to visual anchors only — titles and labels, no body paragraphs.
- *   Audio carries all explanation.
- * - Pause button + countdown timer moved INTO the header (right of counter).
- * - Side nav arrows repositioned to hug the content column, not the browser edges.
- *   Uses max(0px, calc(50% - 370px)) so they fall to edges gracefully on mobile.
- * - Center-of-screen pause button removed entirely.
- * - ThreeOptions simplified to 2-col "Without StormChecks / With StormChecks+PA".
- * - ProcessSlide: step titles only, no descriptions.
- * - Timeline: phase + title only, no descriptions.
- * - Objections reordered: Premiums → Getting Dropped → Blanket Policy first.
- *   All three include broker pre-check + honest "advise not to file" nuance.
- * - CTA: dual links — Submit First Property + Already have account? Log in.
+ * v5 CHANGES (de-sales-pitch pass):
+ * - IntroSlide headline changed from "They're not on your side. We are."
+ *   to "Why most storm damage goes undocumented." — lets the facts speak.
+ * - ThreeOptions replaced with ClaimRequirements — single column explaining
+ *   what goes into a properly documented claim. No "Without Us / With Us"
+ *   comparison framing.
+ * - CTA headline changed from "The weather assessment is completely free."
+ *   to "Here's how to get started." — leads with next steps, not price.
+ * - New WhatYouNeed slide added before CTA (screen 8). Tells the owner
+ *   exactly what information to have ready. LAST bumped from 8 → 9.
+ * - Audio array extended: new owner-08.mp3 slot for WhatYouNeed.
+ *   Former owner-08.mp3 (CTA) becomes owner-09.mp3.
+ * - Objections slide title kept as-is per brief.
+ * - Welcome headline kept as-is per brief.
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
@@ -72,7 +73,7 @@ const OBJECTIONS = [
   {
     tag: "Premiums",
     q: "Will my premiums go up?",
-    a: "Before we file anything, we run through your specific policy with your broker to understand the realistic premium impact. In most cases, claims tied to catalogued storms have no impact — your carrier already priced in that event. In the rare case a premium adjustment is possible, we lay out the math together. If filing doesn't make financial sense for your situation, we'll tell you not to file. We're not here to push a claim that doesn't benefit you.",
+    a: "Before we file anything, we run through your specific policy with your broker to understand the realistic premium impact. In most cases, claims tied to catalogued storms have no impact — your carrier already priced in that event. In the rare case a premium adjustment is possible, we lay out the math together. If filing doesn't make financial sense for your situation, we'll tell you not to file.",
   },
   {
     tag: "Getting Dropped",
@@ -118,9 +119,10 @@ const OWNER_AUDIO = [
   "/audio/owner-03.mp3",
   "/audio/owner-04.mp3",
   "/audio/owner-05.mp3",
-  "/audio/owner-06.mp3",   // Case Studies (was owner-07, timeline slide removed)
-  "/audio/owner-07.mp3",   // Objections   (was owner-08)
-  "/audio/owner-08.mp3",   // CTA          (was owner-09)
+  "/audio/owner-06.mp3",
+  "/audio/owner-07.mp3",
+  "/audio/owner-08.mp3",    // NEW — What You'll Need
+  "/audio/owner-09.mp3",    // CTA (was owner-08)
 ];
 const OWNER_AUDIO_01_POST = "/audio/owner-01-post.mp3";
 
@@ -140,7 +142,7 @@ export default function StormChecksOwnerOnboarding() {
   const mutedRef = useRef(false);
   const videoRef = useRef(null);
   const timerRef = useRef(null);
-  const LAST = 8;
+  const LAST = 9; // bumped from 8 → 9 with new WhatYouNeed slide
 
   useEffect(() => { mutedRef.current = muted; }, [muted]);
 
@@ -289,7 +291,6 @@ export default function StormChecksOwnerOnboarding() {
             <span style={{ color: "#AABBCC" }}> / {String(LAST - 1).padStart(2, "0")}</span>
           </span>
         )}
-        {/* Pause + timer — live in the header */}
         {showControls && (
           <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
             {audioRemaining !== null && audioRemaining > 0 && (
@@ -323,12 +324,13 @@ export default function StormChecksOwnerOnboarding() {
         }} />}
         {screen === 1 && <IntroSlide videoRef={videoRef} />}
         {screen === 2 && <WhoWeAre />}
-        {screen === 3 && <ThreeOptions />}
+        {screen === 3 && <ClaimRequirements />}
         {screen === 4 && <ProcessSlide />}
         {screen === 5 && <Fees />}
         {screen === 6 && <CaseStudies idx={caseIdx} setIdx={setCaseIdx} />}
         {screen === 7 && <Objections idx={objIdx} setIdx={setObjIdx} />}
-        {screen === 8 && <CTA />}
+        {screen === 8 && <WhatYouNeed />}
+        {screen === 9 && <CTA />}
       </main>
 
       {/* ── Side arrows — hug the 620px content column ── */}
@@ -372,6 +374,7 @@ function Welcome({ onStart, introPlaying }) {
         🔊 <span>Please ensure your speakers are on</span>
       </div>
       <Pill>PROPERTY OWNER BRIEFING</Pill>
+      {/* Welcome headline kept as-is per brief */}
       <h1 style={S.h1}>What your insurance company<br /><Em>doesn't want you to know.</Em></h1>
 
       <button onClick={onStart} style={{ ...S.ctaBtn, marginBottom: 28 }}>
@@ -380,7 +383,7 @@ function Welcome({ onStart, introPlaying }) {
       {introPlaying && <p style={{ ...S.hint, color: "#C99700", marginBottom: 10 }}>🔊 Playing intro…</p>}
 
       <p style={S.lead}>StormChecks is a forensic building consultancy. We find hidden storm damage, document it thoroughly, and make sure you actually get what you're owed — at no cost to you.</p>
-      <p style={{ ...S.lead, fontSize: 14, opacity: 0.7, marginBottom: 20 }}>About a 4-minute briefing. No obligation at any stage.</p>
+      <p style={{ ...S.lead, fontSize: 14, opacity: 0.7, marginBottom: 20 }}>About a 5-minute briefing. No obligation at any stage.</p>
       <p style={S.hint}>{introPlaying ? "Listening to intro — or tap Continue to skip" : "Arrow keys or tap dots to navigate"}</p>
     </div>
   );
@@ -390,7 +393,8 @@ function IntroSlide({ videoRef }) {
   return (
     <Wrap>
       <Tag>The Reality</Tag>
-      <h2 style={S.h2}>They're not on your side.<br /><Em>We are.</Em></h2>
+      {/* v5: removed "They're not on your side. We are." — lets facts speak */}
+      <h2 style={S.h2}>Why most storm damage<br /><Em>goes undocumented.</Em></h2>
 
       {/* Senator clip */}
       <div style={{ borderRadius: 14, overflow: "hidden", marginBottom: 20, background: "#000", border: "2px solid #E2E6EA" }}>
@@ -399,12 +403,11 @@ function IntroSlide({ videoRef }) {
         </video>
       </div>
 
-      {/* Icon anchors — titles only, audio explains */}
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {[
-          { icon: "⏱", t: "There's a short window to act." },
-          { icon: "👁", t: "The damage you can't see." },
-          { icon: "🛡", t: "StormChecks closes the gap." },
+          { icon: "⏱", t: "There's a limited window to act." },
+          { icon: "👁", t: "Most damage isn't visible to the naked eye." },
+          { icon: "🛡", t: "Forensic documentation changes the outcome." },
         ].map(item => (
           <div key={item.t} style={{ ...S.card, display: "flex", gap: 14, alignItems: "center", padding: "14px 16px" }}>
             <span style={{ fontSize: 22, flexShrink: 0 }}>{item.icon}</span>
@@ -442,50 +445,37 @@ function WhoWeAre() {
   );
 }
 
-function ThreeOptions() {
+/* v5: replaces ThreeOptions — single column, no "Without Us / With Us" framing */
+function ClaimRequirements() {
   return (
     <Wrap>
-      <Tag>Your Options</Tag>
-      <h2 style={S.h2}>Without us vs.<br /><Em>With StormChecks + PA.</Em></h2>
+      <Tag>What Documentation Requires</Tag>
+      <h2 style={S.h2}>What a properly documented<br /><Em>claim actually requires.</Em></h2>
 
-      {/* Two-column contrast */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
-        {/* Without column */}
-        <div style={{ background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: 12, padding: "16px" }}>
-          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#EF4444", letterSpacing: "0.1em", marginBottom: 12 }}>WITHOUT US</div>
-          {[
-            "No forensic documentation",
-            "No storm correlation data",
-            "No PE-signed engineering",
-            "Carrier lowballs or denies",
-            "No basis to push back",
-          ].map((t, i) => (
-            <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 7 }}>
-              <span style={{ color: "#EF4444", fontSize: 13, flexShrink: 0, paddingTop: 2 }}>✗</span>
-              <span style={{ fontSize: 13, color: "#555F6D", lineHeight: 1.4 }}>{t}</span>
+      <p style={{ fontSize: 14, color: "#555F6D", lineHeight: 1.7, marginBottom: 16 }}>
+        Most claims are denied or underpaid because the documentation package is incomplete. Here's what a carrier-ready forensic file includes.
+      </p>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 14 }}>
+        {[
+          { n: "01", t: "Meteorological storm correlation", d: "Exact hail size, wind speed, path, and date for your property coordinates — going back two years." },
+          { n: "02", t: "PE-signed engineering report", d: "Licensed forensic engineers inspect on-site for hail fractures, membrane compression, and HVAC cladding damage — a completely different discipline from a standard roof inspection." },
+          { n: "03", t: "Timestamped impact photography", d: "Systematic visual documentation of every storm-exposed surface, in carrier-recognized format." },
+          { n: "04", t: "Xactimate damage estimates", d: "The industry-standard repair and replacement cost format that carriers and public adjusters work from." },
+          { n: "05", t: "Complete expert file delivery", d: "Every element compiled into a single package and handed to the public adjuster, ready to file." },
+        ].map(d => (
+          <div key={d.n} style={{ ...S.card, display: "flex", gap: 16, alignItems: "flex-start", padding: "16px 18px" }}>
+            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: "#C99700", fontWeight: 600, flexShrink: 0, paddingTop: 2 }}>{d.n}</div>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "#0B1F33", marginBottom: 4 }}>{d.t}</div>
+              <div style={{ fontSize: 13, color: "#555F6D", lineHeight: 1.55 }}>{d.d}</div>
             </div>
-          ))}
-        </div>
-        {/* With column */}
-        <div style={{ background: "rgba(201,151,0,0.07)", border: "1px solid rgba(201,151,0,0.28)", borderRadius: 12, padding: "16px" }}>
-          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#C99700", letterSpacing: "0.1em", marginBottom: 12 }}>WITH US + PA</div>
-          {[
-            "Complete forensic file",
-            "2-year storm correlation",
-            "PE-signed engineering report",
-            "Xactimate estimates",
-            "PA files with full evidence",
-          ].map((t, i) => (
-            <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 7 }}>
-              <span style={{ color: "#C99700", fontSize: 13, flexShrink: 0, paddingTop: 2, fontWeight: 700 }}>✓</span>
-              <span style={{ fontSize: 13, color: "#0B1F33", lineHeight: 1.4, fontWeight: 500 }}>{t}</span>
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       <Note>
-        <b style={{ color: "#C99700" }}>$0 → $3.9M.</b> That's what the forensic file is worth on a carrier denial.
+        <b style={{ color: "#C99700" }}>$0 → $3.9M</b> — the difference between a claim filed without documentation and one filed with a complete forensic file. Same property.
       </Note>
     </Wrap>
   );
@@ -627,6 +617,7 @@ function Objections({ idx, setIdx }) {
   return (
     <Wrap>
       <Tag>Common Questions</Tag>
+      {/* Objections title kept as-is per brief */}
       <h2 style={{ ...S.h2, marginBottom: 20 }}>The questions everyone asks<br /><Em>before they decide.</Em></h2>
       <div style={{ ...S.card, minHeight: 180, marginBottom: 12 }}>
         <div style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 14, flexWrap: "wrap" }}>
@@ -650,13 +641,80 @@ function Objections({ idx, setIdx }) {
   );
 }
 
+/* v5: NEW slide — answers Jake's "what information they'll need to provide" ask */
+function WhatYouNeed() {
+  return (
+    <Wrap>
+      <Tag>Before You Submit</Tag>
+      <h2 style={{ ...S.h2, marginBottom: 12 }}>What you'll need<br /><Em>to get started.</Em></h2>
+      <p style={{ fontSize: 14, color: "#555F6D", lineHeight: 1.7, marginBottom: 16 }}>
+        The process requires very little from you — and almost nothing upfront. Here's what to have ready at each stage.
+      </p>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 14 }}>
+        {[
+          {
+            stage: "To start",
+            color: "#C99700",
+            items: [
+              "Property address (that's it — we run the weather analysis from here)",
+            ],
+          },
+          {
+            stage: "Before signing the engagement agreement",
+            color: "#8A9AB0",
+            items: [
+              "Insurance carrier name and current policy number",
+              "Your insurance broker's contact information",
+              "Whether the property is on a blanket or master policy",
+              "Any prior claims or denials on the property",
+            ],
+          },
+          {
+            stage: "During the inspection",
+            color: "#8A9AB0",
+            items: [
+              "Roof access for the PE team (you don't need to be on-site)",
+              "Contact for the property manager or site contact if applicable",
+            ],
+          },
+          {
+            stage: "During the claim",
+            color: "#8A9AB0",
+            items: [
+              "Occasional document signing when the PA requests it",
+              "Availability for a brief call if the carrier has specific questions",
+            ],
+          },
+        ].map((section, si) => (
+          <div key={si} style={{ ...S.card, padding: "16px 18px" }}>
+            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: section.color, letterSpacing: "0.1em", marginBottom: 10, fontWeight: 700 }}>{section.stage.toUpperCase()}</div>
+            {section.items.map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: i < section.items.length - 1 ? 8 : 0 }}>
+                <span style={{ color: section.color, fontSize: 12, flexShrink: 0, paddingTop: 2, fontWeight: 700 }}>→</span>
+                <span style={{ fontSize: 13, color: "#555F6D", lineHeight: 1.5 }}>{item}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <Note>
+        <b style={{ color: "#C99700" }}>After you submit the address</b> — StormChecks runs the weather analysis and reaches back out within about a week with results. If the assessment looks promising, we walk you through what was found before you decide whether to proceed.
+      </Note>
+    </Wrap>
+  );
+}
+
+/* v5: CTA headline changed from "The weather assessment is completely free."
+   to "Here's how to get started." — leads with process, not price */
 function CTA() {
   return (
     <div style={{ textAlign: "center", maxWidth: 460 }}>
       <div style={{ fontSize: 38, marginBottom: 20 }}>🏢</div>
-      <h2 style={{ ...S.h2, marginBottom: 12 }}>The weather assessment is<br /><Em>completely free.</Em></h2>
+      <h2 style={{ ...S.h2, marginBottom: 12 }}>Here's how to<br /><Em>get started.</Em></h2>
       <p style={{ ...S.lead, maxWidth: 360, margin: "0 auto 28px", fontSize: 15 }}>
-        No obligation to proceed at any stage. Submit your address and we'll take it from there.
+        Submit your property address. The weather assessment costs nothing and takes about 60 seconds to initiate. No obligation to proceed at any stage.
       </p>
 
       <a href="https://app.stormchecks.com" target="_blank" rel="noopener noreferrer" style={S.ctaLink}>
@@ -716,7 +774,6 @@ const S = {
   pauseBtn: { background: "rgba(201,151,0,0.1)", border: "1px solid rgba(201,151,0,0.3)", color: "#C99700", width: 30, height: 30, borderRadius: "50%", cursor: "pointer", fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "all 0.2s" },
   muteBtn: { background: "none", border: "none", cursor: "pointer", fontSize: 16, opacity: 0.6, flexShrink: 0, padding: "4px", lineHeight: 1 },
   main: { flex: 1, zIndex: 1, padding: "32px 56px 90px", transition: "opacity 0.19s ease,transform 0.19s ease", display: "flex", flexDirection: "column", alignItems: "center", overflowY: "auto" },
-  /* Arrows hug the 620px content column */
   sideNav: { position: "fixed", top: "50%", transform: "translateY(-50%)", zIndex: 30, background: "#C99700", border: "none", color: "#0B1F33", width: 40, height: 68, cursor: "pointer", fontSize: 17, fontFamily: "monospace", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s", boxShadow: "0 2px 10px rgba(201,151,0,0.3)" },
   dotsBar: { position: "fixed", bottom: 16, left: "50%", transform: "translateX(-50%)", zIndex: 30, display: "flex", gap: 7, alignItems: "center", background: "rgba(248,249,250,0.95)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", padding: "9px 16px", borderRadius: 22, border: "1px solid #E2E6EA", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" },
   dot: { height: 7, borderRadius: 4, border: "none", cursor: "pointer", padding: 0, transition: "all 0.25s ease" },

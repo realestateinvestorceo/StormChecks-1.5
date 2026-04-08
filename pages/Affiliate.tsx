@@ -1,5 +1,5 @@
 /**
- * StormChecks — Affiliate Onboarding (v4)
+ * StormChecks — Affiliate Onboarding (v5)
  * Route: /affiliate/start
  *
  * DEPLOY NOTES:
@@ -8,6 +8,21 @@
  * 3. Reference card: place PDF at /public/downloads/StormChecks_Affiliate_Reference.pdf
  * 4. Fonts: Manrope + JetBrains Mono injected on mount.
  * 5. "Copy bullets" uses navigator.clipboard — works on HTTPS.
+ *
+ * v5 CHANGES (de-sales-pitch pass):
+ * - Welcome slide preview bullets rewritten — informational, not tactical.
+ * - OpeningApproach slide renamed to "How to Explain StormChecks".
+ *   Bullets rewritten from tactical sales coaching to product explanations
+ *   the affiliate can understand and repeat naturally.
+ *   Copy-to-clipboard still works on the updated bullets.
+ * - BestLeads slide renamed to "Who Benefits Most".
+ *   Content reframed from prospecting playbook (how to find/target)
+ *   to product fit explanation (why this type of owner benefits).
+ *   The affiliate understands the product better; they work out the tactics.
+ * - Objections slide: heading changed from "Handling Objections" to
+ *   "Common Owner Questions". "YOUR RESPONSE" label changed to "THE FACTS".
+ *   Scripts rewritten from word-for-word talking points to honest factual
+ *   explanations the affiliate can use to have a real conversation.
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
@@ -15,14 +30,13 @@ const LOGO = "/stormchecks-logo.png";
 
 /* ─── DATA ─────────────────────────────────────────────────────────── */
 
-// Bullet points affiliates should internalize — not a script to read verbatim
+// v5: rewritten from sales tactics to factual explanations
 const OPENING_BULLETS = [
-  "Get straight to the point: tell them you work with a forensic engineering company that finds hidden storm damage on commercial buildings.",
-  "Lead with the money: most owners don't realize there's unclaimed recovery sitting on their property from storms in the last 2 years.",
-  "Defuse the premium fear upfront: for hail and wind, it's actually illegal for carriers to raise your rates — and we verify this with their broker before we ever proceed.",
-  "Make it zero-risk: the weather analysis is completely free. No commitment. You just need their property address to get started.",
-  "Close on the address: your only goal in the first conversation is the property address — not a signature, not a meeting. Just the address.",
-  "If they ask something you can't answer: tell them you'll find out and follow up. Then call StormChecks, get the answer, and get back to them.",
+  "StormChecks is a forensic building consultancy — not a roofing company or a claims service. They find storm damage that standard maintenance and roofer inspections don't catch, using meteorologists and licensed forensic engineers.",
+  "There's a 2-year lookback window from the date of any storm event. After that window closes, the recovery opportunity is gone permanently — even if the damage is real and documented.",
+  "The weather assessment is completely free and starts with just the property address. There's no commitment from the owner to proceed at any stage.",
+  "For hail and wind events, carriers are generally prohibited from raising rates. StormChecks verifies this with the owner's broker before anything is filed — and if filing isn't in the owner's best interest, they'll say so.",
+  "If an owner asks something you can't answer, tell them you'll find out and follow up. Call StormChecks, get the right answer, and get back to the owner. You don't need to know everything — just be accurate about what you do know.",
 ];
 
 const STEPS = [
@@ -30,7 +44,7 @@ const STEPS = [
     n: "01",
     phase: "Identify a qualified owner",
     what: "You",
-    detail: "Any commercial property owner with a building 10,000+ SF. Not single-family residential — ever. Best lead types: multifamily, retail, industrial, self-storage, office, portfolio owners. All 50 states qualify.",
+    detail: "Any commercial property owner with a building 10,000+ SF. Not single-family residential — ever. Best fit: multifamily, retail, industrial, self-storage, office, portfolio owners. All 50 states qualify.",
     action: "Find an owner. Cold call, LinkedIn, trade show, networking, referral — any channel works.",
     time: "Ongoing",
   },
@@ -55,7 +69,7 @@ const STEPS = [
     phase: "StormChecks runs the 2-year weather analysis",
     what: "StormChecks",
     detail: "We pull exact storm history for the property coordinates — hail size, wind speed, dates. If qualifying storm exposure exists, we generate an estimated recovery range for that specific property.",
-    action: "Pro tip: once the analysis is done, share the property-specific link when you follow up. The owner lands on a page showing a dollar amount tied to their address — far more compelling than a generic invite.",
+    action: "Once the analysis is done, share the property-specific link when you follow up. The owner lands on a page showing a dollar amount tied to their address — more informative than a generic invite.",
     time: "~1 week",
   },
   {
@@ -63,7 +77,7 @@ const STEPS = [
     phase: "Walk the owner through it — get them to sign",
     what: "You + SC",
     detail: "Once the weather assessment is ready, reach back out, walk them through what was found, and answer their questions. If something comes up you can't answer, find out and follow up. Goal: get them to sign the engagement agreement.",
-    action: "Follow up consistently. The assessment creates urgency — use it.",
+    action: "Follow up consistently. The assessment gives the owner a specific number to respond to — use it.",
     time: "1–2 weeks",
   },
   {
@@ -92,93 +106,94 @@ const STEPS = [
   },
 ];
 
+// v5: rewritten from scripted responses to factual explanations
 const OBJECTIONS = [
   {
     tag: "Premiums",
     q: "Won't this raise my premiums?",
-    script: "This is the #1 thing insurance companies want you to believe — it keeps billions in their pocket. For peril events like hail and wind, it's actually illegal for carriers to raise your rates. And even in edge cases where a modest adjustment is possible, run the math: $500K recovery vs. $15K premium bump — there's no real decision. Before we ever proceed, StormChecks coordinates with the owner's broker to verify it's in their best interest. If it isn't, we'll tell them not to file.",
+    facts: "For named peril events like hail and wind, carriers are generally prohibited by law from raising rates. StormChecks works with the owner's broker before anything is filed to verify the specific policy and carrier. In rare edge cases where a modest rate adjustment is possible, they lay out the math with the owner and let them decide. If filing doesn't make financial sense, they'll say so and the owner doesn't proceed.",
   },
   {
     tag: "Getting dropped",
     q: "What if I get dropped by my carrier?",
-    script: "StormChecks takes this seriously and is honest about it. Before moving forward, they analyze whether another carrier would pick up the property at comparable rates. If the owner is in a high-risk area with no viable alternatives, they'll advise not to file. That doesn't happen often — but it does happen, and they'll be straight about it.",
+    facts: "StormChecks takes this seriously and is honest about it. Before moving forward, they analyze whether another carrier would pick up the property at comparable rates. If the owner is in a high-risk area with no viable alternatives, they'll advise not to file. That doesn't happen often — but it does happen, and they'll be straight about it.",
   },
   {
     tag: "Blanket policy",
     q: "My buildings are on one master policy.",
-    script: "That changes the math, and StormChecks knows it. They run that specific scenario through the owner's broker before recommending they proceed. In some cases, they'll advise holding off on certain buildings under a blanket policy — because the right answer for a single property isn't always right for a portfolio.",
+    facts: "Filing against a blanket or master policy changes how claims aggregate and can affect the broader policy. StormChecks runs that specific scenario through the owner's broker before recommending they proceed. In some structures the math works clearly in the owner's favor. In others it may not. Either way, they'll give an honest answer before anyone commits.",
   },
   {
     tag: "Just inspected",
     q: "I just had my roof inspected.",
-    script: "Roofers look for leaks. Forensic engineers look for hail fractures, membrane compression, and impact patterns — a completely different discipline. StormChecks has found over $1M in damage after a roofer gave a written clean bill of health six months prior.",
+    facts: "Roofers inspect for leaks and visible damage. Forensic engineers inspect for hail fractures, membrane compression, and impact patterns — a completely different methodology. StormChecks has found recoverable damage after a roofer provided a written clean bill of health six months prior.",
   },
   {
     tag: "Already denied",
     q: "My carrier already denied a claim.",
-    script: "Denials are almost always documentation failures, not damage failures. StormChecks' forensic file gives the PA exactly what they need to reopen it. They've overturned a $0 denial and recovered $3.9M for that same property.",
+    facts: "Claim denials are almost always documentation failures, not damage failures. A carrier-ready forensic file — PE-signed engineering, storm correlation, Xactimate estimates — gives the public adjuster the evidence they need to reopen it. StormChecks has overturned a $0 denial and recovered $3.9M for that same property.",
   },
   {
     tag: "No damage",
     q: "I don't think I have any damage.",
-    script: "Storm damage doesn't show as leaks — it hides in roofing membranes and HVAC systems. StormChecks consistently finds $10–$15 per square foot that maintenance teams never flag. The weather assessment is completely free. 60 seconds to start.",
+    facts: "Storm damage typically doesn't present as leaks — it shows up as microscopic fractures in roofing membranes and impact damage on HVAC systems that maintenance inspections don't flag. The weather assessment is free and takes 60 seconds to initiate. If there's nothing there, the owner loses nothing.",
   },
 ];
 
-// 4 premium screening questions to qualify before pitching
+// 4 premium screening questions — these are factual questions, not sales tactics
 const PREMIUM_SCREENING = [
-  { q: "Has this property already been sold?",           why: "Lowest risk — claim goes against prior policy, zero current carrier impact." },
-  { q: "Is this property about to be sold?",             why: "Good candidate — recover before it leaves the portfolio." },
-  { q: "Was there a different carrier at the time of the storm?", why: "Green light — no current carrier relationship at risk." },
-  { q: "Is this on a master/blanket policy?",            why: "Flag for StormChecks — filing multiple claims on one policy raises carrier flags." },
+  { q: "Has this property already been sold?",           why: "Claim goes against prior policy — zero current carrier impact." },
+  { q: "Is this property about to be sold?",             why: "Owner can recover value before the asset transfers." },
+  { q: "Was there a different carrier at the time of the storm?", why: "No current carrier relationship at risk." },
+  { q: "Is this on a master/blanket policy?",            why: "Flag for StormChecks before proceeding — changes how claims aggregate." },
 ];
 
+// v5: reframed from "how to target/approach" to "why this owner type benefits"
 const LEADS = [
   {
     icon: "🏢",
     rank: "#1",
     type: "Large portfolio owners",
-    why: "Multiple properties, often in different markets. High probability that several have qualifying storm exposure that nobody's looked for. One relationship = multiple submissions. These owners are also usually unaware — they're not being approached by anyone.",
-    how: "Target asset managers, family office principals, and commercial property directors. Lead with: 'Do you manage properties in multiple markets? I'd like to run a free weather analysis across your portfolio.'",
+    why: "Multiple properties across different markets means higher probability that several have qualifying storm exposure that hasn't been assessed. One owner relationship can produce multiple submissions. Portfolio owners often have no visibility into property-level storm history — they're managing assets, not monitoring weather events.",
+    howToStart: "Ask whether they manage properties across multiple markets. If yes, the weather analysis can run across the portfolio — still free, still just an address per property.",
   },
   {
     icon: "🔑",
     rank: "#2",
-    type: "Property about to be sold",
-    why: "Zero premium risk — the claim goes against the policy that was active at storm time. The owner recovers real value before the asset leaves their portfolio. The filing window still applies, so timing is urgent and compelling.",
-    how: "Ask: 'Are you planning to sell any assets in the next 12–18 months?' If yes: 'There may be recoverable value before you close that deal — at no risk to your current coverage.'",
+    type: "Properties about to be sold",
+    why: "When a property is sold, the claim goes against the policy that was active at storm time — not the buyer's future policy. The current owner can recover real value before the asset transfers with no impact on the buyer's coverage. The lookback window still applies, so timing matters.",
+    howToStart: "Ask whether they're planning to sell any assets in the next 12–18 months. If yes, explain there may be recoverable value to capture before the asset transfers.",
   },
   {
     icon: "🏷",
     rank: "#3",
     type: "Currently listed properties",
-    why: "Same logic as sold properties — owner can recover value before the asset transfers. Creates urgency. Clean premium story. High motivation to act quickly.",
-    how: "Search listings in storm-prone areas. Contact the listing agent or owner directly. The pitch: recover value before close, no premium impact on the buyer's future policy.",
+    why: "Same rationale as pre-sale — the claim goes against the current policy, not the buyer's. The owner has a specific reason to act quickly before the asset transfers. Properties in storm-prone markets that are actively listed are strong candidates.",
+    howToStart: "Search listings in storm-prone areas and contact the listing agent or owner directly. The timing aspect is straightforward to explain.",
   },
   {
     icon: "🚫",
     rank: "#4",
     type: "Previously denied claims",
-    why: "A denial is almost always a documentation failure, not a damage failure. These owners are often frustrated and already looking for options. Highest motivation of any lead type.",
-    how: "Ask: 'Have you ever had a claim denied or underpaid?' If yes, that's your strongest lead.",
+    why: "A denial almost always means the documentation package was insufficient — not that the damage didn't exist. These owners have already been through a claims attempt and are often looking for a different outcome. The forensic file changes what the public adjuster can actually work with.",
+    howToStart: "Ask whether they've ever had a claim denied or underpaid. If yes, explain what a forensic documentation package does differently.",
   },
   {
     icon: "🔨",
     rank: "#5",
-    type: "Roofer gave clean bill of health",
-    why: "Roofers aren't forensic engineers. High probability of real damage that was never found with the right methodology.",
-    how: "Ask: 'Has anyone ever assessed for hail impact specifically — not just leaks?' Most say no.",
+    type: "Owner had a roofer give clean bill of health",
+    why: "Roofers and forensic engineers use different methodologies. A roofer's clean inspection doesn't address hail fractures or membrane compression — the things that make a claim viable. There's a reasonable probability of recoverable damage that was never found with the right tools.",
+    howToStart: "Ask whether anyone has assessed the property specifically for hail impact — not just leaks or visible damage. Most owners haven't had that done.",
   },
   {
     icon: "📈",
     rank: "#6",
-    type: "Owners working to improve their numbers",
-    why: "Owners who are actively trying to refinance, raise capital, improve NOI, or recapitalize have a specific, practical reason to care about uncovering a hidden asset. An unclaimed insurance recovery can materially improve their position — often six or seven figures — without additional debt, dilution, or operational change. They're already motivated to find value. You're showing them where it is.",
-    how: "Listen for owners who mention a refinance, a capital raise, a DSCR squeeze, or a need to improve cash position. The pitch: 'Before you go that route, there may be an asset on your property you haven't looked at. Takes 60 seconds to check.' Do not target, qualify, or pitch based on someone's financial distress — pitch based on the unclaimed asset. The conversation is about what they're owed, not about what they need.",
+    type: "Owners focused on improving their numbers",
+    why: "Owners working on refinancing, capital raises, or NOI improvement have a practical reason to care about uncovering a hidden asset. An unclaimed insurance recovery can materially improve their position — often six or seven figures — without additional debt or dilution. The conversation is about what the property may have on it, not about their financial situation.",
+    howToStart: "If an owner mentions a refinance, capital raise, or cash position goal, explain that there may be an asset on their property they haven't looked at yet. The weather assessment takes 60 seconds to start.",
   },
 ];
 
-// Corrected tiers: 5%, 10%, 15% of SC's 20% fee
 const TIERS = [
   { tier: "Tier 1", desc: "Getting started",   rate: "5%",  overrideRate: "2%",   networkVol: "First $2M in network volume",    ex1: "$1M recovery → SC fee $200K → your commission: $10,000", override: true },
   { tier: "Tier 2", desc: "Building momentum", rate: "10%", overrideRate: "3.5%", networkVol: "Next $10M in network volume",      ex1: "$1M recovery → SC fee $200K → your commission: $20,000", override: true },
@@ -384,11 +399,11 @@ export default function StormChecksAffiliateOnboarding() {
           if (a) a.addEventListener("ended", () => go(1), { once: true });
         }} />}
         {screen === 1 && <YourRole />}
-        {screen === 2 && <OpeningApproach copied={copied} onCopy={copyBullets} />}
+        {screen === 2 && <HowToExplain copied={copied} onCopy={copyBullets} />}
         {screen === 3 && <FullProcess />}
         {screen === 4 && <Commission />}
-        {screen === 5 && <BestLeads idx={leadIdx} setIdx={setLeadIdx} />}
-        {screen === 6 && <Objections idx={objIdx} setIdx={setObjIdx} />}
+        {screen === 5 && <WhoBenefitsMost idx={leadIdx} setIdx={setLeadIdx} />}
+        {screen === 6 && <CommonOwnerQuestions idx={objIdx} setIdx={setObjIdx} />}
         {screen === 7 && <PortalWalkthrough loomRef={loomRef} />}
         {screen === 8 && <StartNow onBack={() => go(7)} />}
       </main>
@@ -427,6 +442,7 @@ export default function StormChecksAffiliateOnboarding() {
 
 /* ─── SCREENS ───────────────────────────────────────────────────────── */
 
+// v5: welcome bullets rewritten — informational, not tactical
 function Welcome({ onStart, introPlaying }: { onStart: () => void; introPlaying: boolean }) {
   return (
     <div style={{ textAlign: "center", maxWidth: 520 }}>
@@ -434,15 +450,14 @@ function Welcome({ onStart, introPlaying }: { onStart: () => void; introPlaying:
         🔊 <span>Please ensure your speakers are on</span>
       </div>
       <Pill>AFFILIATE PARTNER BRIEFING</Pill>
-      <h1 style={S.h1}>You're in.<br /><Em>Here's how to get started.</Em></h1>
+      <h1 style={S.h1}>You're in.<br /><Em>Here's how it works.</Em></h1>
       <p style={{ ...S.lead, fontSize: 15, marginBottom: 8 }}>
-        This takes about 4 minutes. By the end you'll know exactly what to do — and what not to do.
+        This takes about 4 minutes. By the end you'll understand the process, your role in it, and how you get paid.
       </p>
       <p style={{ ...S.lead, fontSize: 13, opacity: 0.65, marginBottom: 32 }}>
-        Quick recap: StormChecks is a forensic building consultancy. We find hidden storm damage on commercial properties, document it completely, and work with public adjusters to recover what owners are owed — at no cost to them.
+        StormChecks is a forensic building consultancy. We find hidden storm damage on commercial properties, document it completely, and work with public adjusters to recover what owners are owed — at no cost to them.
       </p>
 
-      {/* CTA first */}
       <button onClick={onStart} style={{ ...S.cta, marginBottom: 12, fontSize: 17, padding: "18px 48px" }}>
         {introPlaying ? "Continue →" : "Start Briefing →"}
       </button>
@@ -453,9 +468,9 @@ function Welcome({ onStart, introPlaying }: { onStart: () => void; introPlaying:
 
       <div style={{ display: "flex", flexDirection: "column", gap: 8, textAlign: "left" }}>
         {[
-          { icon: "💰", t: "The money is already there", d: "Owners are leaving real recovery money on the table — not because damage doesn't exist, but because no one pointed them to the right process." },
-          { icon: "🏢", t: "Your best leads aren't who you think", d: "Portfolio owners and owners about to sell are your highest-conversion targets — not just properties in storm zones." },
-          { icon: "📋", t: "Your job is simple", d: "Get the property address. Submit it. Follow up until the owner signs. Everything else is handled." },
+          { icon: "🔬", t: "What StormChecks actually does", d: "Forensic meteorology and engineering — not roofing, not adjusting. Understanding the methodology is what lets you explain it accurately." },
+          { icon: "🏢", t: "Which owners benefit most", d: "Portfolio owners, pre-sale properties, previously denied claims. The product fit matters more than the pitch." },
+          { icon: "📋", t: "How the process runs end to end", d: "Your active involvement is the first few weeks. After the owner signs, StormChecks and the PA handle the rest." },
         ].map(item => (
           <div key={item.t} style={{ ...S.card, display: "flex", gap: 14, alignItems: "flex-start" }}>
             <span style={{ fontSize: 20, flexShrink: 0 }}>{item.icon}</span>
@@ -476,7 +491,6 @@ function YourRole() {
       <Tag>Your Role</Tag>
       <h2 style={S.h2}>You're the relationship.<br /><Em>StormChecks handles everything else.</Em></h2>
 
-      {/* Phased role — not a single task */}
       <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 14 }}>
         {[
           { phase: "Find", t: "Identify qualified commercial property owners", detail: "10,000+ SF, any US state. Not single-family residential — ever." },
@@ -524,16 +538,17 @@ function YourRole() {
   );
 }
 
-function OpeningApproach({ copied, onCopy }: { copied: boolean; onCopy: () => void }) {
+// v5: renamed from OpeningApproach → HowToExplain. Bullets are product explanations, not tactics.
+function HowToExplain({ copied, onCopy }: { copied: boolean; onCopy: () => void }) {
   return (
     <Wrap>
-      <Tag>Starting The Conversation</Tag>
-      <h2 style={S.h2}>Not a script.<br /><Em>Key points to own.</Em></h2>
+      <Tag>Explaining What StormChecks Does</Tag>
+      <h2 style={S.h2}>Know the product well enough<br /><Em>to explain it accurately.</Em></h2>
       <p style={{ ...S.body, marginBottom: 16, fontSize: 14 }}>
-        Works for cold calls, LinkedIn, trade shows, and referrals. Your only goal in the first conversation is the property address — not a commitment, not a meeting.
+        These aren't talking points to memorize — they're the facts you need to understand so you can explain the process honestly in your own words.
       </p>
       <div style={{ background: "#FFFBEA", border: "2px solid #C99700", borderRadius: 14, padding: "22px 20px", marginBottom: 12 }}>
-        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#9B7300", letterSpacing: "0.12em", marginBottom: 16, fontWeight: 700 }}>KEY POINTS — FIRST CONVERSATION</div>
+        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#9B7300", letterSpacing: "0.12em", marginBottom: 16, fontWeight: 700 }}>WHAT TO UNDERSTAND BEFORE ANY CONVERSATION</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {OPENING_BULLETS.map((b, i) => (
             <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
@@ -553,11 +568,11 @@ function OpeningApproach({ copied, onCopy }: { copied: boolean; onCopy: () => vo
             color: copied ? "#16A34A" : "#555F6D",
             cursor: "pointer", letterSpacing: "0.06em", transition: "all 0.2s", fontWeight: 600,
           }}
-        >{copied ? "✓ COPIED TO CLIPBOARD" : "COPY BULLET POINTS"}</button>
+        >{copied ? "✓ COPIED TO CLIPBOARD" : "COPY TO CLIPBOARD"}</button>
       </div>
       <Note>
-        <b style={{ color: "#9B7300" }}>The close:</b>{" "}
-        "The weather analysis is completely free — takes 60 seconds. Can I get your property address so we can run it?"
+        <b style={{ color: "#9B7300" }}>The only ask in the first conversation:</b>{" "}
+        "The weather analysis is completely free — it just needs the property address to run. Can I get that from you?"
       </Note>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginTop: 14 }}>
         {[["📞", "Cold Call"], ["💼", "LinkedIn DM"], ["🤝", "Trade Show / Networking"]].map(([icon, label]) => (
@@ -659,7 +674,6 @@ function Commission() {
         ))}
       </div>
 
-      {/* Worked example */}
       <div style={{ ...S.card, padding: "16px", marginBottom: 14 }}>
         <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#8A9AB0", letterSpacing: "0.12em", marginBottom: 12 }}>WORKED EXAMPLE — $1M RECOVERY (TIER 3)</div>
         {[
@@ -688,13 +702,14 @@ function Commission() {
   );
 }
 
-function BestLeads({ idx, setIdx }: { idx: number; setIdx: (i: number) => void }) {
+// v5: renamed from BestLeads → WhoBenefitsMost. Reframed from targeting tactics to product fit.
+function WhoBenefitsMost({ idx, setIdx }: { idx: number; setIdx: (i: number) => void }) {
   const l = LEADS[idx];
   return (
     <Wrap>
-      <Tag>Lead Quality</Tag>
-      <h2 style={S.h2}>Start with the top two.<br /><Em>They convert fastest.</Em></h2>
-      <p style={{ ...S.body, marginBottom: 18, fontSize: 14 }}>Lead categories ranked by conversion rate and speed to commission.</p>
+      <Tag>Product Fit</Tag>
+      <h2 style={S.h2}>Who benefits most<br /><Em>from this process.</Em></h2>
+      <p style={{ ...S.body, marginBottom: 18, fontSize: 14 }}>These owner types have the strongest fit with what StormChecks does — and why.</p>
       <div style={{ background: "#FFFBEA", border: "2px solid #C99700", borderRadius: 14, padding: "22px 20px", marginBottom: 14, minHeight: 220 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
           <div style={{ background: "#C99700", color: "#fff", borderRadius: 8, width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, flexShrink: 0 }}>{l.rank}</div>
@@ -704,7 +719,7 @@ function BestLeads({ idx, setIdx }: { idx: number; setIdx: (i: number) => void }
         <p style={{ fontSize: 14, color: "#555F6D", lineHeight: 1.7, marginBottom: 14 }}>{l.why}</p>
         <div style={{ background: "#FFFFFF", borderLeft: "3px solid #C99700", borderRadius: "0 10px 10px 0", padding: "12px 16px" }}>
           <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#9B7300", letterSpacing: "0.1em", marginBottom: 7, fontWeight: 700 }}>HOW TO START THE CONVERSATION</div>
-          <p style={{ fontSize: 14, color: "#0B1F33", fontStyle: "italic", lineHeight: 1.65 }}>{l.how}</p>
+          <p style={{ fontSize: 14, color: "#0B1F33", fontStyle: "italic", lineHeight: 1.65 }}>{l.howToStart}</p>
         </div>
       </div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -726,16 +741,18 @@ function BestLeads({ idx, setIdx }: { idx: number; setIdx: (i: number) => void }
   );
 }
 
-function Objections({ idx, setIdx }: { idx: number; setIdx: (i: number) => void }) {
+// v5: renamed from Objections → CommonOwnerQuestions. "YOUR RESPONSE" → "THE FACTS".
+// Scripts rewritten as factual explanations, not word-for-word talking points.
+function CommonOwnerQuestions({ idx, setIdx }: { idx: number; setIdx: (i: number) => void }) {
   const o = OBJECTIONS[idx];
   return (
     <Wrap>
-      <Tag>Handling Objections</Tag>
-      <h2 style={S.h2}>Lead with premiums.<br /><Em>It's the #1 barrier.</Em></h2>
+      <Tag>Common Owner Questions</Tag>
+      <h2 style={S.h2}>Questions owners ask.<br /><Em>The facts behind each one.</Em></h2>
 
-      {/* Premium screening questions — always visible at top */}
+      {/* Premium screening questions */}
       <div style={{ ...S.card, marginBottom: 16, background: "#FFFBEA", border: "2px solid rgba(201,151,0,0.4)" }}>
-        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#9B7300", letterSpacing: "0.12em", marginBottom: 12, fontWeight: 700 }}>4 PREMIUM SCREENING QUESTIONS — ASK THESE FIRST</div>
+        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#9B7300", letterSpacing: "0.12em", marginBottom: 12, fontWeight: 700 }}>4 QUESTIONS THAT CLARIFY THE PREMIUM PICTURE</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {PREMIUM_SCREENING.map((s, i) => (
             <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
@@ -749,15 +766,15 @@ function Objections({ idx, setIdx }: { idx: number; setIdx: (i: number) => void 
         </div>
       </div>
 
-      {/* Objection response card */}
+      {/* Facts card */}
       <div style={{ ...S.card, minHeight: 200, marginBottom: 14 }}>
         <div style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 14, flexWrap: "wrap" }}>
           <div style={{ fontSize: 15, fontWeight: 700, color: "#0B1F33", flex: 1, lineHeight: 1.4 }}>"{o.q}"</div>
           <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: "#9B7300", background: "rgba(201,151,0,0.1)", borderRadius: 5, padding: "3px 9px", flexShrink: 0, fontWeight: 700 }}>{o.tag}</span>
         </div>
         <div style={{ background: "#FFFBEA", borderLeft: "3px solid #C99700", borderRadius: "0 10px 10px 0", padding: "14px 16px" }}>
-          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#9B7300", letterSpacing: "0.1em", marginBottom: 9, fontWeight: 700 }}>YOUR RESPONSE</div>
-          <p style={{ fontSize: 14, color: "#2D3748", lineHeight: 1.8 }}>{o.script}</p>
+          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#9B7300", letterSpacing: "0.1em", marginBottom: 9, fontWeight: 700 }}>THE FACTS</div>
+          <p style={{ fontSize: 14, color: "#2D3748", lineHeight: 1.8 }}>{o.facts}</p>
         </div>
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
@@ -788,7 +805,7 @@ function PortalWalkthrough({ loomRef }: { loomRef: React.RefObject<HTMLIFrameEle
             { n: "1", t: "Go to app.stormchecks.com", d: "Log in with your affiliate account credentials." },
             { n: "2", t: "Switch to Affiliate Mode", d: "Toggle at the bottom-left of the screen. This unlocks your affiliate dashboard and submission links." },
             { n: "3", t: "Submit a property owner", d: "Use the property owner link (not the sub-affiliate link) to add a lead. Enter their contact info and property address." },
-            { n: "4", t: "Follow up with a property-specific link", d: "After the weather analysis runs (~1 week), share the owner's personalized link. They see a dollar amount tied to their address — much stronger than a generic invite." },
+            { n: "4", t: "Follow up with a property-specific link", d: "After the weather analysis runs (~1 week), share the owner's personalized link. They see a dollar amount tied to their address — more informative than a generic invite." },
           ].map(item => (
             <div key={item.n} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
               <div style={{ background: "#C99700", color: "#fff", borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800, flexShrink: 0, marginTop: 1 }}>{item.n}</div>
