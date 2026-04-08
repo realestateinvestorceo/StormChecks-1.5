@@ -37,7 +37,7 @@ const CASES = [
     sqft: "42,000 SF",
     prior: "Carrier denied prior claim",
     found: "$3.9M",
-    image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661112c7683b0b980256d8.png",
+    image: "/images/retail.png",
     story:
       "The carrier had denied the original claim for lack of documentation. Our forensic file — timestamped hail-impact photography, PE-signed engineering analysis, and meteorological storm correlation — overturned the denial entirely.",
   },
@@ -47,7 +47,7 @@ const CASES = [
     sqft: "120,000 SF",
     prior: "Owner unaware of damage",
     found: "$2.4M",
-    image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661165f8a93b4590242c9f.png",
+    image: "/images/industrial.png",
     story:
       "Building had been owned 8 years with no prior claims. Engineers found systematic membrane compression and HVAC cladding damage invisible to standard maintenance — consistent with two distinct hail events in the prior 24 months.",
   },
@@ -57,7 +57,7 @@ const CASES = [
     sqft: "85,000 SF",
     prior: "$0 assessed",
     found: "$2.1M",
-    image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965fa79c7683b6702ff96ee.png",
+    image: "/images/marina.png",
     story:
       "Two weeks from initial weather analysis to complete forensic file delivery. Owner had zero indication of damage. The meteorological lookback identified three qualifying storm events that had not triggered any maintenance flags.",
   },
@@ -67,7 +67,7 @@ const CASES = [
     sqft: "65,000 SF",
     prior: "Suspected minor damage",
     found: "$1.8M",
-    image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69660fe3ccf2c63741f13760.png",
+    image: "/images/self-storage.png",
     story:
       "Owner expected a small roof repair claim. Engineers found systematic hail fractures across the full roof envelope, displaced flashing on all 14 buildings, and HVAC cladding damage across the property.",
   },
@@ -448,7 +448,7 @@ function WhoWeAre() {
 
       <div style={{ borderRadius: 12, overflow: "hidden", marginBottom: 14, border: "1px solid #E2E6EA" }}>
         <img
-          src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f1daf8a93bbc612078b4.png"
+          src="/images/forensic-roof.png"
           alt="Forensic roof analysis in progress"
           style={{ width: "100%", height: 180, objectFit: "cover", display: "block" }}
         />
