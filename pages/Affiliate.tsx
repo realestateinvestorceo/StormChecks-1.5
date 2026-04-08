@@ -224,14 +224,17 @@ export default function StormChecksAffiliateOnboarding() {
   const [introPlaying, setIntroPlaying] = useState(false);
   const [audioPaused, setAudioPaused]   = useState(false);
   const [audioRemaining, setAudioRemaining] = useState<number | null>(null);
-  const mainRef  = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const mutedRef = useRef(false);
-  const loomRef  = useRef<HTMLIFrameElement>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const mainRef   = useRef<HTMLDivElement>(null);
+  const audioRef  = useRef<HTMLAudioElement | null>(null);
+  const mutedRef  = useRef(false);
+  const loomRef   = useRef<HTMLIFrameElement>(null);
+  const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+  const screenRef = useRef(0);
+  const goRef     = useRef<((idx: number) => void) | null>(null);
   const LAST = 8;
 
   useEffect(() => { mutedRef.current = muted; }, [muted]);
+  useEffect(() => { screenRef.current = screen; }, [screen]);
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -291,12 +294,20 @@ export default function StormChecksAffiliateOnboarding() {
     audioRef.current = audio;
     audio.play().catch(() => {});
     if (idx === 7) {
+      // Loom slide: start video after audio, don't auto-advance
       audio.addEventListener("ended", () => {
         const iframe = loomRef.current;
         if (iframe) {
           const base = "https://www.loom.com/embed/8aa6323281744a71b41b2a85b735151b";
           iframe.src = base + "?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true&autoplay=1";
         }
+      }, { once: true });
+    } else if (idx > 0 && idx < LAST) {
+      // All other non-welcome, non-last slides: auto-advance after 1s
+      audio.addEventListener("ended", () => {
+        setTimeout(() => {
+          if (screenRef.current === idx) goRef.current?.(idx + 1);
+        }, 1000);
       }, { once: true });
     }
   }, []);
@@ -315,6 +326,8 @@ export default function StormChecksAffiliateOnboarding() {
       }
     }, 190);
   }, [playAudio]);
+
+  useEffect(() => { goRef.current = go; }, [go]);
 
   const copyBullets = () => {
     const text = OPENING_BULLETS.map((b, i) => `${i + 1}. ${b}`).join("\n\n");
