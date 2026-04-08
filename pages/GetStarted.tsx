@@ -450,7 +450,7 @@ function WhoWeAre() {
         <img
           src="/images/forensic-roof.png"
           alt="Forensic roof analysis in progress"
-          style={{ width: "100%", height: 180, objectFit: "cover", display: "block" }}
+          style={{ width: "100%", height: "auto", display: "block" }}
         />
       </div>
 
@@ -609,7 +609,7 @@ function CaseStudies({ idx, setIdx }) {
           <img
             src={c.image}
             alt={c.type}
-            style={{ width: "100%", height: 160, objectFit: "cover", display: "block" }}
+            style={{ width: "100%", height: "auto", display: "block" }}
           />
         )}
         <div style={{ padding: "20px 18px" }}>
