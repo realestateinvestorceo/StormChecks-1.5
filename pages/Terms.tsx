@@ -79,9 +79,8 @@ const Terms: React.FC = () => {
 
               <h3 className="text-xl font-bold text-primary mt-6 mb-3">Payment Terms</h3>
               <ul className="list-disc pl-5 space-y-2">
-                <li><strong>No Upfront Costs:</strong> You never pay anything upfront.</li>
-                <li><strong>No Recovery, No Fee:</strong> If there is no settlement, you owe nothing to StormChecks.</li>
-                <li><strong>Payment Upon Settlement:</strong> Fees are deducted from settlement proceeds before distribution to you.</li>
+                <li><strong>Free Assessment &amp; Monitoring:</strong> Weather analysis, continuous monitoring, and the initial forensic assessment are provided at no cost to you.</li>
+                <li><strong>Engagement Agreement:</strong> If you choose to proceed with forensic documentation services, the fee terms are detailed in your StormChecks engagement agreement.</li>
                 <li><strong>Separate Agreements:</strong> Public adjuster fees are governed by a separate agreement between you and the public adjuster.</li>
               </ul>
             </section>

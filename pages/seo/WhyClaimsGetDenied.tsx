@@ -157,7 +157,7 @@ const WhyClaimsGetDenied: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-primary mb-6">What to Do If Your Claim Has Been Denied</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              A denied claim is not the end. With proper forensic documentation, many denied claims are reopened and resolved favorably. StormChecks has helped property owners recover millions in previously denied claims by providing the engineering-grade evidence carriers cannot dismiss.
+              A denied claim is not the end. With proper forensic documentation, many denied claims are reopened and reconsidered. StormChecks provides the engineering-grade evidence that supports reconsideration of previously denied claims — evidence the public adjuster or attorney you engage can use to pursue recovery.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-gray-50 p-6 rounded-lg text-center">

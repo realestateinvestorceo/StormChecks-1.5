@@ -26,7 +26,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Storm Damage Assessment for Industrial Properties',
-  description: 'Learn about storm damage risks unique to industrial properties and how forensic assessment helps industrial property owners maximize insurance claim recovery.',
+  description: 'Learn about storm damage risks unique to industrial properties and how forensic assessment helps industrial property owners support insurance claims with detailed documentation.',
   author: { '@type': 'Organization', name: 'StormChecks' },
   publisher: { '@type': 'Organization', name: 'StormChecks' },
 };
@@ -112,7 +112,7 @@ const StormDamageIndustrial: React.FC = () => {
                   <div className="space-y-2">
                     <p className="text-sm"><span className="text-gray-500">Carrier estimate:</span> <span className="font-bold">$30,000</span></p>
                     <p className="text-sm"><span className="text-gray-500">Forensic assessment:</span> <span className="font-bold text-accent">$730,000</span></p>
-                    <p className="text-sm"><span className="text-gray-500">Additional recovery:</span> <span className="font-bold text-green-600">$700,000</span></p>
+                    <p className="text-sm"><span className="text-gray-500">Additional documented damage:</span> <span className="font-bold text-green-600">$700,000</span></p>
                   </div>
                 </div>
               </div>

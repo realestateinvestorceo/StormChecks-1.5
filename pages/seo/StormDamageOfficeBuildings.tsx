@@ -26,7 +26,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Storm Damage Assessment for Office Buildings',
-  description: 'Learn about storm damage risks for commercial office buildings and how forensic assessment helps office property owners maximize insurance recovery.',
+  description: 'Learn about storm damage risks for commercial office buildings and how forensic assessment helps office property owners support insurance claims with detailed documentation.',
   author: { '@type': 'Organization', name: 'StormChecks' },
   publisher: { '@type': 'Organization', name: 'StormChecks' },
 };
@@ -37,7 +37,7 @@ const StormDamageOfficeBuildings: React.FC = () => {
       title="Storm Damage Assessment for Office Buildings"
       subtitle="Office buildings face distinct storm damage challenges. High-value interiors, sophisticated building systems, and tenant relationships make thorough forensic assessment critical."
       metaTitle="Storm Damage Assessment for Office Buildings"
-      metaDescription="Storm damage assessment for commercial office buildings. Learn about unique risks and how forensic assessment maximizes insurance claim recovery."
+      metaDescription="Storm damage assessment for commercial office buildings. Learn about unique risks and how forensic assessment supports insurance claims with detailed documentation."
       canonicalPath="/storm-damage-assessment-office-buildings"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Office Buildings' }]}

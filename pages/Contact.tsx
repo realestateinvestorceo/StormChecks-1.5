@@ -469,7 +469,7 @@ const Contact: React.FC = () => {
             <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
               <h3 className="text-lg font-bold text-primary mb-3">Is monitoring really free?</h3>
               <p className="text-gray-600 leading-relaxed">
-                Yes. Storm monitoring costs you nothing — now or ever. We only get paid if you recover money from a claim.
+                Yes. Storm monitoring costs you nothing — now or ever. Your weather history analysis and ongoing monitoring are provided at no cost.
               </p>
             </div>
 
@@ -493,7 +493,7 @@ const Contact: React.FC = () => {
             <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
               <h3 className="text-lg font-bold text-primary mb-3">How is StormChecks compensated?</h3>
               <p className="text-gray-600 leading-relaxed">
-                We take 10% of any recovery — only if you get paid. The public adjuster we connect you with takes 20%. If the claim doesn't pay out, you owe nothing to anyone.
+                Fee terms are detailed in your engagement agreement and the separate public adjuster agreement. The initial weather analysis, forensic assessment, and ongoing monitoring are provided at no cost to you.
               </p>
             </div>
           </div>

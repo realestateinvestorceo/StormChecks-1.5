@@ -26,7 +26,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Storm Damage Assessment for Self-Storage Facilities',
-  description: 'Learn about storm damage risks for self-storage facilities and how forensic assessment helps storage facility owners maximize insurance claim recovery.',
+  description: 'Learn about storm damage risks for self-storage facilities and how forensic assessment helps storage facility owners support insurance claims with detailed documentation.',
   author: { '@type': 'Organization', name: 'StormChecks' },
   publisher: { '@type': 'Organization', name: 'StormChecks' },
 };
@@ -37,7 +37,7 @@ const StormDamageSelfStorage: React.FC = () => {
       title="Storm Damage Assessment for Self-Storage Facilities"
       subtitle="Self-storage facilities face unique storm damage risks. Metal construction, multiple buildings, and cosmetic damage exclusions make forensic assessment essential."
       metaTitle="Storm Damage Assessment for Self-Storage Facilities"
-      metaDescription="Storm damage assessment for self-storage facilities. Learn about risks unique to storage properties and how forensic assessment maximizes insurance recovery."
+      metaDescription="Storm damage assessment for self-storage facilities. Learn about risks unique to storage properties and how forensic assessment supports insurance claims with detailed documentation."
       canonicalPath="/storm-damage-assessment-self-storage-facilities"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Self-Storage Facilities' }]}
@@ -101,7 +101,7 @@ const StormDamageSelfStorage: React.FC = () => {
                   <div className="space-y-2">
                     <p className="text-sm"><span className="text-gray-500">Carrier estimate:</span> <span className="font-bold">$0 (claim denied)</span></p>
                     <p className="text-sm"><span className="text-gray-500">Forensic assessment:</span> <span className="font-bold text-accent">$3,900,000</span></p>
-                    <p className="text-sm"><span className="text-gray-500">Recovery:</span> <span className="font-bold text-green-600">$3.9M from a denied claim</span></p>
+                    <p className="text-sm"><span className="text-gray-500">Documented damage:</span> <span className="font-bold text-green-600">$3.9M (previously denied)</span></p>
                   </div>
                 </div>
               </div>

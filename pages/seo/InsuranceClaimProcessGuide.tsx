@@ -37,7 +37,7 @@ const InsuranceClaimProcessGuide: React.FC = () => {
       title="Commercial Property Insurance Claim Process Guide"
       subtitle="A comprehensive guide to navigating every stage of the commercial property insurance claim — from first notice of loss through final settlement."
       metaTitle="Commercial Property Insurance Claim Process Guide"
-      metaDescription="Complete guide to the commercial property insurance claim process. Learn each step from filing to settlement and how to maximize your recovery."
+      metaDescription="Complete guide to the commercial property insurance claim process. Learn each step from filing to settlement and how forensic documentation supports your claim."
       canonicalPath="/commercial-property-insurance-claim-process-guide"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Insurance Claim Process Guide' }]}

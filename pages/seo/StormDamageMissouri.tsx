@@ -42,7 +42,7 @@ const StormDamageMissouri: React.FC = () => {
               </div>
               <div className="bg-gray-50 p-6 rounded-lg text-center">
                 <div className="text-3xl font-bold text-accent mb-2">$3.3M</div>
-                <p className="text-gray-600 text-sm">Additional recovery in MO case study</p>
+                <p className="text-gray-600 text-sm">Additional documented damage in MO case study</p>
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@ const StormDamageMissouri: React.FC = () => {
                   <div className="text-2xl font-bold text-accent">$3.9M</div>
                 </div>
                 <div className="bg-white p-4 rounded-lg text-center border border-gray-200">
-                  <div className="text-sm text-gray-500 mb-1">Additional Recovery</div>
+                  <div className="text-sm text-gray-500 mb-1">Additional Documented Damage</div>
                   <div className="text-2xl font-bold text-green-600">$3.3M</div>
                 </div>
               </div>

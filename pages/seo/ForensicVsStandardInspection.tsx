@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     question: 'How much does a forensic building assessment cost compared to a standard inspection?',
-    answer: 'StormChecks forensic assessments are provided on a contingency basis — there is no upfront cost to the property owner. Standard inspections typically cost $500-2,000 depending on building size, but the limited scope means they often miss damage worth far more than the assessment cost.',
+    answer: 'StormChecks forensic assessments carry no upfront cost to the property owner. Standard inspections typically cost $500-2,000 depending on building size, but the limited scope means they often miss damage worth far more than the assessment cost.',
   },
   {
     question: 'Will my insurance company accept a forensic assessment report?',
@@ -38,7 +38,7 @@ const ForensicVsStandardInspection: React.FC = () => {
       title="Forensic Assessment vs. Standard Inspection"
       subtitle="Understanding the critical differences between a forensic building assessment and a standard property inspection — and why it matters for your insurance claim."
       metaTitle="Forensic Assessment vs Standard Inspection | Commercial Property"
-      metaDescription="Compare forensic building assessments and standard inspections. Learn which finds more damage, produces better documentation, and maximizes insurance claim recovery."
+      metaDescription="Compare forensic building assessments and standard inspections. Learn which finds more damage, produces better documentation, and supports insurance claims with detailed documentation."
       canonicalPath="/forensic-assessment-vs-standard-inspection"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Forensic Assessment vs Standard Inspection' }]}
@@ -77,7 +77,7 @@ const ForensicVsStandardInspection: React.FC = () => {
                 { feature: 'Expert Witness Qualified', values: [false, true] },
                 { feature: 'Typical Damage Found', values: ['Surface only', 'Surface + hidden damage'] },
                 { feature: 'Report Detail Level', values: ['Summary with photos', 'Detailed report with testing data, maps, and analysis'] },
-                { feature: 'Upfront Cost', values: ['$500-$2,000', '$0 (contingency-based)'] },
+                { feature: 'Upfront Cost', values: ['$500-$2,000', '$0 (no upfront cost)'] },
               ]}
               caption="Comparison of standard property inspection vs. forensic building assessment for commercial storm damage"
             />

@@ -94,8 +94,8 @@ const Home: React.FC = () => {
 
             {/* Stat 3 */}
             <div className="flex flex-col items-center">
-              <div className="text-4xl md:text-6xl font-bold text-white mb-3">$0 Upfront</div>
-              <div className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-widest">Ever</div>
+              <div className="text-4xl md:text-6xl font-bold text-white mb-3">$0</div>
+              <div className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-widest">Free Weather Monitoring</div>
             </div>
 
           </div>
@@ -208,7 +208,7 @@ const Home: React.FC = () => {
                </div>
                <div className="flex items-center space-x-4 bg-white/5 p-4 rounded-lg border border-white/5">
                  <div className="bg-accent/20 p-2 rounded-lg"><Scale className="w-6 h-6 text-accent" /></div>
-                 <span className="font-bold text-lg">Litigation & Adjusting Support</span>
+                 <span className="font-bold text-lg">Litigation & Documentation Support</span>
                </div>
             </div>
 
@@ -445,12 +445,24 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Role Boundary Disclosure */}
+      <section className="bg-gray-50 py-16 border-t border-gray-200">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+            <h2 className="text-xl font-bold text-primary mb-4">What StormChecks Is — and Is Not</h2>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              StormChecks does <strong>not</strong> negotiate claims, interpret insurance policies, act as a public adjuster, or control downstream professionals. StormChecks <strong>does</strong> identify storm exposure, perform forensic inspections, create carrier-grade documentation, and deliver Expert Files to owners. Its role ends with documentation delivery — the licensed public adjuster or attorney you engage handles the carrier and any legal matters.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Will Filing Affect My Premiums? Section */}
       <section className="bg-gray-50 py-24">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Will Filing Affect My Premiums?</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Most claims we file are tied to catalogued storm events — storms your carrier already knows about and has already priced into the market. You're already paying for them. We help you collect what's yours. In cases where premiums could be impacted, we'll walk you through the math before you decide anything.
+            Most claims your public adjuster files are tied to catalogued storm events — storms your carrier already knows about and has already priced into the market. You're already paying for them. We document the damage that supports your recovery. In cases where premiums could be impacted, we'll walk you through the math before you decide anything.
           </p>
         </div>
       </section>
@@ -478,7 +490,7 @@ const Home: React.FC = () => {
             <div className="text-center">
               <h3 className="text-xl font-bold text-primary mb-4">PAs Want to Work With Us</h3>
               <p className="text-gray-600 leading-relaxed">
-                Our files help adjusters close faster and recover more. That's why many bring us their own clients.
+                Public adjusters rely on our documentation. That's why many bring us their own clients.
               </p>
             </div>
           </div>
@@ -552,10 +564,10 @@ const Home: React.FC = () => {
       <section className="bg-primary py-24 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Free Monitoring. Assessment on Recovery.
+            Free Monitoring. Forensic Assessment When You Need It.
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Zero out-of-pocket cost. Zero upfront fees. We only get paid when your claim pays out. If you don't recover, you owe nothing.
+            Free weather monitoring and analysis for every property you enroll. If we identify damage, we'll walk you through your options — no obligation.
           </p>
 
           <div className="bg-white/5 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto border border-white/10 mb-12">
@@ -578,7 +590,7 @@ const Home: React.FC = () => {
                   <div className="bg-accent/20 p-1 rounded-full">
                     <Check className="w-6 h-6 text-accent" />
                   </div>
-                  <span className="text-lg font-medium text-white">Recovery-based pricing only</span>
+                  <span className="text-lg font-medium text-white">Carrier-grade forensic documentation</span>
                </div>
 
                <div className="flex items-center space-x-3">

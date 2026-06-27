@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     question: 'How much does forensic building consulting cost?',
-    answer: 'StormChecks provides forensic building assessments on a contingency basis — there is no upfront cost to the property owner. We only get paid when your claim is successfully resolved. This removes the financial barrier to getting proper documentation.',
+    answer: 'StormChecks provides forensic building assessments with no upfront cost to the property owner. This removes the financial barrier to getting proper documentation.',
   },
 ];
 
@@ -30,7 +30,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'What Is Forensic Building Consulting?',
-  description: 'Learn what forensic building consultants do, how they investigate storm damage, and how they help commercial property owners maximize insurance claim recovery.',
+  description: 'Learn what forensic building consultants do, how they investigate storm damage, and how they help commercial property owners support insurance claims with detailed documentation.',
   author: { '@type': 'Organization', name: 'StormChecks' },
   publisher: { '@type': 'Organization', name: 'StormChecks' },
 };
@@ -39,9 +39,9 @@ const WhatIsForensicBuildingConsulting: React.FC = () => {
   return (
     <SEOPageLayout
       title="What Is Forensic Building Consulting?"
-      subtitle="How forensic building consultants investigate storm damage, identify hidden issues, and help commercial property owners recover what they are owed."
+      subtitle="How forensic building consultants investigate storm damage, identify hidden issues, and help commercial property owners document and support their insurance claims."
       metaTitle="What Is Forensic Building Consulting?"
-      metaDescription="Learn what forensic building consultants do, how they investigate commercial property storm damage, and how they help maximize insurance claim recovery."
+      metaDescription="Learn what forensic building consultants do, how they investigate commercial property storm damage, and how they help support insurance claims with detailed documentation."
       canonicalPath="/what-is-forensic-building-consulting"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'What Is Forensic Building Consulting?' }]}
@@ -132,7 +132,7 @@ const WhatIsForensicBuildingConsulting: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-primary mb-6">StormChecks: Forensic Building Consulting for Commercial Properties</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              StormChecks specializes in forensic building assessment for commercial property owners. Our team has assessed over $10 billion in property damage and our reports have been used to recover millions in insurance claims that would otherwise have been denied or underpaid.
+              StormChecks specializes in forensic building assessment for commercial property owners. Our team has assessed over $10 billion in property damage, and our reports have been used to support recovery on claims that would otherwise have been denied or underpaid.
             </p>
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               <div className="bg-white p-6 rounded-lg text-center border border-gray-200">
@@ -141,7 +141,7 @@ const WhatIsForensicBuildingConsulting: React.FC = () => {
               </div>
               <div className="bg-white p-6 rounded-lg text-center border border-gray-200">
                 <div className="text-3xl font-bold text-accent mb-2">$0</div>
-                <p className="text-gray-600 text-sm">Upfront cost — contingency-based</p>
+                <p className="text-gray-600 text-sm">Upfront cost to property owner</p>
               </div>
               <div className="bg-white p-6 rounded-lg text-center border border-gray-200">
                 <div className="text-3xl font-bold text-accent mb-2">Free</div>

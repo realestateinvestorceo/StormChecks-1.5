@@ -26,7 +26,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Storm Damage Assessment for Retail Centers',
-  description: 'Learn about storm damage risks unique to retail centers and shopping plazas. Understand how forensic assessment helps retail property owners maximize insurance recovery.',
+  description: 'Learn about storm damage risks unique to retail centers and shopping plazas. Understand how forensic assessment helps retail property owners support insurance claims with detailed documentation.',
   author: { '@type': 'Organization', name: 'StormChecks' },
   publisher: { '@type': 'Organization', name: 'StormChecks' },
 };
@@ -37,7 +37,7 @@ const StormDamageRetail: React.FC = () => {
       title="Storm Damage Assessment for Retail Centers"
       subtitle="Retail properties face unique storm damage challenges. Tenant relationships, storefront exposure, and revenue impact make thorough forensic assessment essential."
       metaTitle="Storm Damage Assessment for Retail Centers & Shopping Plazas"
-      metaDescription="Storm damage assessment for retail centers and shopping plazas. Learn about unique risks and how forensic assessment maximizes insurance claim recovery."
+      metaDescription="Storm damage assessment for retail centers and shopping plazas. Learn about unique risks and how forensic assessment supports insurance claims with detailed documentation."
       canonicalPath="/storm-damage-assessment-retail-centers"
       schemas={[articleSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'Retail Centers' }]}
@@ -101,7 +101,7 @@ const StormDamageRetail: React.FC = () => {
                   <div className="space-y-2">
                     <p className="text-sm"><span className="text-gray-500">Carrier estimate:</span> <span className="font-bold">$587,000</span></p>
                     <p className="text-sm"><span className="text-gray-500">Forensic assessment:</span> <span className="font-bold text-accent">$3,900,000</span></p>
-                    <p className="text-sm"><span className="text-gray-500">Additional recovery:</span> <span className="font-bold text-green-600">$3,313,000</span></p>
+                    <p className="text-sm"><span className="text-gray-500">Additional documented damage:</span> <span className="font-bold text-green-600">$3,313,000</span></p>
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@ export interface Article {
 export const blogArticles: Article[] = [
   {
     id: 'from-0-to-3-9m-overturning-a-lack-of-causation-denial',
-    title: "From $0 to $3.9M: Overturning a 'Lack of Causation' Denial",
+    title: "From $0 to $3.9M: Documenting Causation After a 'Lack of Causation' Denial",
     excerpt: "How forensic meteorological evidence proved a hurricane nexus for a Marina facility in North Carolina when the carrier claimed the damage was pre-existing.",
     category: 'Success Stories',
     image: 'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965fa79c7683b6702ff96ee.png',
@@ -25,7 +25,7 @@ export const blogArticles: Article[] = [
   {
     id: 'inside-the-carriers-mind-why-valid-claims-get-rejected',
     title: "Inside the Review Process: Why Valid Documentation Gets Rejected",
-    excerpt: "Our founder, Michael Paul, shares the unwritten internal checklists insurance adjusters use to flag files for denial and how to bypass them.",
+    excerpt: "Our founder, Michael Paul, breaks down why carriers flag files for denial — and what carrier-grade documentation includes to address those concerns.",
     category: 'Industry Insights',
     image: 'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696614a902f1be4be50a711a.png',
     date: 'March 10, 2024',
@@ -43,7 +43,7 @@ export const blogArticles: Article[] = [
   {
     id: 'the-shrinking-window-state-filing-deadlines-for-2024',
     title: "The Shrinking Window: State Filing Deadlines for 2024",
-    excerpt: "Commercial property owners often miss out on millions because they don't realize the clock is ticking. Learn about the 1-3 year deadlines in your state.",
+    excerpt: "Commercial property owners often miss out because they don't realize the clock is ticking. Recovery windows vary by state — consult an attorney about the deadlines that apply to you.",
     category: 'Preparedness',
     image: 'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965d04298efbd224a400246.png',
     date: 'February 28, 2024',

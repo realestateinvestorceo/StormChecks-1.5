@@ -11,7 +11,7 @@ const CaseWork: React.FC = () => {
       final: "$3,900,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965fa79c7683b6702ff96ee.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2f98efbd7ba643ec65.pdf",
-      description: "Carrier denied the claim outright, citing 'lack of causation.' Our forensic file established clean event specificity linking damage to a specific hurricane date. Denial overturned.",
+      description: "Carrier denied the claim outright, citing 'lack of causation.' Our forensic file established clean event specificity linking damage to a specific hurricane date — addressing the basis for the denial.",
       quote: '"We had no idea this damage existed. StormChecks found it in two weeks." — Property Owner'
     },
     {
@@ -21,7 +21,7 @@ const CaseWork: React.FC = () => {
       final: "$1,700,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661112c7683b0b980256d8.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2f98efbddd0143ec64.pdf",
-      description: "Initial offer covered just 10% of actual damage. StormChecks documented complete scope of loss. Carrier forced to reassess and pay full replacement value.",
+      description: "Initial offer covered just 10% of the documented damage. StormChecks documented the complete scope of loss, which the owner's public adjuster used to support a reassessment.",
       quote: '"The documentation was so thorough, the carrier didn\'t even push back." — Asset Manager'
     },
     {
@@ -42,7 +42,7 @@ const CaseWork: React.FC = () => {
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696612b095f9f954c402f872.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2ff8a93b236b1fc86d.pdf",
       description: "Carrier lowballed the initial scope by 9x. Our forensic evidence proved damage was consistent with severe weather event and not wear-and-tear.",
-      quote: '"Our previous inspector missed everything. StormChecks found $6.5M." — Property Manager'
+      quote: ''
     },
     {
       title: "Industrial Property",
@@ -51,8 +51,8 @@ const CaseWork: React.FC = () => {
       final: "$730,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661165f8a93b4590242c9f.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2ff8a93b85461fc86b.pdf",
-      description: "Carrier offered 4% of actual damage. Forensic inspection and meteorological analysis proved the true scope. Settlement increased 24x.",
-      quote: '"They turned a $30K estimate into $730K. The forensic detail made the difference." — Owner'
+      description: "Carrier offered 4% of the documented damage. Forensic inspection and meteorological analysis documented the true scope of loss.",
+      quote: ''
     },
     {
       title: "Retail Center",
@@ -61,8 +61,8 @@ const CaseWork: React.FC = () => {
       final: "$3,900,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696611cbccf2c6af04f18876.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696611cbccf2c6af04f18876.png",
-      description: "Event-specific damage previously unrecognized by maintenance teams. Expert File documented full scope and secured a 7x increase.",
-      quote: '"We thought we\'d maybe get $100K. The final settlement was $3.9M." — Portfolio Manager'
+      description: "Event-specific damage previously unrecognized by maintenance teams. Expert File documented the full scope of loss.",
+      quote: ''
     },
     {
       title: "Industrial Facility",
@@ -72,7 +72,7 @@ const CaseWork: React.FC = () => {
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661069ccf2c6275ef150b2.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2fc7683bce43fe0660.pdf",
       description: "Storm damage dismissed as 'wear and tear' until forensic documentation linked findings to documented weather event coordinates.",
-      quote: '"Carrier dismissed it as wear and tear. StormChecks proved otherwise." — Ownership Group'
+      quote: ''
     },
     {
       title: "Commercial Property",
@@ -81,8 +81,8 @@ const CaseWork: React.FC = () => {
       final: "$2,400,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661268c7683ba7450283a2.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2f98efbd71a443ec62.pdf",
-      description: "Full denial overturned using carrier-grade evidence package linking envelope breaches to specific storm pressure changes.",
-      quote: '"Full denial reversed. $2.4M recovered." — Property Owner'
+      description: "Our carrier-grade evidence package addressed the basis for the full denial, linking envelope breaches to specific storm pressure changes.",
+      quote: ''
     },
     {
       title: "Commercial Property",
@@ -91,7 +91,7 @@ const CaseWork: React.FC = () => {
       final: "$1,850,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661217f8a93bce292446a7.png",
       pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2f98efbd04a843ec63.pdf",
-      description: "Initial inspection missed latent roof fracturing. StormChecks documentation proved storm attribution and secured full replacement.",
+      description: "Initial inspection missed latent roof fracturing. StormChecks documentation established storm attribution.",
       quote: '"Initial inspection missed the roof fracturing entirely. StormChecks caught it." — Asset Manager'
     }
   ];
@@ -135,7 +135,7 @@ const CaseWork: React.FC = () => {
              {/* Stat 1 */}
              <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">$100M+</div>
-                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">IN ACTIVE CLAIMS</div>
+                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">IN DOCUMENTED LOSSES</div>
              </div>
 
              {/* Stat 2 */}
@@ -152,8 +152,8 @@ const CaseWork: React.FC = () => {
 
              {/* Stat 4 */}
              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
-                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">OF CLIENTS PAID $0 UPFRONT</div>
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">$0</div>
+                <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">FREE WEATHER MONITORING</div>
              </div>
 
           </div>
@@ -194,9 +194,11 @@ const CaseWork: React.FC = () => {
                       "{caseStudy.description}"
                     </p>
                     
-                    <p className="text-sm text-gray-500 italic border-t border-gray-100 pt-4 mb-6">
-                      {caseStudy.quote}
-                    </p>
+                    {caseStudy.quote && (
+                      <p className="text-sm text-gray-500 italic border-t border-gray-100 pt-4 mb-6">
+                        {caseStudy.quote}
+                      </p>
+                    )}
 
                     <a 
                       href={caseStudy.pdf}
@@ -221,7 +223,7 @@ const CaseWork: React.FC = () => {
             Your Building Could Be Next
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Most of these owners didn't know they had recoverable damage until we found it. Free assessment takes 2 minutes to set up.
+            Most of these owners didn't know they had hidden storm damage until we found it. Free assessment takes 2 minutes to set up.
           </p>
 
           <div className="flex flex-col items-center gap-4">

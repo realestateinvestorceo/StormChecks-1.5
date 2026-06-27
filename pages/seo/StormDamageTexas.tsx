@@ -26,7 +26,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Storm Damage Assessment in Texas',
-  description: 'Texas leads the nation in hail damage. Learn about storm damage risks for Texas commercial properties and how forensic assessment maximizes insurance recovery.',
+  description: 'Texas leads the nation in hail damage. Learn about storm damage risks for Texas commercial properties and how forensic assessment supports insurance claims with detailed documentation.',
   author: { '@type': 'Organization', name: 'StormChecks' },
   publisher: { '@type': 'Organization', name: 'StormChecks' },
 };
@@ -105,7 +105,7 @@ const StormDamageTexas: React.FC = () => {
             <h2 className="text-3xl font-bold text-primary mb-6">Texas-Specific Claim Considerations</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { title: '2-Year Filing Deadline', desc: 'Texas has a relatively short 2-year statute of limitations. Many property owners discover hidden damage after the deadline has passed. Early forensic assessment protects your right to recover.' },
+                { title: '2-Year Filing Deadline', desc: 'Texas has a relatively short 2-year statute of limitations. Many property owners discover hidden damage after the deadline has passed. Early forensic assessment documents damage before the filing window closes.' },
                 { title: 'Prompt Notice Required', desc: 'Texas policies require prompt notification of loss. Delayed reporting gives carriers grounds to deny, even within the 2-year statute. File your FNOL as soon as damage is discovered.' },
                 { title: 'Appraisal Process', desc: 'Texas supports the appraisal process for disputed claims. When you and the carrier disagree on the amount, appraisal provides binding resolution. Strong forensic documentation is essential for the appraisal process.' },
                 { title: 'Cosmetic Damage Exclusions', desc: 'Many Texas policies now include cosmetic damage exclusions for metal roofing. Forensic assessment documents functional damage to overcome these exclusions.' },

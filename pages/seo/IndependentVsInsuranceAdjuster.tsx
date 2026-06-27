@@ -77,7 +77,7 @@ const IndependentVsInsuranceAdjuster: React.FC = () => {
                 { feature: 'Causation Analysis', values: ['Favorable to carrier', 'Evidence-based and independent'] },
                 { feature: 'Typical Damage Found', values: ['Surface damage only', 'Surface + hidden damage (2-5x more)'] },
                 { feature: 'Report Can Be Used in Appraisal', values: ['By the carrier', 'By the property owner'] },
-                { feature: 'Cost to Property Owner', values: ['$0 (paid by carrier)', '$0 (contingency-based at StormChecks)'] },
+                { feature: 'Cost to Property Owner', values: ['$0 (paid by carrier)', '$0 (no upfront cost at StormChecks)'] },
               ]}
               caption="Comparison of insurance adjuster inspection vs. independent forensic assessment for commercial storm damage"
             />
@@ -116,7 +116,7 @@ const IndependentVsInsuranceAdjuster: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-primary mb-6">The Real-World Impact</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              The gap between what a carrier adjuster finds and what a forensic assessment reveals translates directly into dollars. Property owners who rely solely on the carrier's assessment leave significant money on the table.
+              The gap between what a carrier adjuster finds and what a forensic assessment reveals can be significant. Property owners who rely solely on the carrier's assessment may not capture the full documented scope of their loss.
             </p>
             <div className="grid md:grid-cols-2 gap-6 mt-8">
               <div className="bg-white p-6 rounded-lg border border-gray-200">

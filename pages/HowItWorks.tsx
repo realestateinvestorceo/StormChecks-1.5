@@ -15,14 +15,14 @@ const steps = [
     title: 'Evaluation & Estimated Value',
     timeline: '~1 Day',
     owner: false,
-    description: 'We analyze 2 years of historical weather events for your property coordinates, use satellite imagery to assess roof type and condition, and cross-reference storm events with documented damage thresholds. If the property qualifies, you receive the estimated amount directly in your portal.',
+    description: 'We analyze 2 years of historical weather events for your property coordinates, use satellite imagery to assess roof type and condition, and cross-reference storm events with documented damage thresholds. If the property qualifies, you receive the estimated documented damage exposure directly in your portal.',
   },
   {
     num: 3,
     title: 'Sign the Agreements',
     timeline: '~2 Days',
     owner: true,
-    description: 'You receive three agreements simultaneously: a StormChecks engagement agreement (20% of recovery), a public adjuster agreement (10% of recovery), and authorization to request your insurance policy. All sent together to save time.',
+    description: 'You receive three agreements simultaneously: a StormChecks engagement agreement, a public adjuster agreement, and authorization to request your insurance policy. All sent together to save time. Fee terms are detailed in those agreements.',
   },
   {
     num: 4,
@@ -57,18 +57,18 @@ const steps = [
     title: 'Payout',
     timeline: '~12 Months Total',
     owner: true,
-    description: 'Carrier issues settlement to the public adjuster\'s trust account. You receive 70% of the total recovery. StormChecks collects 20% — only from the recovery, never upfront. The public adjuster collects 10%. If no recovery, all fees are $0.',
+    description: 'Carrier issues settlement to the public adjuster\'s trust account, which distributes proceeds to you. Fee terms are detailed in your engagement agreement and the separate public adjuster agreement.',
   },
 ];
 
 const faqItems = [
   {
     question: "Who is StormChecks?",
-    answer: "StormChecks was founded by commercial property owners who got tired of not knowing the true condition of their own buildings. Our leadership team collectively owns and manages over $200 million in commercial real estate. We built this process for our own portfolios first — and recovered millions of dollars before opening it to other owners."
+    answer: "StormChecks was founded by commercial property owners who got tired of not knowing the true condition of their own buildings. Our leadership team collectively owns and manages over $200 million in commercial real estate. We built this process for our own portfolios first — documenting millions of dollars in storm damage before opening it to other owners."
   },
   {
     question: "What's the problem StormChecks solves?",
-    answer: "Storm damage hides in roofing membranes, behind cladding, and inside HVAC systems. Your maintenance team won't catch it. Your annual inspection won't flag it. Most commercial property owners are sitting on six or seven figures in recoverable damage — and have no idea. Your insurance policy is an asset sitting on your balance sheet, and StormChecks helps you understand what it's actually worth."
+    answer: "Storm damage hides in roofing membranes, behind cladding, and inside HVAC systems. Your maintenance team won't catch it. Your annual inspection won't flag it. Most commercial property owners are sitting on six or seven figures in undocumented storm damage — and have no idea. Your insurance policy is an asset sitting on your balance sheet, and StormChecks helps you understand what it's actually worth."
   },
   {
     question: "Won't my premiums go up if I file?",
@@ -76,7 +76,7 @@ const faqItems = [
   },
   {
     question: "What does StormChecks cost upfront?",
-    answer: "Nothing. Zero. StormChecks fronts all engineering, travel, and inspection costs out of pocket. If there is no recovery, you owe nothing. We only collect 20% from the insurance payout when a claim succeeds. The public adjuster collects 10%. You keep 70%."
+    answer: "Nothing upfront. StormChecks fronts all engineering, travel, and inspection costs out of pocket. Fee terms for forensic documentation services are detailed in your engagement agreement, and public adjuster fees are governed by a separate agreement between you and the public adjuster."
   },
   {
     question: "How long does the process take?",
@@ -84,15 +84,15 @@ const faqItems = [
   },
   {
     question: "What is the Expert File?",
-    answer: "The Expert File is StormChecks' core deliverable — 120+ pages of forensic documentation built to carrier approval standards. It includes timestamped photography, engineering analysis, storm-to-damage correlation, and Xactimate cost estimates. The Expert File is what gets claims approved and what overturns denials."
+    answer: "The Expert File is StormChecks' core deliverable — 120+ pages of forensic documentation built to carrier approval standards. It includes timestamped photography, engineering analysis, storm-to-damage correlation, and Xactimate cost estimates. The Expert File is the documentation that supports claim approval and addresses the basis for denials."
   },
   {
     question: "What if the carrier denies my claim?",
-    answer: "Carriers often push back at first. Our documentation is built for pushback. When carriers deny or undervalue claims, the public adjuster responds using the Expert File with additional evidence and technical narratives. We have overturned denials — one case went from a $0 denial to a $3.9M recovery."
+    answer: "Carriers often push back at first. Our documentation is built for pushback. When carriers deny or undervalue claims, the public adjuster responds using the Expert File with additional evidence and technical narratives. In one case, forensic documentation supported a move from a $0 denial to a $3.9M settlement reached by the owner's public adjuster."
   },
   {
     question: "Do I need to be involved in the process?",
-    answer: "Minimal involvement. You submit your property (Step 1), sign agreements (Step 3), and receive your payout (Step 8). Everything in between — evaluation, policy review, forensic inspection, expert file compilation, claim filing, and insurance negotiation — is handled by StormChecks and your assigned public adjuster."
+    answer: "Minimal involvement. You submit your property (Step 1), sign agreements (Step 3), and receive your payout (Step 8). Everything in between — evaluation, policy review, forensic inspection, and expert file compilation — is handled by StormChecks, while your assigned public adjuster files the claim and manages all carrier communication and negotiation."
   },
   {
     question: "How do I get started?",
@@ -193,7 +193,7 @@ const HowItWorks: React.FC = () => {
                               ? 'bg-accent/20 text-accent'
                               : 'bg-primary/10 text-primary/60'
                           }`}>
-                            {step.owner ? '✦ Your Action' : 'StormChecks Handles'}
+                            {step.owner ? '✦ Your Action' : 'Done For You'}
                           </span>
                           <span className="text-xs text-gray-400 font-medium">⏱ {step.timeline}</span>
                         </div>
@@ -212,7 +212,7 @@ const HowItWorks: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-primary/15"></div>
-                  <span>StormChecks handles it</span>
+                  <span>Handled for you</span>
                 </div>
               </div>
             </div>
@@ -242,9 +242,9 @@ const HowItWorks: React.FC = () => {
                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                  <ShieldCheck className="w-8 h-8 text-primary" />
                </div>
-               <h3 className="text-xl font-bold text-primary mb-4">We Handle Everything</h3>
+               <h3 className="text-xl font-bold text-primary mb-4">Your Team Handles Everything</h3>
                <p className="text-gray-600 leading-relaxed">
-                 If you proceed, we coordinate with the public adjuster, manage documentation, and deal with the carrier. Your involvement: minimal.
+                 If you proceed, we coordinate with the public adjuster and manage the documentation; the public adjuster handles the carrier. Your involvement: minimal.
                </p>
             </div>
 
@@ -254,7 +254,7 @@ const HowItWorks: React.FC = () => {
                </div>
                <h3 className="text-xl font-bold text-primary mb-4">You Receive Your Recovery</h3>
                <p className="text-gray-600 leading-relaxed">
-                 The process takes about 12 months depending on the carrier. When it settles, you keep 70%. We only get paid when you do.
+                 The process takes about 12 months depending on the carrier. Fee terms are detailed in your engagement agreement and the separate public adjuster agreement.
                </p>
             </div>
           </div>
@@ -269,7 +269,19 @@ const HowItWorks: React.FC = () => {
               What If the Carrier Pushes Back?
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              They usually do — at first. Our documentation is built for pushback. When carriers deny or undervalue claims, we support the appeals process with additional evidence, technical narratives, and expert documentation. You're not involved in the back-and-forth. We handle it.
+              They usually do — at first. Our documentation is built for pushback. When carriers deny or undervalue claims, your public adjuster or attorney handles the appeal, and we provide the updated evidence, technical narratives, and expert documentation they use. You're not involved in the back-and-forth.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Role Boundary Disclosure */}
+      <section className="bg-white py-16 border-t border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto bg-gray-50 rounded-xl border border-gray-200 p-8 shadow-sm">
+            <h2 className="text-xl font-bold text-primary mb-4">What StormChecks Is — and Is Not</h2>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              StormChecks does <strong>not</strong> negotiate claims, interpret insurance policies, act as a public adjuster, or control downstream professionals. StormChecks <strong>does</strong> identify storm exposure, perform forensic inspections, create carrier-grade documentation, and deliver Expert Files to owners. Its role ends with documentation delivery — the licensed public adjuster or attorney you engage handles the carrier and any legal matters.
             </p>
           </div>
         </div>

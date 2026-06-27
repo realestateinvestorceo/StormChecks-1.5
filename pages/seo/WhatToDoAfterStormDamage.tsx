@@ -18,11 +18,11 @@ const faqs = [
   },
   {
     question: 'How much does a StormChecks assessment cost?',
-    answer: 'StormChecks provides a free initial weather exposure analysis for your property. Our forensic assessments are contingency-based — there is no upfront cost to the property owner. We only get paid when your claim is successfully resolved.',
+    answer: 'StormChecks provides a free initial weather exposure analysis for your property. Our forensic assessments carry no upfront cost to the property owner.',
   },
   {
     question: 'What if my insurance company already sent an adjuster?',
-    answer: 'Insurance adjusters work for the insurance company, not for you. An independent forensic assessment typically identifies 2-5x more damage than carrier adjusters document. Having independent documentation strengthens your position and helps ensure you receive the full settlement you are entitled to.',
+    answer: 'Insurance adjusters work for the insurance company, not for you. An independent forensic assessment typically identifies 2-5x more damage than carrier adjusters document. Having independent documentation strengthens your position and provides the evidence your public adjuster or attorney uses to support your claim.',
   },
 ];
 
@@ -30,7 +30,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'What to Do After Storm Damage to Your Commercial Property',
-  description: 'Step-by-step guide for commercial property owners after storm damage. Learn how to protect your property, document damage, and maximize your insurance claim.',
+  description: 'Step-by-step guide for commercial property owners after storm damage. Learn how to protect your property, document damage, and build a stronger insurance claim.',
   author: { '@type': 'Organization', name: 'StormChecks' },
   publisher: { '@type': 'Organization', name: 'StormChecks' },
 };
@@ -52,9 +52,9 @@ const WhatToDoAfterStormDamage: React.FC = () => {
   return (
     <SEOPageLayout
       title="What to Do After Storm Damage to Your Commercial Property"
-      subtitle="A step-by-step guide to protecting your property, preserving evidence, and maximizing your insurance claim after storm damage."
+      subtitle="A step-by-step guide to protecting your property, preserving evidence, and documenting damage to support your insurance claim after a storm."
       metaTitle="What to Do After Storm Damage to Your Commercial Property"
-      metaDescription="Step-by-step guide for commercial property owners after storm damage. Learn how to protect your property, document damage, and maximize your insurance claim."
+      metaDescription="Step-by-step guide for commercial property owners after storm damage. Learn how to protect your property, document damage, and build a stronger insurance claim."
       canonicalPath="/what-to-do-after-storm-damage-commercial-property"
       schemas={[articleSchema, howToSchema, buildFAQSchema(faqs)]}
       breadcrumbs={[{ label: 'What to Do After Storm Damage' }]}

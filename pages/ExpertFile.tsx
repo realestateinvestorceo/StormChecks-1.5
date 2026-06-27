@@ -278,6 +278,18 @@ const ExpertFile: React.FC = () => {
         </div>
       </section>
 
+      {/* Role Boundary Disclosure */}
+      <section className="bg-gray-50 py-16 border-t border-gray-200">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+            <h2 className="text-xl font-bold text-primary mb-4">What StormChecks Is — and Is Not</h2>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              StormChecks does <strong>not</strong> negotiate claims, interpret insurance policies, act as a public adjuster, or control downstream professionals. StormChecks <strong>does</strong> identify storm exposure, perform forensic inspections, create carrier-grade documentation, and deliver Expert Files to owners. Its role ends with documentation delivery — the licensed public adjuster or attorney you engage handles the carrier and any legal matters.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-primary py-24 text-white">
         <div className="container mx-auto px-6 text-center">

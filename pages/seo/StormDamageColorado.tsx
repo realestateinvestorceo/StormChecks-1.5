@@ -134,7 +134,7 @@ const StormDamageColorado: React.FC = () => {
                 <div className="text-2xl font-bold text-accent">$730,000</div>
               </div>
               <div className="bg-white p-6 rounded-lg text-center border border-gray-200">
-                <div className="text-sm text-gray-500 mb-1">Additional Recovery</div>
+                <div className="text-sm text-gray-500 mb-1">Additional Documented Damage</div>
                 <div className="text-2xl font-bold text-green-600">$700,000</div>
               </div>
             </div>
