@@ -68,7 +68,7 @@ const STEPS = [
     n: "04",
     phase: "StormChecks runs the 2-year weather analysis",
     what: "StormChecks",
-    detail: "We pull exact storm history for the property coordinates — hail size, wind speed, dates. If qualifying storm exposure exists, we generate an estimated recovery range for that specific property.",
+    detail: "We pull exact storm history for the property coordinates — hail size, wind speed, dates. If qualifying storm exposure exists, we generate an estimated documented damage exposure range for that specific property.",
     action: "Once the analysis is done, share the property-specific link when you follow up. The owner lands on a page showing a dollar amount tied to their address — more informative than a generic invite.",
     time: "~1 week",
   },
@@ -100,8 +100,8 @@ const STEPS = [
     n: "08",
     phase: "Settlement — you receive your commission",
     what: "You",
-    detail: "When the owner receives their settlement, StormChecks pays your commission from our 20% fee. Commission is based on your tier. Affiliates also earn a sub-affiliate override on deals closed by people they've recruited — the override rate scales with your tier: 2% at Tier 1, 3.5% at Tier 2, 5% at Tier 3.",
-    action: "On a $1M recovery at top tier (15%): SC fee $200K → your commission: $30,000.",
+    detail: "When the engagement is completed and paid, StormChecks pays your commission based on your tier. Affiliates also earn a sub-affiliate override on deals closed by people they've recruited — the override rate scales with your tier: 2% at Tier 1, 3.5% at Tier 2, 5% at Tier 3.",
+    action: "Commission is a percentage of StormChecks' documentation fee, set by your tier. Exact terms are in your affiliate agreement.",
     time: "Upon settlement",
   },
 ];
@@ -131,7 +131,7 @@ const OBJECTIONS = [
   {
     tag: "Already denied",
     q: "My carrier already denied a claim.",
-    facts: "Claim denials are almost always documentation failures, not damage failures. A carrier-ready forensic file — PE-signed engineering, storm correlation, Xactimate estimates — gives the public adjuster the evidence they need to reopen it. StormChecks has overturned a $0 denial and recovered $3.9M for that same property.",
+    facts: "Claim denials are almost always documentation failures, not damage failures. A carrier-ready forensic file — PE-signed engineering, storm correlation, Xactimate estimates — gives the public adjuster the evidence they need to reopen it. In one case, after the forensic file was delivered, a $0 denial became a $3.9M settlement reached by the owner's public adjuster.",
   },
   {
     tag: "No damage",
@@ -195,9 +195,9 @@ const LEADS = [
 ];
 
 const TIERS = [
-  { tier: "Tier 1", desc: "Getting started",   rate: "5%",  overrideRate: "2%",   networkVol: "First $2M in network volume",    ex1: "$1M recovery → SC fee $200K → your commission: $10,000", override: true },
-  { tier: "Tier 2", desc: "Building momentum", rate: "10%", overrideRate: "3.5%", networkVol: "Next $10M in network volume",      ex1: "$1M recovery → SC fee $200K → your commission: $20,000", override: true },
-  { tier: "Tier 3", desc: "Top affiliate",     rate: "15%", overrideRate: "5%",   networkVol: "Any amount over $12M network vol", ex1: "$1M recovery → SC fee $200K → your commission: $30,000", override: true },
+  { tier: "Tier 1", desc: "Getting started",   rate: "5%",  overrideRate: "2%",   networkVol: "First $2M in network volume",    ex1: "5% of StormChecks' documentation fee", override: true },
+  { tier: "Tier 2", desc: "Building momentum", rate: "10%", overrideRate: "3.5%", networkVol: "Next $10M in network volume",      ex1: "10% of StormChecks' documentation fee", override: true },
+  { tier: "Tier 3", desc: "Top affiliate",     rate: "15%", overrideRate: "5%",   networkVol: "Any amount over $12M network vol", ex1: "15% of StormChecks' documentation fee", override: true },
 ];
 
 const AFFILIATE_AUDIO = [
@@ -468,7 +468,7 @@ function Welcome({ onStart, introPlaying }: { onStart: () => void; introPlaying:
         This takes about 4 minutes. By the end you'll understand the process, your role in it, and how you get paid.
       </p>
       <p style={{ ...S.lead, fontSize: 13, opacity: 0.65, marginBottom: 32 }}>
-        StormChecks is a forensic building consultancy. We find hidden storm damage on commercial properties, document it completely, and work with public adjusters to recover what owners are owed — at no cost to them.
+        StormChecks is a forensic building consultancy. We find hidden storm damage on commercial properties and document it completely, working alongside the public adjusters who pursue owners' claims — at no cost to them.
       </p>
 
       <button onClick={onStart} style={{ ...S.cta, marginBottom: 12, fontSize: 17, padding: "18px 48px" }}>
@@ -502,7 +502,7 @@ function YourRole() {
   return (
     <Wrap>
       <Tag>Your Role</Tag>
-      <h2 style={S.h2}>You're the relationship.<br /><Em>StormChecks handles everything else.</Em></h2>
+      <h2 style={S.h2}>You're the relationship.<br /><Em>StormChecks and the PA handle everything else.</Em></h2>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 14 }}>
         {[
@@ -510,7 +510,7 @@ function YourRole() {
           { phase: "Open", t: "Start the conversation and get the address", detail: "Your goal in the first conversation is the address — not a full commitment. Just the address." },
           { phase: "Submit", t: "Log the property in the portal", detail: "Toggle to Affiliate Mode. Add owner contact + address. StormChecks is notified automatically." },
           { phase: "Shepherd", t: "Follow up until they sign", detail: "Use the property-specific link with the dollar estimate. Answer questions or loop in StormChecks." },
-          { phase: "Collect", t: "Receive your commission on settlement", detail: "Your involvement after signing: minimal. Check in on milestones. Commission paid from SC's 20%." },
+          { phase: "Collect", t: "Receive your commission on completed engagements", detail: "Your involvement after signing: minimal. Check in on milestones. Commission is paid per your affiliate agreement." },
         ].map((item, i) => (
           <div key={i} style={{ ...S.card, display: "flex", gap: 14, alignItems: "flex-start", padding: "14px 16px" }}>
             <div style={{ background: "rgba(201,151,0,0.12)", border: "1px solid rgba(201,151,0,0.3)", borderRadius: 6, padding: "3px 8px", fontFamily: "'JetBrains Mono',monospace", fontSize: 9, color: "#9B7300", fontWeight: 700, letterSpacing: "0.08em", flexShrink: 0, marginTop: 2 }}>{item.phase.toUpperCase()}</div>
@@ -658,9 +658,9 @@ function Commission() {
   return (
     <Wrap>
       <Tag>How You Get Paid</Tag>
-      <h2 style={S.h2}>Commission from recovery only.<br /><Em>Three tiers. Sub-affiliate override at every tier.</Em></h2>
+      <h2 style={S.h2}>Commission on completed engagements.<br /><Em>Three tiers. Sub-affiliate override at every tier.</Em></h2>
       <p style={{ ...S.body, marginBottom: 18 }}>
-        Your commission comes from StormChecks' 20% fee — the owner always keeps 70%. No recovery means no commission for anyone.
+        Your commission is a percentage of StormChecks' documentation fee on each completed engagement. Your tier sets the rate.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 18 }}>
         {TIERS.map((t) => (
@@ -688,28 +688,13 @@ function Commission() {
       </div>
 
       <div style={{ ...S.card, padding: "16px", marginBottom: 14 }}>
-        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#8A9AB0", letterSpacing: "0.12em", marginBottom: 12 }}>WORKED EXAMPLE — $1M RECOVERY (TIER 3)</div>
-        {[
-          ["Total recovery", "$1,000,000"],
-          ["StormChecks fee (20%)", "$200,000"],
-          ["PA fee (10%)", "$100,000"],
-          ["Owner receives (70%)", "$700,000"],
-          ["Your commission (15% of SC fee)", "$30,000"],
-        ].map(([k, v], i) => (
-          <div key={k} style={{
-            display: "flex", justifyContent: "space-between", fontSize: 14, padding: "6px 0",
-            borderTop: i === 4 ? "2px solid #E2E6EA" : "none",
-            marginTop: i === 4 ? 8 : 0, paddingTop: i === 4 ? 12 : 6,
-          }}>
-            <span style={{ color: i === 4 ? "#9B7300" : i === 0 ? "#0B1F33" : "#555F6D", fontWeight: i === 4 || i === 0 ? 700 : 400 }}>{k}</span>
-            <span style={{ fontFamily: "'JetBrains Mono',monospace", color: i === 4 ? "#C99700" : i === 0 ? "#0B1F33" : "#8A9AB0", fontWeight: i === 4 || i === 0 ? 700 : 400 }}>{v}</span>
-          </div>
-        ))}
+        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#8A9AB0", letterSpacing: "0.12em", marginBottom: 8 }}>HOW COMMISSION WORKS</div>
+        <p style={{ fontSize: 13, color: "#555F6D", lineHeight: 1.6 }}>Your commission is a percentage of StormChecks' documentation fee on each completed engagement, set by your tier. Exact fee and commission terms are detailed in your affiliate agreement.</p>
       </div>
 
       <Note>
         <b style={{ color: "#9B7300" }}>The override explained:</b>{" "}
-        When someone you recruited closes a deal, you earn an override on StormChecks' fee from that recovery. The override rate scales with your tier: 2% at Tier 1, 3.5% at Tier 2, 5% at Tier 3 — based on your Total Network Volume. The override only applies to sub-affiliate deals, not your own. You earn one or the other on any single property, never both.
+        When someone you recruited closes a deal, you earn an override on StormChecks' documentation fee from that engagement. The override rate scales with your tier: 2% at Tier 1, 3.5% at Tier 2, 5% at Tier 3 — based on your Total Network Volume. The override only applies to sub-affiliate deals, not your own. You earn one or the other on any single property, never both.
       </Note>
     </Wrap>
   );
@@ -876,11 +861,11 @@ function StartNow({ onBack }: { onBack: () => void }) {
           ["Affiliate mode toggle", "Bottom-left of portal screen"],
           ["Minimum property size", "10,000+ SF commercial"],
           ["Never submit", "Single-family residential"],
-          ["Tier 1 commission", "5% of SC's 20% fee"],
-          ["Tier 2 commission", "10% of SC's 20% fee"],
-          ["Top tier commission", "15% of SC's 20% fee"],
+          ["Tier 1 commission", "5% of SC documentation fee"],
+          ["Tier 2 commission", "10% of SC documentation fee"],
+          ["Top tier commission", "15% of SC documentation fee"],
           ["Sub-affiliate override", "2% / 3.5% / 5% by tier"],
-          ["Payout timing", "Upon owner's settlement"],
+          ["Payout timing", "Upon completed engagement"],
           ["Phone", "+1 801-821-2530"],
           ["Email", "info@stormchecks.com"],
         ].map(([k, v]) => (

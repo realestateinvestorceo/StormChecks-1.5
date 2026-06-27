@@ -39,7 +39,7 @@ const CASES = [
     found: "$3.9M",
     image: "/images/retail.png",
     story:
-      "The carrier had denied the original claim for lack of documentation. Our forensic file — timestamped hail-impact photography, PE-signed engineering analysis, and meteorological storm correlation — overturned the denial entirely.",
+      "The carrier had denied the original claim for lack of documentation. Our forensic file — timestamped hail-impact photography, PE-signed engineering analysis, and meteorological storm correlation — addressed the basis for the denial.",
   },
   {
     type: "Industrial Facility",
@@ -92,12 +92,12 @@ const OBJECTIONS = [
   {
     tag: "No upfront cost?",
     q: "How does StormChecks get paid if there's nothing upfront?",
-    a: "We front all costs — meteorology report, engineering, building consultant. That can be $50,000 or more out of our pocket. Our fee is 20% of recovery only. The PA takes 10%. You keep 70%. If there's no recovery, nobody gets paid — including us.",
+    a: "We front all costs — meteorology report, engineering, building consultant. That can be $50,000 or more out of our pocket. Fee terms for the forensic documentation are detailed in your engagement agreement, and the public adjuster's fee is governed by a separate agreement between you and the public adjuster.",
   },
   {
     tag: "Timeline",
     q: "How long does this actually take?",
-    a: "The weather assessment takes about a week. Inspection and forensic file take a few more weeks. The insurance process typically runs about 12 months from there. Your total involvement is a few hours across the whole process — StormChecks handles everything else.",
+    a: "The weather assessment takes about a week. Inspection and forensic file take a few more weeks. The insurance process typically runs about 12 months from there. Your total involvement is a few hours across the whole process — StormChecks and your public adjuster handle everything else.",
   },
   {
     tag: "Already inspected",
@@ -112,7 +112,7 @@ const OBJECTIONS = [
   {
     tag: "Carrier denial",
     q: "What if the carrier denies the claim?",
-    a: "Our files are built to withstand carrier scrutiny — PE-signed engineering, timestamped photography, storm correlation, and Xactimate estimates. One denial we overturned: $0 to $3.9M after the forensic file was delivered.",
+    a: "Our files are built to withstand carrier scrutiny — PE-signed engineering, timestamped photography, storm correlation, and Xactimate estimates. In one case, after the forensic file was delivered, a $0 denial became a $3.9M settlement reached by the owner's public adjuster.",
   },
 ];
 
@@ -403,7 +403,7 @@ function Welcome({ onStart, introPlaying }) {
       </button>
       {introPlaying && <p style={{ ...S.hint, color: "#C99700", marginBottom: 10 }}>🔊 Playing intro…</p>}
 
-      <p style={S.lead}>StormChecks is a forensic building consultancy. We find hidden storm damage, document it thoroughly, and make sure you actually get what you're owed — at no cost to you.</p>
+      <p style={S.lead}>StormChecks is a forensic building consultancy. We find hidden storm damage and document it thoroughly, so the public adjuster and attorney you engage can pursue your claim — at no cost to you.</p>
       <p style={{ ...S.lead, fontSize: 14, opacity: 0.7, marginBottom: 20 }}>About a 5-minute briefing. No obligation at any stage.</p>
       <p style={S.hint}>{introPlaying ? "Listening to intro — or tap Continue to skip" : "Arrow keys or tap dots to navigate"}</p>
     </div>
@@ -519,8 +519,8 @@ function ProcessSlide() {
     "Run the 2-year weather analysis",
     "Forensic on-site inspection (PE team)",
     "Compile the complete expert file",
-    "Work with the public adjuster",
-    "Handle all carrier communications — hundreds of emails, for months, on your behalf",
+    "Coordinate with the public adjuster",
+    "The public adjuster handles all carrier communications — hundreds of emails, for months, on your behalf",
   ];
   return (
     <Wrap>
@@ -541,7 +541,7 @@ function ProcessSlide() {
         </div>
         {/* SC column */}
         <div style={{ background: "#F0F2F5", border: "1px solid #E2E6EA", borderRadius: 12, padding: "16px" }}>
-          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#8A9AB0", letterSpacing: "0.1em", marginBottom: 14 }}>STORMCHECKS HANDLES</div>
+          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#8A9AB0", letterSpacing: "0.1em", marginBottom: 14 }}>HANDLED FOR YOU</div>
           {scSteps.map((t, i) => (
             <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 10 }}>
               <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#8A9AB0", flexShrink: 0, marginTop: 6 }} />
@@ -559,38 +559,26 @@ function Fees() {
   return (
     <Wrap>
       <Tag>Fee Structure</Tag>
-      <h2 style={S.h2}>$0 upfront. Ever.<br /><Em>Everything comes from recovery.</Em></h2>
+      <h2 style={S.h2}>$0 upfront.<br /><Em>No cost to begin.</Em></h2>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginBottom: 14 }}>
+      <p style={{ fontSize: 14, color: "#555F6D", lineHeight: 1.7, marginBottom: 16 }}>
+        StormChecks fronts the cost of the meteorology report, engineering, and building consulting — often $50,000 or more — so you get a fully documented assessment with nothing out of pocket to start.
+      </p>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 14 }}>
         {[
-          { pct: "20%", lbl: "StormChecks",    sub: "Forensic work", hi: false },
-          { pct: "10%", lbl: "Public Adjuster", sub: "Filing + negotiation", hi: false },
-          { pct: "70%", lbl: "You Keep",        sub: "Paid directly to you", hi: true  },
+          { t: "No upfront cost", d: "The weather analysis, forensic inspection, and Expert File carry no cost to you to begin." },
+          { t: "Forensic documentation fee", d: "StormChecks' fee for the Expert File is detailed in your engagement agreement." },
+          { t: "Public adjuster fee", d: "The public adjuster's fee is governed by a separate agreement between you and the public adjuster." },
         ].map(f => (
-          <div key={f.lbl} style={{
-            background: f.hi ? "rgba(201,151,0,0.1)" : "#FFFFFF",
-            border: `1px solid ${f.hi ? "#C99700" : "#E2E6EA"}`,
-            borderRadius: 14, padding: "18px 10px", textAlign: "center",
-          }}>
-            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "clamp(22px,5vw,30px)", fontWeight: 600, color: f.hi ? "#C99700" : "#0B1F33", marginBottom: 5 }}>{f.pct}</div>
-            <div style={{ fontSize: 12, fontWeight: 700, color: f.hi ? "#C99700" : "#0B1F33", marginBottom: 3 }}>{f.lbl}</div>
-            <div style={{ fontSize: 11, color: "#8A9AB0" }}>{f.sub}</div>
+          <div key={f.t} style={{ ...S.card, padding: "16px 18px" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#0B1F33", marginBottom: 4 }}>{f.t}</div>
+            <div style={{ fontSize: 13, color: "#555F6D", lineHeight: 1.55 }}>{f.d}</div>
           </div>
         ))}
       </div>
 
-      {/* Worked example */}
-      <div style={{ ...S.card, padding: "14px 16px", marginBottom: 12 }}>
-        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: "#8A9AB0", letterSpacing: "0.1em", marginBottom: 10 }}>$400K RECOVERY — EXAMPLE</div>
-        {[["Recovery", "$400,000"], ["StormChecks (20%)", "−$80,000"], ["Public Adjuster (10%)", "−$40,000"], ["You receive", "$280,000"]].map(([k, v], i) => (
-          <div key={k} style={{ display: "flex", justifyContent: "space-between", fontSize: 14, padding: "5px 0", borderTop: i === 3 ? "1px solid rgba(201,151,0,0.2)" : "none", marginTop: i === 3 ? 6 : 0 }}>
-            <span style={{ color: i === 3 ? "#0B1F33" : "#555F6D", fontWeight: i === 3 ? 600 : 400 }}>{k}</span>
-            <span style={{ fontFamily: "'JetBrains Mono',monospace", color: i === 3 ? "#C99700" : i > 0 ? "#6B7280" : "#0B1F33", fontWeight: i === 3 ? 600 : 400 }}>{v}</span>
-          </div>
-        ))}
-      </div>
-
-      <Note><b style={{ color: "#C99700" }}>No recovery — no fee.</b> Not us. Not the PA. Nobody.</Note>
+      <Note>Fee terms are detailed in your engagement agreement and the separate public adjuster agreement.</Note>
     </Wrap>
   );
 }
@@ -766,7 +754,7 @@ function CTA() {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center", gap: 20, marginBottom: 28, flexWrap: "wrap" }}>
-        {["$0 upfront", "2-year lookback", "You keep 70%"].map(t => (
+        {["$0 upfront", "2-year lookback", "No obligation"].map(t => (
           <span key={t} style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: "#8A9AB0" }}>✓ {t}</span>
         ))}
       </div>
