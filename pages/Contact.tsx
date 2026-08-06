@@ -113,8 +113,9 @@ const Contact: React.FC = () => {
               Request funding terms.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl">
-              Send us the property and the scope of work your public adjuster or attorney has
-              proposed. Underwriting will come back with written terms.
+              For commercial property owners already working with their own licensed public adjuster
+              or attorney. Send us the property and the vendor costs to be funded, and underwriting
+              will come back with written terms.
             </p>
           </div>
         </div>
@@ -198,24 +199,24 @@ const Contact: React.FC = () => {
 
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-                      Who is representing you on the claim? <span className="text-accent">*</span>
+                      Licensed representation engaged <span className="text-accent">*</span>
                     </label>
                     <select name="representation" className={`${inputClass} text-gray-600`} required>
                       <option value="">Select...</option>
                       <option>Licensed public adjuster engaged</option>
                       <option>Attorney engaged</option>
                       <option>Both public adjuster and attorney engaged</option>
-                      <option>Selecting representation now</option>
                     </select>
                     <p className="text-xs text-gray-400">
-                      We fund the cost of pursuing a claim your own licensed professionals are
-                      handling. We do not adjust claims or provide representation.
+                      Funding is available only where the property owner has already engaged their
+                      own licensed public adjuster or attorney. StormChecks does not adjust claims,
+                      provide representation, or refer you to a provider.
                     </p>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-                      Which costs need funding?
+                      Which vendor costs need funding?
                     </label>
                     <textarea
                       name="fundingNeeded"
@@ -226,13 +227,17 @@ const Contact: React.FC = () => {
 
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-                      Anything else underwriting should know?
+                      Anything else about the funding request?
                     </label>
                     <textarea
                       name="notes"
                       className={`${inputClass} h-32 resize-none`}
-                      placeholder="Date of loss, current status of the claim, estimated scope, timing constraints…"
+                      placeholder="Estimated funding amount, expected timing of vendor invoices, other properties in the portfolio…"
                     />
+                    <p className="text-xs text-gray-400">
+                      Please do not send claim documents or loss details here. Your licensed
+                      professionals will share whatever underwriting needs directly.
+                    </p>
                   </div>
 
                   <div className="pt-2">

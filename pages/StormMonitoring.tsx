@@ -341,12 +341,13 @@ const StormMonitoring: React.FC = () => {
         <div className="wrap">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-primary mb-5">
-              Already pursuing a claim?
+              Monitoring and funding are separate.
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Monitoring and funding are separate. If you are working with a licensed public adjuster
-              or attorney on a commercial property claim, our underwriting team can issue funding
-              terms for the cost of pursuing it.
+              Enrolling a property commits you to nothing and leads to nothing. Separately, for
+              owners already working with their own licensed public adjuster or attorney on a
+              commercial property claim, our underwriting team can issue terms to fund the vendor
+              costs of pursuing it.
             </p>
             <Link
               to="/contact"

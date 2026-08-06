@@ -83,8 +83,9 @@ const WhatWeFund: React.FC = () => {
               What we fund
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl">
-              Every vendor cost a commercial property claim generates before it resolves. Invoiced to
-              StormChecks, paid by StormChecks, repaid only from proceeds.
+              The third-party vendor costs a commercial property claim generates before it resolves.
+              The work is performed by independent providers engaged by your team, invoiced to
+              StormChecks, paid by StormChecks, and repaid only from proceeds.
             </p>
           </div>
         </div>

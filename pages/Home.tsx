@@ -8,8 +8,6 @@ import {
   Hammer,
   PenLine,
   CloudLightning,
-  Satellite,
-  CalendarClock,
   Bell,
 } from 'lucide-react';
 
@@ -117,9 +115,10 @@ const Home: React.FC = () => {
               </Link>
             </div>
 
-            <p className="text-gray-400 text-sm font-medium">
-              Owners work with their own licensed public adjusters and attorneys. We provide the
-              capital.
+            <p className="text-gray-400 text-sm leading-relaxed max-w-measure">
+              Available to commercial property owners already working with their own licensed public
+              adjuster or attorney. They run the claim; we provide the capital. Funding terms are set
+              out in a written funding agreement.
             </p>
           </div>
         </div>
@@ -264,62 +263,23 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Technology */}
+      {/* Underwriting */}
       <section className="bg-white py-24">
         <div className="wrap">
-          <div className="grid lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-7 space-y-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">
-                Underwriting built on our own data.
-              </h2>
-              <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  Committing capital to a claim requires a defensible view of the loss before a
-                  dollar is deployed. We built the platform that gives us one — catalogued storm
-                  history at parcel-level coordinates, automated roof and structure measurement from
-                  aerial imagery, and loss-dating models that place an event on a timeline.
-                </p>
-                <p className="text-base text-gray-500">
-                  The platform is internal. It underwrites our capital. It is not a service we sell,
-                  and it does not assess or value anyone's claim.
-                </p>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 space-y-4">
-              {[
-                {
-                  icon: CloudLightning,
-                  title: 'Storm event data',
-                  body: 'Catalogued hail and wind events resolved to property coordinates.',
-                },
-                {
-                  icon: Satellite,
-                  title: 'Property measurement',
-                  body: 'Roof and structure geometry derived from aerial and satellite imagery.',
-                },
-                {
-                  icon: CalendarClock,
-                  title: 'Loss dating',
-                  body: 'Models that place a documented loss against the event record.',
-                },
-              ].map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.title}
-                    className="flex items-start gap-5 bg-gray-50 p-6 rounded-xl border border-hairline-light"
-                  >
-                    <div className="bg-accent/15 p-3 rounded-lg flex-shrink-0">
-                      <Icon className="w-6 h-6 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-primary text-lg mb-1">{item.title}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{item.body}</p>
-                    </div>
-                  </div>
-                );
-              })}
+          <div className="max-w-measure">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-8">
+              Underwriting built on our own data.
+            </h2>
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+              <p>
+                Committing non-recourse capital requires a defensible view of the loss before a
+                dollar is deployed, so we built the storm and property data platform that gives us
+                one.
+              </p>
+              <p className="text-base text-gray-500">
+                The platform is internal. It underwrites our capital. It is not a service we sell,
+                and it does not assess or value anyone's claim.
+              </p>
             </div>
           </div>
         </div>
