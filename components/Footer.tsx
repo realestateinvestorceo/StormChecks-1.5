@@ -33,9 +33,6 @@ const Footer: React.FC = () => {
             <Link to="/what-we-fund" className="text-gray-400 hover:text-accent transition-colors text-sm">
               What We Fund
             </Link>
-            <Link to="/storm-monitoring" className="text-gray-400 hover:text-accent transition-colors text-sm">
-              Storm Monitoring
-            </Link>
             <Link to="/about" className="text-gray-400 hover:text-accent transition-colors text-sm">
               About
             </Link>
@@ -60,7 +57,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="pt-2 flex flex-col space-y-3">
               <Link to="/contact" className="text-gray-400 hover:text-accent transition-colors text-sm">
-                Request Funding Terms
+                Contact Us
               </Link>
               <Link to="/privacy" className="text-gray-400 hover:text-accent transition-colors text-sm">
                 Privacy Policy

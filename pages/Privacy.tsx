@@ -20,11 +20,10 @@ const Privacy: React.FC = () => {
             <div>
               <h2 className="text-2xl font-bold text-primary mb-4">Overview</h2>
               <p>
-                StormChecks ("we," "our," or "us") provides pre-litigation funding for commercial
-                property insurance claims and free storm monitoring for commercial property owners.
-                This Privacy Policy explains how we collect, use, share, and protect your
-                information when you use our website, submit a funding request, or enrol a property
-                in storm monitoring.
+StormChecks ("we," "our," or "us") provides pre-litigation funding for the cost of
+                pursuing commercial property insurance claims. This Privacy Policy explains how we
+                collect, use, share, and protect your information when you contact us or enter a
+                funding agreement.
               </p>
             </div>
 
@@ -48,8 +47,8 @@ const Privacy: React.FC = () => {
                   portfolio details
                 </li>
                 <li>
-                  <strong>Funding Request Information:</strong> The proposed scope of vendor work,
-                  loss details, representation status, and vendor invoices submitted for payment
+<strong>Funding Request Information:</strong> The proposed scope of vendor work,
+                  representation status, and vendor invoices submitted for payment
                 </li>
                 <li>
                   <strong>Communication Records:</strong> Correspondence with our team, including
@@ -80,14 +79,6 @@ const Privacy: React.FC = () => {
               </h3>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Weather Data Providers:</strong> Historical and current storm event data,
-                  including hail reports, wind speeds, and radar-derived observations
-                </li>
-                <li>
-                  <strong>Imagery Providers:</strong> Aerial and satellite imagery used for property
-                  measurement
-                </li>
-                <li>
                   <strong>Public Records:</strong> Property records, ownership information, and
                   building permits where legally available
                 </li>
@@ -98,20 +89,16 @@ const Privacy: React.FC = () => {
               <h2 className="text-2xl font-bold text-primary mb-4">How We Use Your Information</h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Underwrite Funding Requests:</strong> Evaluate the property, the loss, and
-                  the proposed scope of work in order to issue funding terms
+<strong>Underwrite Funding Requests:</strong> Evaluate the funding request and the
+                  proposed vendor scope in order to issue funding terms
                 </li>
                 <li>
                   <strong>Administer Funding:</strong> Process approved vendor invoices, make
                   disbursements, and administer repayment from claim proceeds
                 </li>
                 <li>
-                  <strong>Provide Storm Monitoring:</strong> Match enrolled property coordinates
-                  against catalogued weather events and send notifications
-                </li>
-                <li>
-                  <strong>Communicate:</strong> Send funding correspondence, monitoring
-                  notifications, and responses to your enquiries
+<strong>Communicate:</strong> Send funding correspondence and responses to your
+                  enquiries
                 </li>
                 <li>
                   <strong>Improve Our Platform:</strong> Analyse usage to improve our underwriting
@@ -170,7 +157,7 @@ const Privacy: React.FC = () => {
                 <li>Sell your personal information to third parties</li>
                 <li>Share your data with insurance carriers</li>
                 <li>Provide your information to marketers or advertisers</li>
-                <li>Use your property data for purposes unrelated to funding or monitoring</li>
+                <li>Use your property data for purposes unrelated to funding</li>
               </ul>
             </div>
 
@@ -198,8 +185,7 @@ const Privacy: React.FC = () => {
                   <strong>Deletion:</strong> Request deletion of your personal information
                 </li>
                 <li>
-                  <strong>Opt-Out:</strong> Unsubscribe from monitoring notifications or disable
-                  cookies
+<strong>Opt-Out:</strong> Unsubscribe from our communications or disable cookies
                 </li>
               </ul>
               <p className="mt-4">

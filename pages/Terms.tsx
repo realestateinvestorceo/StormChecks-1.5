@@ -35,8 +35,7 @@ const Terms: React.FC = () => {
               <h2 className="text-2xl font-bold text-primary mb-4">Who We Are</h2>
               <p>
                 <strong>StormChecks</strong> is a specialty finance company. We underwrite and fund
-                the cost of pursuing commercial property insurance claims, and we provide free storm
-                monitoring to commercial property owners.
+                the cost of pursuing commercial property insurance claims.
               </p>
               <div className="mt-6 grid md:grid-cols-2 gap-6">
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
@@ -45,7 +44,6 @@ const Terms: React.FC = () => {
                     <li>Underwrite commercial property claim funding requests</li>
                     <li>Issue written, non-recourse funding terms</li>
                     <li>Pay approved vendor invoices directly</li>
-                    <li>Provide free storm monitoring for enrolled properties</li>
                   </ul>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg border border-hairline-light">
@@ -92,14 +90,6 @@ const Terms: React.FC = () => {
                 the claim does not produce proceeds, StormChecks absorbs the funded vendor costs and
                 the property owner owes nothing. No personal guarantee is required and no lien is
                 placed on the property.
-              </p>
-
-              <h3 className="text-xl font-bold text-primary mt-6 mb-3">Storm Monitoring</h3>
-              <p>
-                Storm monitoring is provided free of charge and creates no obligation of any kind. A
-                monitoring notification reports what the weather record shows at the coordinates of
-                an enrolled property. It is not an assessment of the property, an opinion on damage,
-                or a recommendation to take any action. You may unsubscribe at any time.
               </p>
 
               <h3 className="text-xl font-bold text-primary mt-6 mb-3">No Fees to You</h3>

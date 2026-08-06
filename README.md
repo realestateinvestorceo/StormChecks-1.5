@@ -17,7 +17,6 @@ funding for the cost of pursuing commercial property insurance claims.
 | `/` | `pages/Home.tsx` |
 | `/how-it-works` | `pages/HowItWorks.tsx` |
 | `/what-we-fund` | `pages/WhatWeFund.tsx` |
-| `/storm-monitoring` | `pages/StormMonitoring.tsx` |
 | `/about` | `pages/About.tsx` |
 | `/contact` | `pages/Contact.tsx` |
 | `/privacy`, `/terms` | `pages/Privacy.tsx`, `pages/Terms.tsx` |
@@ -28,7 +27,6 @@ funding for the cost of pursuing commercial property insurance claims.
 Both forms POST JSON to the same Make.com webhook and are distinguished by a `formType` field:
 
 - `funding-request` — `pages/Contact.tsx`
-- `storm-monitoring` — `pages/StormMonitoring.tsx`
 
 Property address fields use Google Places Autocomplete (script loaded in `index.html`).
 

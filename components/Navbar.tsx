@@ -5,7 +5,6 @@ import { Menu, X, LogIn } from 'lucide-react';
 const navLinks = [
   { name: 'How It Works', path: '/how-it-works' },
   { name: 'What We Fund', path: '/what-we-fund' },
-  { name: 'Storm Monitoring', path: '/storm-monitoring' },
   { name: 'About', path: '/about' },
 ];
 
@@ -51,7 +50,7 @@ const Navbar: React.FC = () => {
             to="/contact"
             className="bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-colors text-sm whitespace-nowrap"
           >
-            Request Funding
+            Contact
           </Link>
         </div>
 
@@ -84,7 +83,7 @@ const Navbar: React.FC = () => {
               className="bg-accent text-primary px-5 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors text-center mt-4"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Request Funding
+              Contact
             </Link>
             <a
               href="https://app.stormchecks.com"

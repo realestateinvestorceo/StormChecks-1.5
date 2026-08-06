@@ -6,68 +6,32 @@ const categories = [
   {
     icon: Ruler,
     title: 'Engineering reports',
-    body: 'Licensed engineering analysis of the structure and the loss, commissioned by your public adjuster or counsel.',
-    items: [
-      'Structural and building envelope analysis',
-      'Roof system evaluation',
-      'Mechanical and equipment condition reports',
-      'Engineer site visits and travel',
-    ],
+    body: 'Reports produced by licensed engineering firms engaged by your public adjuster or counsel.',
   },
   {
     icon: PenLine,
     title: 'Drafting and plans',
-    body: 'The drawing set a repair scope needs before it can be priced, permitted, or defended.',
-    items: [
-      'As-built drawings',
-      'Repair and replacement plan sets',
-      'CAD drafting and revisions',
-      'Permit-ready documentation',
-    ],
+    body: 'Drawing sets and plan documentation produced by the providers your team engages.',
   },
   {
     icon: FlaskConical,
     title: 'Environmental testing',
-    body: 'Testing and lab work for the hazardous materials a commercial loss commonly surfaces.',
-    items: [
-      'Lead testing and clearance',
-      'Mould sampling and lab analysis',
-      'Asbestos survey and abatement testing',
-      'Air quality and moisture readings',
-    ],
+    body: 'Testing and laboratory work performed by licensed environmental providers.',
   },
   {
     icon: Droplets,
     title: 'Water mitigation',
-    body: 'The emergency work that cannot wait for a claim to resolve without the loss getting worse.',
-    items: [
-      'Water extraction',
-      'Structural drying and dehumidification',
-      'Containment and antimicrobial treatment',
-      'Equipment rental and monitoring',
-    ],
+    body: 'Emergency extraction, drying, and containment work performed by mitigation providers.',
   },
   {
     icon: Hammer,
     title: 'Temporary repairs',
-    body: 'Stabilisation work that holds the property until permanent repairs are funded.',
-    items: [
-      'Board-up and secure',
-      'Roof tarping and temporary membrane',
-      'Shoring and structural stabilisation',
-      'Temporary power, fencing, and access',
-    ],
+    body: 'Board-up, tarping, and stabilisation work performed by contractors your team engages.',
   },
   {
     icon: CloudLightning,
     title: 'Meteorological analysis',
-    body: 'Independent storm analysis and reporting prepared for the file by qualified meteorologists.',
-    items: [
-      'Certified storm event reports',
-      'Radar and station data analysis',
-      'Site-specific event narratives',
-      'Expert meteorological review',
-    ],
+    body: 'Reports produced by qualified meteorological firms engaged by your team.',
   },
 ];
 
@@ -106,15 +70,7 @@ const WhatWeFund: React.FC = () => {
                     <Icon className="w-6 h-6 text-primary" />
                   </div>
                   <h2 className="text-2xl font-bold text-primary mb-4">{cat.title}</h2>
-                  <p className="text-gray-600 leading-relaxed mb-8">{cat.body}</p>
-                  <ul className="space-y-3 mt-auto pt-8 border-t border-gray-100">
-                    {cat.items.map((item) => (
-                      <li key={item} className="flex items-start text-gray-600">
-                        <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span className="text-sm leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-gray-600 leading-relaxed">{cat.body}</p>
                 </div>
               );
             })}
@@ -129,11 +85,10 @@ const WhatWeFund: React.FC = () => {
             <div className="bg-white rounded-xl border border-hairline-light p-8">
               <h2 className="text-xl font-bold text-primary mb-4">How scope is set</h2>
               <p className="text-gray-600 leading-relaxed">
-                Your public adjuster or attorney determines what work the claim requires. We
-                underwrite that scope and set the funding limit and the cost categories covered. If a
-                cost is necessary to pursue the claim and it clears underwriting, we fund it — and if
-                the scope expands mid-claim, we underwrite the addition rather than sending you an
-                invoice.
+Your public adjuster or attorney determines what work is required and engages the
+                providers. We underwrite the resulting cost, then set the funding limit and the
+                categories covered. If the scope grows, we underwrite the addition rather than
+                sending the owner an invoice.
               </p>
             </div>
             <div className="bg-white rounded-xl border border-hairline-light p-8">
@@ -153,17 +108,17 @@ const WhatWeFund: React.FC = () => {
       <section className="bg-primary py-24">
         <div className="wrap text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Send us the scope. We will price the funding.
+Contact our underwriting team.
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Underwriting reviews the property, the loss, and the proposed vendor work, then issues
-            written terms.
+Funding enquiries reach us through the licensed public adjuster or attorney a property
+            owner has already engaged.
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-colors group"
           >
-            Request Funding Terms
+            Contact Us
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

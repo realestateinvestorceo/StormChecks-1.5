@@ -8,7 +8,7 @@ const NotFound: React.FC = () => {
       <div className="wrap text-center">
         <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">404</h1>
         <p className="text-xl text-gray-300 mb-10 max-w-xl mx-auto leading-relaxed">
-          That page doesn't exist. Start from the homepage, or go straight to funding terms.
+That page doesn't exist.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
@@ -22,7 +22,7 @@ const NotFound: React.FC = () => {
             to="/contact"
             className="border border-hairline-dark text-white px-8 py-4 rounded-lg font-bold text-lg hover:border-white transition-colors"
           >
-            Request Funding Terms
+            Contact Us
           </Link>
         </div>
       </div>

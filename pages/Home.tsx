@@ -8,14 +8,13 @@ import {
   Hammer,
   PenLine,
   CloudLightning,
-  Bell,
 } from 'lucide-react';
 
 const fundedCosts = [
   {
     icon: Ruler,
     title: 'Engineering reports',
-    body: 'Licensed engineering analysis of the structure and the loss, commissioned by your team.',
+    body: 'Reports produced by licensed engineering firms engaged by your team.',
   },
   {
     icon: PenLine,
@@ -40,7 +39,7 @@ const fundedCosts = [
   {
     icon: CloudLightning,
     title: 'Meteorological analysis',
-    body: 'Storm event analysis and reporting prepared for the file by qualified meteorologists.',
+    body: 'Reports produced by qualified meteorological firms engaged by your team.',
   },
 ];
 
@@ -53,7 +52,7 @@ const steps = [
   {
     num: '02',
     title: 'We underwrite and commit',
-    body: 'We review the property, the loss, and the proposed scope of work, then issue funding terms in writing.',
+    body: 'We review the funding request and the proposed vendor scope, then issue funding terms in writing.',
   },
   {
     num: '03',
@@ -104,14 +103,8 @@ const Home: React.FC = () => {
                 to="/contact"
                 className="group bg-accent text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-colors flex items-center gap-2"
               >
-                Request Funding Terms
+                Contact Us
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/storm-monitoring"
-                className="border border-hairline-dark text-white px-8 py-4 rounded-lg font-bold text-lg hover:border-white transition-colors"
-              >
-                Free Storm Monitoring
               </Link>
             </div>
 
@@ -263,56 +256,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Underwriting */}
-      <section className="bg-white py-24">
-        <div className="wrap">
-          <div className="max-w-measure">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-8">
-              Underwriting built on our own data.
-            </h2>
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-              <p>
-                Committing non-recourse capital requires a defensible view of the loss before a
-                dollar is deployed, so we built the storm and property data platform that gives us
-                one.
-              </p>
-              <p className="text-base text-gray-500">
-                The platform is internal. It underwrites our capital. It is not a service we sell,
-                and it does not assess or value anyone's claim.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Storm monitoring */}
-      <section className="bg-white py-24 border-t border-hairline-light">
-        <div className="wrap">
-          <div className="max-w-4xl mx-auto bg-primary rounded-2xl p-10 md:p-16 text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-accent opacity-[0.07] rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-            <div className="relative z-10">
-              <div className="w-14 h-14 bg-accent/15 rounded-xl flex items-center justify-center mb-8">
-                <Bell className="w-7 h-7 text-accent" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Free storm monitoring for your portfolio.
-              </h2>
-              <p className="text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
-                Enrol any commercial property and we will notify you when a catalogued weather event
-                affects its coordinates. No cost, no commitment, and no relationship to funding.
-              </p>
-              <Link
-                to="/storm-monitoring"
-                className="inline-flex items-center gap-2 bg-accent text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-colors group"
-              >
-                Enrol a Property
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* What StormChecks is */}
       <section className="bg-offwhite py-20 border-t border-hairline-light">
         <div className="wrap">
@@ -332,17 +275,17 @@ const Home: React.FC = () => {
       <section className="bg-primary py-24 border-t border-hairline-dark">
         <div className="wrap text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Talk to our underwriting team.
+Contact our underwriting team.
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            If you own commercial property and are working with a licensed public adjuster or
-            attorney, we will review the funding request and issue terms.
+Funding enquiries reach us through the licensed public adjuster or attorney a property
+            owner has already engaged.
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-colors group"
           >
-            Request Funding Terms
+            Contact Us
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

@@ -13,7 +13,7 @@ const steps = [
     num: '02',
     title: 'We underwrite and commit',
     actor: 'StormChecks',
-    body: "Your team submits the property, the loss, and the proposed scope of vendor work. We underwrite it against our own storm, structure, and loss-dating data and issue written funding terms — the cost categories covered, the funding limit, and the repayment terms on resolution.",
+    body: "Your team submits the funding request and the proposed vendor scope. We underwrite it and issue written funding terms — the cost categories covered, the funding limit, and the repayment terms on resolution.",
   },
   {
     num: '03',
@@ -190,17 +190,17 @@ const HowItWorks: React.FC = () => {
       <section className="bg-white py-24 border-t border-hairline-light">
         <div className="wrap text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Ready to request terms?
+Contact our underwriting team.
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Send us the property and the proposed scope of work. Underwriting will come back with
-            written terms.
+Funding enquiries reach us through the licensed public adjuster or attorney a property
+            owner has already engaged.
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-colors group"
           >
-            Request Funding Terms
+            Contact Us
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

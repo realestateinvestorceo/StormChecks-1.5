@@ -13,7 +13,7 @@ const team = [
   {
     name: 'Josh Miller, PE',
     title: 'Head of Underwriting',
-    bio: 'A licensed Professional Engineer who leads underwriting and the data platform behind it — storm event records, property measurement, and loss dating. Every funding decision runs through that work.',
+    bio: 'A licensed Professional Engineer who leads underwriting. Every funding commitment is priced and approved through that work.',
     image:
       'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f9565d73d98ece249e1.png',
   },
@@ -68,15 +68,14 @@ const About: React.FC = () => {
               </p>
               <p>
                 It is also a financing problem rather than a construction one, which is how
-                StormChecks approaches it. We underwrite the loss, commit non-recourse capital
+                StormChecks approaches it. We underwrite the funding request, commit non-recourse capital
                 against it, and pay the vendors directly. If the claim resolves, we are repaid from
                 the proceeds on terms set in advance. If it does not, the cost stays with us.
               </p>
               <p>
-                That structure only works with underwriting good enough to price it. So we built the
-                storm, property, and loss-dating data platform that supports every commitment we
-                make — and we deliberately kept our role to the capital. The claim itself belongs to
-                the owner and the licensed professionals they engage.
+                That structure only works with underwriting good enough to price it, and we have
+                deliberately kept our role to the capital. The claim itself belongs to the owner and
+                the licensed professionals they engage.
               </p>
             </div>
           </div>
@@ -142,10 +141,6 @@ const About: React.FC = () => {
                     <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
                     <span>Pay approved vendor invoices directly</span>
                   </li>
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
-                    <span>Provide free storm monitoring to commercial owners</span>
-                  </li>
                 </ul>
               </div>
               <div className="bg-white/5 border border-hairline-dark rounded-xl p-8">
@@ -180,17 +175,17 @@ const About: React.FC = () => {
       <section className="bg-white py-24 border-t border-hairline-light">
         <div className="wrap text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Talk to our underwriting team.
+Contact our underwriting team.
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Send us the property and the proposed scope of work. We will come back with written
-            terms.
+Funding enquiries reach us through the licensed public adjuster or attorney a property
+            owner has already engaged.
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-colors group"
           >
-            Request Funding Terms
+            Contact Us
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
