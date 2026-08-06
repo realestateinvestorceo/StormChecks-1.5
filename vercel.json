@@ -1,4 +1,43 @@
 {
+  "redirects": [
+    { "source": "/expert-file", "destination": "/what-we-fund", "statusCode": 301 },
+    { "source": "/case-work", "destination": "/", "statusCode": 301 },
+    { "source": "/leadership", "destination": "/about", "statusCode": 301 },
+    { "source": "/resources", "destination": "/", "statusCode": 301 },
+    { "source": "/resources/:slug*", "destination": "/", "statusCode": 301 },
+    { "source": "/getstarted", "destination": "/how-it-works", "statusCode": 301 },
+    { "source": "/affiliate", "destination": "/", "statusCode": 301 },
+    { "source": "/affiliate/:slug*", "destination": "/", "statusCode": 301 },
+
+    { "source": "/what-to-do-after-storm-damage-commercial-property", "destination": "/how-it-works", "statusCode": 301 },
+    { "source": "/why-commercial-property-insurance-claims-get-denied", "destination": "/", "statusCode": 301 },
+    { "source": "/hidden-cost-of-undetected-storm-damage", "destination": "/", "statusCode": 301 },
+    { "source": "/commercial-property-insurance-claim-process-guide", "destination": "/how-it-works", "statusCode": 301 },
+    { "source": "/forensic-assessment-vs-standard-inspection", "destination": "/what-we-fund", "statusCode": 301 },
+    { "source": "/forensic-documentation-vs-contractor-estimate", "destination": "/what-we-fund", "statusCode": 301 },
+    { "source": "/independent-assessment-vs-insurance-adjuster", "destination": "/", "statusCode": 301 },
+    { "source": "/what-is-forensic-building-consulting", "destination": "/", "statusCode": 301 },
+    { "source": "/how-to-identify-hail-damage-commercial-roofs", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/how-to-identify-wind-damage-commercial-buildings", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/state-by-state-insurance-claim-filing-deadlines", "destination": "/", "statusCode": 301 },
+
+    { "source": "/storm-damage-assessment-industrial-properties", "destination": "/", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-retail-centers", "destination": "/", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-self-storage-facilities", "destination": "/", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-office-buildings", "destination": "/", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-texas", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-colorado", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-kansas", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-oklahoma", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-nebraska", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-missouri", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-minnesota", "destination": "/storm-monitoring", "statusCode": 301 },
+    { "source": "/storm-damage-assessment-north-carolina", "destination": "/storm-monitoring", "statusCode": 301 },
+
+    { "source": "/audio/:file*", "destination": "/", "statusCode": 301 },
+    { "source": "/videos/:file*", "destination": "/", "statusCode": 301 },
+    { "source": "/downloads/:file*", "destination": "/", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/((?!assets/).*)", "destination": "/index.html" }
   ]

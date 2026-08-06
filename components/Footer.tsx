@@ -4,52 +4,84 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-primary text-white pt-16 pb-8 border-t border-gray-800">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          
-          {/* Brand Column */}
-          <div className="space-y-4">
+    <footer className="bg-primary text-white pt-16 pb-8 border-t border-hairline-dark">
+      <div className="wrap">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div className="space-y-4 md:col-span-2">
             <Link to="/" className="inline-block">
-              <img 
-                src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6966f948415652622e320969.png" 
-                alt="StormChecks" 
+              <img
+                src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6966f948415652622e320969.png"
+                alt="StormChecks"
                 className="w-40 h-auto"
               />
             </Link>
             <p className="text-gray-400 leading-relaxed text-sm">
-              Forensic Building Consultants
+              Pre-Litigation Claim Funding
+            </p>
+            <p className="text-gray-500 leading-relaxed text-sm max-w-sm">
+              Non-recourse funding for the cost of pursuing a commercial property insurance claim.
             </p>
           </div>
 
-          {/* Links Column */}
+          {/* Company links */}
           <div className="flex flex-col space-y-3">
-             <h4 className="font-bold text-white mb-2 uppercase text-sm tracking-wider">Company</h4>
-             <Link to="/resources" className="text-gray-400 hover:text-accent transition-colors text-sm">Resources & Insights</Link>
-             <Link to="/privacy" className="text-gray-400 hover:text-accent transition-colors text-sm">Privacy Policy</Link>
-             <Link to="/terms" className="text-gray-400 hover:text-accent transition-colors text-sm">Terms of Service</Link>
-             <Link to="/contact?contact=true" className="text-gray-400 hover:text-accent transition-colors text-sm">Contact Us</Link>
+            <h2 className="font-bold text-white mb-2 uppercase text-sm tracking-wider">Company</h2>
+            <Link to="/how-it-works" className="text-gray-400 hover:text-accent transition-colors text-sm">
+              How It Works
+            </Link>
+            <Link to="/what-we-fund" className="text-gray-400 hover:text-accent transition-colors text-sm">
+              What We Fund
+            </Link>
+            <Link to="/technology" className="text-gray-400 hover:text-accent transition-colors text-sm">
+              Technology
+            </Link>
+            <Link to="/storm-monitoring" className="text-gray-400 hover:text-accent transition-colors text-sm">
+              Storm Monitoring
+            </Link>
+            <Link to="/about" className="text-gray-400 hover:text-accent transition-colors text-sm">
+              About
+            </Link>
           </div>
 
-          {/* Contact Info Column */}
+          {/* Contact */}
           <div className="space-y-4">
-            <h4 className="font-bold text-white mb-2 uppercase text-sm tracking-wider">Get in Touch</h4>
+            <h2 className="font-bold text-white mb-2 uppercase text-sm tracking-wider">
+              Get in Touch
+            </h2>
             <div className="flex items-center space-x-3 text-gray-400 text-sm group">
               <Mail className="w-4 h-4 text-accent group-hover:text-white transition-colors" />
-              <a href="mailto:info@stormchecks.com" className="hover:text-accent transition-colors">info@stormchecks.com</a>
+              <a href="mailto:info@stormchecks.com" className="hover:text-accent transition-colors">
+                info@stormchecks.com
+              </a>
             </div>
             <div className="flex items-center space-x-3 text-gray-400 text-sm group">
               <Phone className="w-4 h-4 text-accent group-hover:text-white transition-colors" />
-              <a href="tel:+18018212530" className="hover:text-accent transition-colors">+1 801-821-2530</a>
+              <a href="tel:+18018212530" className="hover:text-accent transition-colors">
+                +1 801-821-2530
+              </a>
+            </div>
+            <div className="pt-2 flex flex-col space-y-3">
+              <Link to="/contact" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                Request Funding Terms
+              </Link>
+              <Link to="/privacy" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500">
-            &copy; 2026 StormChecks. All rights reserved.
+        {/* Disclaimer + copyright */}
+        <div className="border-t border-hairline-dark pt-8 space-y-4">
+          <p className="text-xs text-gray-500 leading-relaxed max-w-4xl">
+            StormChecks is not a public adjuster, law firm, or insurance producer, and does not
+            provide claims, legal, or insurance advice.
           </p>
+          <p className="text-xs text-gray-600">&copy; 2026 StormChecks. All rights reserved.</p>
         </div>
       </div>
     </footer>
