@@ -284,12 +284,6 @@ const Home: React.FC = () => {
                   and it does not assess or value anyone's claim.
                 </p>
               </div>
-              <Link
-                to="/technology"
-                className="inline-flex items-center text-primary font-bold hover:text-accent transition-colors"
-              >
-                More on the platform <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
             </div>
 
             <div className="lg:col-span-5 space-y-4">

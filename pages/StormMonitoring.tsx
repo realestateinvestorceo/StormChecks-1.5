@@ -145,6 +145,26 @@ const StormMonitoring: React.FC = () => {
         </div>
       </section>
 
+      {/* Where the data comes from */}
+      <section className="bg-offwhite py-20 border-t border-hairline-light">
+        <div className="wrap">
+          <div className="max-w-measure mx-auto text-center">
+            <div className="eyebrow mb-8">Where the Data Comes From</div>
+            <p className="text-xl text-gray-600 leading-[1.7]">
+              Committing non-recourse capital requires a defensible view of the loss before a dollar
+              is deployed. We built the platform that gives us one — catalogued storm history at
+              parcel-level coordinates, automated roof and structure measurement from aerial imagery,
+              and loss-dating models that place an event on a timeline. Monitoring runs on the same
+              storm record.
+            </p>
+            <p className="text-sm text-gray-500 leading-relaxed mt-8">
+              The platform is internal. It underwrites our capital. It is not a service we sell, and
+              it does not assess or value anyone's claim.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Form */}
       <section className="bg-gray-50 py-24 border-t border-hairline-light" ref={formRef}>
         <div className="wrap">

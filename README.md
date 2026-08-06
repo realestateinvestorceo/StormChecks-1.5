@@ -17,7 +17,6 @@ funding for the cost of pursuing commercial property insurance claims.
 | `/` | `pages/Home.tsx` |
 | `/how-it-works` | `pages/HowItWorks.tsx` |
 | `/what-we-fund` | `pages/WhatWeFund.tsx` |
-| `/technology` | `pages/Technology.tsx` |
 | `/storm-monitoring` | `pages/StormMonitoring.tsx` |
 | `/about` | `pages/About.tsx` |
 | `/contact` | `pages/Contact.tsx` |

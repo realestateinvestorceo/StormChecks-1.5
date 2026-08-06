@@ -8,6 +8,7 @@
     { "source": "/getstarted", "destination": "/how-it-works", "statusCode": 301 },
     { "source": "/affiliate", "destination": "/", "statusCode": 301 },
     { "source": "/affiliate/:slug*", "destination": "/", "statusCode": 301 },
+    { "source": "/technology", "destination": "/storm-monitoring", "statusCode": 301 },
 
     { "source": "/what-to-do-after-storm-damage-commercial-property", "destination": "/how-it-works", "statusCode": 301 },
     { "source": "/why-commercial-property-insurance-claims-get-denied", "destination": "/", "statusCode": 301 },
