@@ -11,9 +11,9 @@ const team = [
       'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f9565d73d8dc6e249e0.png',
   },
   {
-    name: 'Josh Miller, PE',
-    title: 'Head of Underwriting',
-    bio: 'A licensed Professional Engineer who leads underwriting. Every funding commitment is priced and approved through that work.',
+    name: 'Josh Miller',
+    title: 'Chief Growth Officer',
+    bio: 'Leads growth. Makes sure the public adjusters and attorneys who represent commercial owners know this funding exists, and that sending us a request is simple. Their clients get the cost of pursuing a claim covered, and owe nothing if it does not pay.',
     image:
       'https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69699f9565d73d98ece249e1.png',
   },
@@ -88,7 +88,7 @@ const About: React.FC = () => {
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Leadership</h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Commercial real estate operators, underwriters, and engineers.
+              Commercial real estate operators and underwriters.
             </p>
           </div>
 
